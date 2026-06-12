@@ -2,9 +2,10 @@ import * as $ from "@cprecioso/async-iterable-helpers";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import * as z from "zod";
-import { FullOptionsSchema } from "../in-files/schema";
-import type { FullOptions } from "../in-files/types";
-import { ALLOWED_EXTENSIONS_GLOB, RouteType } from "./common";
+import { FullOptionsSchema } from "../../in-files/schema";
+import type { FullOptions } from "../../in-files/types";
+import { RouteType } from "../types";
+import { ALLOWED_EXTENSIONS_GLOB } from "./common";
 
 export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
   RouteType,
