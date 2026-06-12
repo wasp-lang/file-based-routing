@@ -52,6 +52,36 @@ export const PARSERS_BY_ROUTE_TYPE: Record<RouteType, Parser> = {
       return [specPage, specRoute];
     },
   },
+
+  [RouteType.Api]: {
+    globs: ["**/*.api" + ALLOWED_EXTENSIONS_GLOB],
+    async parseFile(file, ctx) {
+      const { route, baseSpecName } = computeRoute(file, ctx);
+
+      const method = file.pathComponents
+        .at(-1)
+        ?.split(".")
+        .at(0)
+        ?.toUpperCase() as spec.HttpMethod;
+
+      const options = await discoverOptionsForFile(
+        file.absFilePath,
+        RouteType.Api,
+      );
+
+      const specApi = spec.api(
+        method,
+        route,
+        ctx.ref({
+          importDefault: baseSpecName + "Api",
+          from: file.absFilePath,
+        }),
+        options?.api,
+      );
+
+      return [specApi];
+    },
+  },
 };
 
 function computeRoute(file: ParserFile, ctx: ParserContext) {

@@ -12,6 +12,7 @@ export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
   (keyof FullOptions)[]
 > = {
   [RouteType.Page]: ["page", "route"],
+  [RouteType.Api]: ["api"],
 };
 
 export async function discoverOptionsForFile(

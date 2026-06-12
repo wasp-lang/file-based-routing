@@ -7,4 +7,5 @@ const uncheckedObject = <T extends {}>() =>
 export const FullOptionsSchema = z.object({
   page: uncheckedObject().optional(),
   route: uncheckedObject().optional(),
+  api: uncheckedObject().optional(),
 }) satisfies z.ZodType<FullOptions>;
