@@ -27,10 +27,7 @@ export const PARSERS_BY_ROUTE_TYPE: Record<RouteType, Parser> = {
   [RouteType.Page]: {
     globs: ["**/page" + ALLOWED_EXTENSIONS_GLOB],
     async parseFile(file, ctx) {
-      const route = routePath.normalize(
-        routePath.join("/", ...file.pathComponents.slice(0, -1)),
-      );
-      const specName = ctx.makeUniqueSpecName(route === "/" ? "Root" : route);
+      const { route, baseSpecName } = computeRoute(file, ctx);
 
       const options = await discoverOptionsForFile(
         file.absFilePath,
@@ -38,12 +35,15 @@ export const PARSERS_BY_ROUTE_TYPE: Record<RouteType, Parser> = {
       );
 
       const specPage = spec.page(
-        ctx.ref({ importDefault: specName + "Page", from: file.absFilePath }),
+        ctx.ref({
+          importDefault: baseSpecName + "Page",
+          from: file.absFilePath,
+        }),
         options?.page,
       );
 
       const specRoute = spec.route(
-        specName + "Route",
+        baseSpecName + "Route",
         route,
         specPage,
         options?.route,
@@ -53,3 +53,13 @@ export const PARSERS_BY_ROUTE_TYPE: Record<RouteType, Parser> = {
     },
   },
 };
+
+function computeRoute(file: ParserFile, ctx: ParserContext) {
+  const route = routePath.normalize(
+    routePath.join("/", ...file.pathComponents.slice(0, -1)),
+  );
+
+  const baseSpecName = ctx.makeUniqueSpecName(route === "/" ? "Root" : route);
+
+  return { route, baseSpecName };
+}
