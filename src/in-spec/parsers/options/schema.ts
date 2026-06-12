@@ -4,14 +4,14 @@ import { RouteType } from "../../types";
 
 export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
   RouteType,
-  (keyof FullOptions)[]
+  Partial<Record<keyof FullOptions, true>>
 > = {
-  [RouteType.Page]: ["page", "route"],
-  [RouteType.Query]: ["query"],
-  [RouteType.Action]: ["action"],
-  [RouteType.Job]: ["job"],
-  [RouteType.Api]: ["api"],
-  [RouteType.ApiNamespace]: [],
+  [RouteType.Page]: { page: true, route: true },
+  [RouteType.Query]: { query: true },
+  [RouteType.Action]: { action: true },
+  [RouteType.Job]: { job: true },
+  [RouteType.Api]: { api: true },
+  [RouteType.ApiNamespace]: {},
 };
 
 const uncheckedObject = <T extends {}>() =>
