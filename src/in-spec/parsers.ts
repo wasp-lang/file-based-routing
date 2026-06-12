@@ -1,7 +1,7 @@
 import * as spec from "@wasp.sh/spec";
 import * as routePath from "node:path/posix";
 import { discoverOptionsForFile } from "./options";
-import type { RouteType } from "./types";
+import { RouteType } from "./types";
 
 export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
 
@@ -22,7 +22,7 @@ interface ParserContext {
 }
 
 export const PARSERS_BY_ROUTE_TYPE: Record<RouteType, Parser> = {
-  page: {
+  [RouteType.Page]: {
     globs: ["**/page" + ALLOWED_EXTENSIONS_GLOB],
     async parseFile(file, ctx) {
       const route = routePath.normalize(
@@ -30,7 +30,10 @@ export const PARSERS_BY_ROUTE_TYPE: Record<RouteType, Parser> = {
       );
       const specName = ctx.makeUniqueSpecName(route === "/" ? "Root" : route);
 
-      const options = await discoverOptionsForFile(file.absFilePath, "page");
+      const options = await discoverOptionsForFile(
+        file.absFilePath,
+        RouteType.Page,
+      );
 
       const specPage = spec.page(
         ctx.ref({ importDefault: specName + "Page", from: file.absFilePath }),

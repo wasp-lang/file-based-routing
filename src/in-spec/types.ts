@@ -1,1 +1,3 @@
-export type RouteType = "page";
+export enum RouteType {
+  Page = "page",
+}
