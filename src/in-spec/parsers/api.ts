@@ -8,7 +8,7 @@ export const apiParser: Parser = {
   globs: ["**/*.api" + ALLOWED_EXTENSIONS_GLOB],
 
   async parseFile(file, ctx) {
-    const { route, baseSpecName } = computeRoute(file, ctx);
+    const { route, baseSpecName } = computeRoute(file.pathComponents, ctx);
 
     const method = file.pathComponents
       .at(-1)

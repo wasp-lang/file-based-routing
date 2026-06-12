@@ -6,7 +6,7 @@ export const apiNamespaceParser: Parser = {
   globs: ["**/api-namespace" + ALLOWED_EXTENSIONS_GLOB],
 
   async parseFile(file, ctx) {
-    const { route, baseSpecName } = computeRoute(file, ctx);
+    const { route, baseSpecName } = computeRoute(file.pathComponents, ctx);
 
     const specApiNamespace = spec.apiNamespace(route, {
       middlewareConfigFn: ctx.ref({

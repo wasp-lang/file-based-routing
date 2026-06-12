@@ -8,7 +8,7 @@ export const pageParser: Parser = {
   globs: ["**/page" + ALLOWED_EXTENSIONS_GLOB],
 
   async parseFile(file, ctx) {
-    const { route, baseSpecName } = computeRoute(file, ctx);
+    const { route, baseSpecName } = computeRoute(file.pathComponents, ctx);
 
     const options = await discoverOptionsForFile(
       file.absFilePath,
