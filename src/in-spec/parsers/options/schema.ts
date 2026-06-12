@@ -1,5 +1,15 @@
 import * as z from "zod";
-import type { FullOptions } from "./types";
+import type { FullOptions } from "../../../in-files/types";
+import { RouteType } from "../../types";
+
+export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
+  RouteType,
+  (keyof FullOptions)[]
+> = {
+  [RouteType.Page]: ["page", "route"],
+  [RouteType.Api]: ["api"],
+  [RouteType.ApiNamespace]: [],
+};
 
 const uncheckedObject = <T extends {}>() =>
   z.looseObject({}).pipe(z.custom<T>());
