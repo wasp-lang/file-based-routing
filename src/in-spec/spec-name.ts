@@ -4,10 +4,11 @@ export function specNameMaker() {
   const usedNames = new Set<string>();
 
   return (base: string) => {
-    let name = _.pascalCase(_.deburr(base));
+    base = _.pascalCase(_.deburr(base));
+    let name = base;
     let i = 0;
     while (usedNames.has(name)) {
-      name = name + ++i;
+      name = base + ++i;
     }
     usedNames.add(name);
     return name;
