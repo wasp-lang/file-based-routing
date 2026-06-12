@@ -4,6 +4,7 @@ import * as path from "node:path";
 import * as z from "zod";
 import { FullOptionsSchema } from "../in-files/schema";
 import type { FullOptions } from "../in-files/types";
+import { ALLOWED_EXTENSIONS_GLOB } from "./parsers";
 import type { RouteType } from "./types";
 
 export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
@@ -20,7 +21,7 @@ export async function discoverOptionsForFile(
   const routeBaseDir = path.dirname(absBaseFilePath);
 
   const optionsFilePath = await $.from(
-    fs.glob("options.{ts,tsx}", { cwd: routeBaseDir }),
+    fs.glob("options" + ALLOWED_EXTENSIONS_GLOB, { cwd: routeBaseDir }),
   ).sink($.last());
 
   if (!optionsFilePath) {

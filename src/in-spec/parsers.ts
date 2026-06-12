@@ -3,6 +3,8 @@ import * as routePath from "node:path/posix";
 import { discoverOptionsForFile } from "./options";
 import type { RouteType } from "./types";
 
+export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
+
 interface Parser {
   globs: readonly string[];
   parseFile: (
@@ -21,7 +23,7 @@ interface ParserContext {
 
 export const PARSERS_BY_ROUTE_TYPE: Record<RouteType, Parser> = {
   page: {
-    globs: ["**/page.{ts,tsx}"],
+    globs: ["**/page" + ALLOWED_EXTENSIONS_GLOB],
     async parseFile(file, ctx) {
       const route = routePath.normalize(
         routePath.join("/", ...file.pathComponents.slice(0, -1)),
