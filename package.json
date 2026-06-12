@@ -23,6 +23,7 @@
     "@wasp.sh/spec": "file:vendor/wasp.sh-spec-0.24.0.tgz",
     "@wasp.sh/wasp-cli": "^0.24.0",
     "tsdown": "^0.22.2",
+    "type-fest": "^5.7.0",
     "typescript": "^5.9.3"
   },
   "dependencies": {
