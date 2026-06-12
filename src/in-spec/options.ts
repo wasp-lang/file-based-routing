@@ -4,8 +4,7 @@ import * as path from "node:path";
 import * as z from "zod";
 import { FullOptionsSchema } from "../in-files/schema";
 import type { FullOptions } from "../in-files/types";
-import { ALLOWED_EXTENSIONS_GLOB } from "./parsers";
-import { RouteType } from "./types";
+import { ALLOWED_EXTENSIONS_GLOB, RouteType } from "./common";
 
 export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
   RouteType,

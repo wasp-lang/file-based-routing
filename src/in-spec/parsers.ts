@@ -1,9 +1,7 @@
 import * as spec from "@wasp.sh/spec";
 import * as routePath from "node:path/posix";
+import { ALLOWED_EXTENSIONS_GLOB, RouteType } from "./common";
 import { discoverOptionsForFile } from "./options";
-import { RouteType } from "./types";
-
-export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
 
 interface Parser {
   globs: readonly string[];
