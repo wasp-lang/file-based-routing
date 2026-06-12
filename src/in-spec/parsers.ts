@@ -82,6 +82,22 @@ export const PARSERS_BY_ROUTE_TYPE: Record<RouteType, Parser> = {
       return [specApi];
     },
   },
+
+  [RouteType.ApiNamespace]: {
+    globs: ["**/api-namespace" + ALLOWED_EXTENSIONS_GLOB],
+    async parseFile(file, ctx) {
+      const { route, baseSpecName } = computeRoute(file, ctx);
+
+      const specApiNamespace = spec.apiNamespace(route, {
+        middlewareConfigFn: ctx.ref({
+          importDefault: baseSpecName + "ApiNamespace",
+          from: file.absFilePath,
+        }),
+      });
+
+      return [specApiNamespace];
+    },
+  },
 };
 
 function computeRoute(file: ParserFile, ctx: ParserContext) {

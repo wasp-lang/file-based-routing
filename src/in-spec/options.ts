@@ -13,6 +13,7 @@ export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
 > = {
   [RouteType.Page]: ["page", "route"],
   [RouteType.Api]: ["api"],
+  [RouteType.ApiNamespace]: [],
 };
 
 export async function discoverOptionsForFile(
