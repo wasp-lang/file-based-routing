@@ -45,6 +45,15 @@ function transformSpecialRouteComponents(
 ): string[] {
   return pathComponents.map((part, i) => {
     {
+      // Rest component at the end of the path
+      // (In the path components it's the second-to-last component, because the
+      // last one is the `page.tsx` filename)
+      if (i === pathComponents.length - 2 && part === "[...rest]") {
+        return "*";
+      }
+    }
+
+    {
       // Optional dynamic path component
       const match = part.match(/^\[\[(.*)\]\]$/);
       if (match) {
@@ -54,18 +63,9 @@ function transformSpecialRouteComponents(
 
     {
       // Dynamic path component
-      const match = part.match(/^\[\[(.*)\]$/);
+      const match = part.match(/^\[(.*)\]$/);
       if (match) {
         return ":" + match[1];
-      }
-    }
-
-    {
-      // Rest component at the end of the path
-      // (In the path components it's the second-to-last component, because the
-      // last one is the `page.tsx` filename)
-      if (i === pathComponents.length - 2 && part === "[...rest]") {
-        return "*";
       }
     }
 
