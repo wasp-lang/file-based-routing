@@ -13,6 +13,7 @@ export const queryParser: Parser = {
     const options = await discoverOptionsForFile(
       file.absFilePath,
       RouteType.Query,
+      { baseName: baseSpecName },
     );
 
     const specQuery = spec.query(

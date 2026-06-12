@@ -11,11 +11,14 @@ const OPTIONS_FILE_GLOB = "options" + ALLOWED_EXTENSIONS_GLOB;
 export async function discoverOptionsForFile(
   absBaseFilePath: string,
   routeType: RouteType,
+  { baseName }: { baseName?: string } = {},
 ) {
   const routeBaseDir = path.dirname(absBaseFilePath);
 
+  const glob = (baseName ? `${baseName}.` : "") + OPTIONS_FILE_GLOB;
+
   const optionsFilePath = await $.from(
-    fs.glob(OPTIONS_FILE_GLOB, { cwd: routeBaseDir }),
+    fs.glob(glob, { cwd: routeBaseDir }),
   ).sink($.first());
 
   if (!optionsFilePath) {
