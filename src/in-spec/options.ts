@@ -16,6 +16,8 @@ export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
   [RouteType.ApiNamespace]: [],
 };
 
+const OPTIONS_FILE_GLOB = "options" + ALLOWED_EXTENSIONS_GLOB;
+
 export async function discoverOptionsForFile(
   absBaseFilePath: string,
   routeType: RouteType,
@@ -23,7 +25,7 @@ export async function discoverOptionsForFile(
   const routeBaseDir = path.dirname(absBaseFilePath);
 
   const optionsFilePath = await $.from(
-    fs.glob("options" + ALLOWED_EXTENSIONS_GLOB, { cwd: routeBaseDir }),
+    fs.glob(OPTIONS_FILE_GLOB, { cwd: routeBaseDir }),
   ).sink($.last());
 
   if (!optionsFilePath) {
