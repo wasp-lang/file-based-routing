@@ -8,12 +8,14 @@ export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
 interface Parser {
   globs: readonly string[];
   parseFile: (
-    file: {
-      pathComponents: readonly string[];
-      absFilePath: string;
-    },
+    file: ParserFile,
     ctx: ParserContext,
   ) => Promise<spec.SpecElement[]>;
+}
+
+interface ParserFile {
+  pathComponents: readonly string[];
+  absFilePath: string;
 }
 
 interface ParserContext {
