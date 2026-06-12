@@ -8,7 +8,13 @@ export const pageParser: Parser = {
   globs: ["**/page" + ALLOWED_EXTENSIONS_GLOB],
 
   async parseFile(file, ctx) {
-    const { route, baseSpecName } = computeRoute(file.pathComponents, ctx);
+    const transformedPathComponents = transformSpecialRouteComponents(
+      file.pathComponents,
+    );
+    const { route, baseSpecName } = computeRoute(
+      transformedPathComponents,
+      ctx,
+    );
 
     const options = await discoverOptionsForFile(
       file.absFilePath,
@@ -33,3 +39,36 @@ export const pageParser: Parser = {
     return [specPage, specRoute];
   },
 };
+
+function transformSpecialRouteComponents(
+  pathComponents: readonly string[],
+): string[] {
+  return pathComponents.map((part, i) => {
+    {
+      // Optional dynamic path component
+      const match = part.match(/^\[\[(.*)\]\]$/);
+      if (match) {
+        return ":" + match[1] + "?";
+      }
+    }
+
+    {
+      // Dynamic path component
+      const match = part.match(/^\[\[(.*)\]$/);
+      if (match) {
+        return ":" + match[1];
+      }
+    }
+
+    {
+      // Rest component at the end of the path
+      // (In the path components it's the second-to-last component, because the
+      // last one is the `page.tsx` filename)
+      if (i === pathComponents.length - 2 && part === "[...rest]") {
+        return "*";
+      }
+    }
+
+    return part;
+  });
+}
