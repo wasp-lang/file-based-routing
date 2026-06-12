@@ -15,7 +15,7 @@ export async function discoverOptionsForFile(
 ) {
   const routeBaseDir = path.dirname(absBaseFilePath);
 
-  const glob = (baseName ? `${baseName}.` : "") + OPTIONS_FILE_GLOB;
+  const glob = makeOptionsGlob(baseName);
 
   const optionsFilePath = await $.from(
     fs.glob(glob, { cwd: routeBaseDir }),
@@ -28,6 +28,15 @@ export async function discoverOptionsForFile(
   const absOptionsFilePath = path.resolve(routeBaseDir, optionsFilePath);
 
   return await importOptions(absOptionsFilePath, routeType);
+}
+
+export function isOptionsFile(filePath: string) {
+  // Matches both bare `options.*` files and `<baseName>.options.*` files
+  return path.matchesGlob(filePath, path.join("**", "{,*.}" + OPTIONS_FILE_GLOB));
+}
+
+function makeOptionsGlob(baseName = "") {
+  return (baseName ? `${baseName}.` : "") + OPTIONS_FILE_GLOB;
 }
 
 export async function importOptions(

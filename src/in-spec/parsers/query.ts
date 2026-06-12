@@ -1,7 +1,7 @@
 import * as spec from "@wasp.sh/spec";
 import { RouteType } from "../types";
 import { ALLOWED_EXTENSIONS_GLOB, type Parser } from "./common";
-import { discoverOptionsForFile } from "./options";
+import { discoverOptionsForFile, isOptionsFile } from "./options";
 
 export const queryParser: Parser = {
   globs: ["queries/*" + ALLOWED_EXTENSIONS_GLOB],
@@ -9,6 +9,10 @@ export const queryParser: Parser = {
   async parseFile(file, ctx) {
     const fileName = file.pathComponents.at(-1)!;
     const baseSpecName = fileName.slice(0, fileName.lastIndexOf("."));
+
+    if (isOptionsFile(file.absFilePath)) {
+      return [];
+    }
 
     const options = await discoverOptionsForFile(
       file.absFilePath,
