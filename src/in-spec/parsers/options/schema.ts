@@ -7,6 +7,7 @@ export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
   (keyof FullOptions)[]
 > = {
   [RouteType.Page]: ["page", "route"],
+  [RouteType.Query]: ["query"],
   [RouteType.Api]: ["api"],
   [RouteType.ApiNamespace]: [],
 };
@@ -16,6 +17,7 @@ const uncheckedObject = <T extends {}>() =>
 
 export const FullOptionsSchema = z.object({
   page: uncheckedObject().optional(),
+  query: uncheckedObject().optional(),
   route: uncheckedObject().optional(),
   api: uncheckedObject().optional(),
 }) satisfies z.ZodType<FullOptions>;
