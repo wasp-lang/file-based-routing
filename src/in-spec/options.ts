@@ -26,7 +26,7 @@ export async function discoverOptionsForFile(
 
   const optionsFilePath = await $.from(
     fs.glob(OPTIONS_FILE_GLOB, { cwd: routeBaseDir }),
-  ).sink($.last());
+  ).sink($.first());
 
   if (!optionsFilePath) {
     return undefined;
