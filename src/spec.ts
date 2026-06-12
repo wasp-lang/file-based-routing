@@ -5,13 +5,13 @@ import * as path from "node:path";
 import { PARSERS_BY_ROUTE_TYPE } from "./in-spec/parsers";
 import { specNameMaker } from "./in-spec/spec-name";
 
-export const fileBased = async ({
+export async function fileBased({
   ref,
   baseDir,
 }: {
   ref: typeof spec.ref;
   baseDir?: string;
-}): Promise<spec.SpecElement[]> => {
+}): Promise<spec.SpecElement[]> {
   baseDir ??= path.resolve(process.cwd(), "src/app");
 
   const makeUniqueSpecName = specNameMaker();
@@ -33,4 +33,4 @@ export const fileBased = async ({
       );
     }),
   ).sink($.toArray());
-};
+}
