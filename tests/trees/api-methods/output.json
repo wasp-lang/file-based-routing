@@ -9,7 +9,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "AApi",
+            "importDefault": "AGetApi",
             "from": "a/get.api.ts"
           }
         ]
@@ -23,7 +23,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "BApi",
+            "importDefault": "BPostApi",
             "from": "b/post.api.ts"
           }
         ]
@@ -37,7 +37,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "CApi",
+            "importDefault": "CPutApi",
             "from": "c/put.api.ts"
           }
         ]
@@ -51,7 +51,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "DApi",
+            "importDefault": "DDeleteApi",
             "from": "d/delete.api.ts"
           }
         ]
@@ -65,7 +65,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "EApi",
+            "importDefault": "EAllApi",
             "from": "e/all.api.ts"
           }
         ]

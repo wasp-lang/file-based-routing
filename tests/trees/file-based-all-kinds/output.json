@@ -75,7 +75,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "WebhooksApi",
+            "importDefault": "WebhooksPostApi",
             "from": "webhooks/post.api.ts"
           }
         ]

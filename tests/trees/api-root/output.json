@@ -9,7 +9,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "RootApi",
+            "importDefault": "RootGetApi",
             "from": "get.api.ts"
           }
         ]

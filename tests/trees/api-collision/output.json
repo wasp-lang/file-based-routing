@@ -9,7 +9,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "TasksApi",
+            "importDefault": "TasksGetApi",
             "from": "tasks/get.api.ts"
           }
         ]
@@ -23,7 +23,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "Tasks1Api",
+            "importDefault": "TasksPostApi",
             "from": "tasks/post.api.ts"
           }
         ]

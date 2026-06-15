@@ -9,7 +9,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "FooBarApi",
+            "importDefault": "FooBarGetApi",
             "from": "foo/bar/get.api.ts"
           }
         ]

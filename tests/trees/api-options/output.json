@@ -9,7 +9,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "ThingsApi",
+            "importDefault": "ThingsGetApi",
             "from": "things/get.api.ts"
           }
         ]
