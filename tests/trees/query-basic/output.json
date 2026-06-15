@@ -1,0 +1,17 @@
+{
+  "description": "creates a query from a file in the `queries` directory",
+  "elements": [
+    {
+      "kind": "query",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "getTasksQuery",
+            "from": "queries/getTasks.ts"
+          }
+        ]
+      }
+    }
+  ]
+}

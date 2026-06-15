@@ -1,0 +1,75 @@
+{
+  "description": "supports all HTTP methods, upper-casing the file name",
+  "elements": [
+    {
+      "kind": "api",
+      "method": "GET",
+      "path": "/a",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "AApi",
+            "from": "a/get.api.ts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "api",
+      "method": "POST",
+      "path": "/b",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "BApi",
+            "from": "b/post.api.ts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "api",
+      "method": "PUT",
+      "path": "/c",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "CApi",
+            "from": "c/put.api.ts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "api",
+      "method": "DELETE",
+      "path": "/d",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "DApi",
+            "from": "d/delete.api.ts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "api",
+      "method": "ALL",
+      "path": "/e",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "EApi",
+            "from": "e/all.api.ts"
+          }
+        ]
+      }
+    }
+  ]
+}

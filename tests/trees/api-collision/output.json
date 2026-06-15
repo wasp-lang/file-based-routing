@@ -1,0 +1,33 @@
+{
+  "description": "uniquifies spec names for several methods on the same path",
+  "elements": [
+    {
+      "kind": "api",
+      "method": "GET",
+      "path": "/tasks",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "TasksApi",
+            "from": "tasks/get.api.ts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "api",
+      "method": "POST",
+      "path": "/tasks",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "Tasks1Api",
+            "from": "tasks/post.api.ts"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "description": "rejects options files with keys not allowed for the route type",
+  "throws": "job"
+}

@@ -1,5 +1,6 @@
 {
   "include": ["src/**/*", "tests/**/*.ts"],
+  "exclude": ["tests/trees"],
   "extends": "@cprecioso/tsconfig/bundler",
   "compilerOptions": {
     "noEmit": true

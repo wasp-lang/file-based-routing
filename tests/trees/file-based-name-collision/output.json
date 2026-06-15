@@ -1,0 +1,48 @@
+{
+  "description": "uniquifies spec names across parsers",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "FooPage",
+            "from": "foo/page.tsx"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "FooRoute",
+      "path": "/foo",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "FooPage",
+              "from": "foo/page.tsx"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "api",
+      "method": "GET",
+      "path": "/foo",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "Foo1Api",
+            "from": "foo/get.api.ts"
+          }
+        ]
+      }
+    }
+  ]
+}

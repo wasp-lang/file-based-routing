@@ -1,0 +1,19 @@
+{
+  "description": "creates an api from a `<method>.api` file, using its directory as the path",
+  "elements": [
+    {
+      "kind": "api",
+      "method": "GET",
+      "path": "/foo/bar",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "FooBarApi",
+            "from": "foo/bar/get.api.ts"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "description": "applies options from a sibling `<name>.options` file, without treating it as an action",
+  "elements": [
+    {
+      "kind": "action",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "createTaskAction",
+            "from": "actions/createTask.ts"
+          }
+        ]
+      },
+      "auth": false
+    }
+  ]
+}

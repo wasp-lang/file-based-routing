@@ -1,0 +1,98 @@
+{
+  "description": "collects every route type, in parser order",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "RootPage",
+            "from": "page.tsx"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "RootRoute",
+      "path": "/",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "RootPage",
+              "from": "page.tsx"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "query",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "getTasksQuery",
+            "from": "queries/getTasks.ts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "action",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "createTaskAction",
+            "from": "actions/createTask.ts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "job",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "sendDigestJob",
+            "from": "jobs/sendDigest.ts"
+          }
+        ]
+      },
+      "executor": "PgBoss"
+    },
+    {
+      "kind": "api",
+      "method": "POST",
+      "path": "/webhooks",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "WebhooksApi",
+            "from": "webhooks/post.api.ts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "apiNamespace",
+      "path": "/external",
+      "middlewareConfigFn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "ExternalApiNamespace",
+            "from": "external/api-namespace.ts"
+          }
+        ]
+      }
+    }
+  ]
+}

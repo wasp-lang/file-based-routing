@@ -1,0 +1,34 @@
+{
+  "description": "creates a page and a route for a page file at the root",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "RootPage",
+            "from": "page.tsx"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "RootRoute",
+      "path": "/",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "RootPage",
+              "from": "page.tsx"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

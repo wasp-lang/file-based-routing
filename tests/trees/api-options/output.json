@@ -1,0 +1,20 @@
+{
+  "description": "applies `api` options from a sibling `options` file",
+  "elements": [
+    {
+      "kind": "api",
+      "method": "GET",
+      "path": "/things",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "ThingsApi",
+            "from": "things/get.api.ts"
+          }
+        ]
+      },
+      "auth": false
+    }
+  ]
+}

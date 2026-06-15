@@ -1,0 +1,37 @@
+{
+  "description": "applies `page` and `route` options from a sibling `options` file",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "MyPagePage",
+            "from": "my-page/page.tsx"
+          }
+        ]
+      },
+      "authRequired": true
+    },
+    {
+      "kind": "route",
+      "name": "MyPageRoute",
+      "path": "/my-page",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "MyPagePage",
+              "from": "my-page/page.tsx"
+            }
+          ]
+        },
+        "authRequired": true
+      },
+      "lazy": true
+    }
+  ]
+}

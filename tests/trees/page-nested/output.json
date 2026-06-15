@@ -1,0 +1,34 @@
+{
+  "description": "derives the route path and spec name from nested directories",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "SettingsProfilePage",
+            "from": "settings/profile/page.tsx"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "SettingsProfileRoute",
+      "path": "/settings/profile",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "SettingsProfilePage",
+              "from": "settings/profile/page.tsx"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "description": "accepts every allowed extension and ignores other files",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "APage",
+            "from": "a/page.ts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "ARoute",
+      "path": "/a",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "APage",
+              "from": "a/page.ts"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "BPage",
+            "from": "b/page.jsx"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "BRoute",
+      "path": "/b",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "BPage",
+              "from": "b/page.jsx"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "CPage",
+            "from": "c/page.mjs"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "CRoute",
+      "path": "/c",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "CPage",
+              "from": "c/page.mjs"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "DPage",
+            "from": "d/page.cts"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "DRoute",
+      "path": "/d",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "DPage",
+              "from": "d/page.cts"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

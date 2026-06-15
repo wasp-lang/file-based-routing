@@ -1,0 +1,34 @@
+{
+  "description": "transforms `[param]` into a dynamic path component",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "UsersIdPage",
+            "from": "users/[id]/page.tsx"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "UsersIdRoute",
+      "path": "/users/:id",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "UsersIdPage",
+              "from": "users/[id]/page.tsx"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

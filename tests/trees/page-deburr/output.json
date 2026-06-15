@@ -1,0 +1,34 @@
+{
+  "description": "deburrs non-ASCII route names but keeps the route path intact",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "CafePage",
+            "from": "café/page.tsx"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "CafeRoute",
+      "path": "/café",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "CafePage",
+              "from": "café/page.tsx"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "description": "applies options from a sibling `<name>.options` file, without treating it as a query",
+  "elements": [
+    {
+      "kind": "query",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "getTasksQuery",
+            "from": "queries/getTasks.ts"
+          }
+        ]
+      },
+      "entities": [
+        "Task"
+      ],
+      "auth": true
+    }
+  ]
+}

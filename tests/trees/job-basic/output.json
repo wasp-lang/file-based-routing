@@ -1,0 +1,18 @@
+{
+  "description": "creates a job with the PgBoss executor by default",
+  "elements": [
+    {
+      "kind": "job",
+      "fn": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "sendDigestJob",
+            "from": "jobs/sendDigest.ts"
+          }
+        ]
+      },
+      "executor": "PgBoss"
+    }
+  ]
+}

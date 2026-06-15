@@ -1,0 +1,35 @@
+{
+  "description": "defaults to scanning `src/app` under the current working directory",
+  "cwd": ".",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "RootPage",
+            "from": "src/app/page.tsx"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "RootRoute",
+      "path": "/",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "RootPage",
+              "from": "src/app/page.tsx"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

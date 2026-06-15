@@ -1,0 +1,34 @@
+{
+  "description": "transforms `[[param]]` into an optional dynamic path component",
+  "elements": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "ref-call",
+        "args": [
+          {
+            "importDefault": "DocsLangPage",
+            "from": "docs/[[lang]]/page.tsx"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "route",
+      "name": "DocsLangRoute",
+      "path": "/docs/:lang?",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "ref-call",
+          "args": [
+            {
+              "importDefault": "DocsLangPage",
+              "from": "docs/[[lang]]/page.tsx"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

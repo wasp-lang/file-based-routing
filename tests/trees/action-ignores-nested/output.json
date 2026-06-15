@@ -1,0 +1,4 @@
+{
+  "description": "only looks in the top-level `actions` directory",
+  "elements": []
+}
