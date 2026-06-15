@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/**/*.ts"],
   "extends": "@cprecioso/tsconfig/bundler",
   "compilerOptions": {
     "noEmit": true
