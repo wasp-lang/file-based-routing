@@ -1,4 +1,3 @@
-import * as $ from "@cprecioso/async-iterable-helpers";
 import * as spec from "@wasp.sh/spec";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
@@ -7,30 +6,34 @@ import { specNameMaker } from "./in-spec/spec-name";
 
 export async function fileBased({
   ref,
-  baseDir,
+  baseDir = path.resolve(process.cwd(), "src/app"),
 }: {
   ref: typeof spec.ref;
   baseDir?: string;
 }): Promise<spec.SpecElement[]> {
-  baseDir ??= path.resolve(process.cwd(), "src/app");
-
   const makeUniqueSpecName = specNameMaker();
 
-  return await $.concatAll(
-    Object.values(PARSERS_BY_ROUTE_TYPE).map((parser) => {
-      return $.from(fs.glob(parser.globs, { cwd: baseDir })).pipe(
-        $.flatMap((globResult) => {
+  return await Array.fromAsync(
+    (async function* () {
+      for (const parser of Object.values(PARSERS_BY_ROUTE_TYPE)) {
+        // Sort glob results so the output, and the spec names assigned to files
+        // whose names collide, don't depend on the filesystem's traversal order.
+        const globResults = (
+          await Array.fromAsync(fs.glob(parser.globs, { cwd: baseDir }))
+        ).sort();
+
+        for (const globResult of globResults) {
           const absPath = path.resolve(baseDir, globResult);
           const relPath = path.relative(baseDir, absPath);
 
           const pathComponents = relPath.split(path.sep);
 
-          return parser.parseFile(
+          yield* await parser.parseFile(
             { pathComponents, absFilePath: absPath },
             { ref, makeUniqueSpecName },
           );
-        }),
-      );
-    }),
-  ).sink($.toArray());
+        }
+      }
+    })(),
+  );
 }

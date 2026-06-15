@@ -1,4 +1,3 @@
-import * as $ from "@cprecioso/async-iterable-helpers";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import * as z from "zod";
@@ -17,9 +16,9 @@ export async function discoverOptionsForFile(
 
   const glob = makeOptionsGlob(baseName);
 
-  const optionsFilePath = await $.from(
-    fs.glob(glob, { cwd: routeBaseDir }),
-  ).sink($.first());
+  const optionsFilePath = (
+    await Array.fromAsync(fs.glob(glob, { cwd: routeBaseDir }))
+  ).at(0);
 
   if (!optionsFilePath) {
     return undefined;
@@ -32,7 +31,10 @@ export async function discoverOptionsForFile(
 
 export function isOptionsFile(filePath: string) {
   // Matches both bare `options.*` files and `<baseName>.options.*` files
-  return path.matchesGlob(filePath, path.join("**", "{,*.}" + OPTIONS_FILE_GLOB));
+  return path.matchesGlob(
+    filePath,
+    path.join("**", "{,*.}" + OPTIONS_FILE_GLOB),
+  );
 }
 
 function makeOptionsGlob(baseName = "") {
