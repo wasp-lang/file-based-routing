@@ -2,13 +2,13 @@ import * as spec from "@wasp.sh/spec";
 import { RouteType } from "../types";
 import { ALLOWED_EXTENSIONS_GLOB, type Parser } from "./common";
 import { discoverOptionsForFile, isOptionsFile } from "./options";
+import { makeSpecNameFromPath } from "./util";
 
 export const queryParser: Parser = {
   globs: ["queries/*" + ALLOWED_EXTENSIONS_GLOB],
 
   async parseFile(file, ctx) {
-    const fileName = file.pathComponents.at(-1)!;
-    const baseSpecName = fileName.slice(0, fileName.lastIndexOf("."));
+    const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
 
     if (isOptionsFile(file.absFilePath)) {
       return [];

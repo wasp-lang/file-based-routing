@@ -7,7 +7,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "createTaskAction",
+            "importDefault": "CreateTaskAction",
             "from": "actions/createTask.ts"
           }
         ]

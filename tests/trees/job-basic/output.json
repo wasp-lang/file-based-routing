@@ -7,7 +7,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "sendDigestJob",
+            "importDefault": "SendDigestJob",
             "from": "jobs/sendDigest.ts"
           }
         ]

@@ -2,13 +2,16 @@ import * as spec from "@wasp.sh/spec";
 import { RouteType } from "../types";
 import { ALLOWED_EXTENSIONS_GLOB, type Parser } from "./common";
 import { discoverOptionsForFile } from "./options";
-import { computeRoute } from "./util";
+import { makeSpecNameFromRoute } from "./util";
 
 export const apiParser: Parser = {
   globs: ["**/*.api" + ALLOWED_EXTENSIONS_GLOB],
 
   async parseFile(file, ctx) {
-    const { route, baseSpecName } = computeRoute(file.pathComponents, ctx);
+    const { route, baseSpecName } = makeSpecNameFromRoute(
+      file.pathComponents,
+      ctx,
+    );
 
     const method = file.pathComponents
       .at(-1)

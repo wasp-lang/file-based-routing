@@ -7,7 +7,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "getTasksQuery",
+            "importDefault": "GetTasksQuery",
             "from": "queries/getTasks.ts"
           }
         ]

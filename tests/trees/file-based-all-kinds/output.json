@@ -36,7 +36,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "getTasksQuery",
+            "importDefault": "GetTasksQuery",
             "from": "queries/getTasks.ts"
           }
         ]
@@ -48,7 +48,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "createTaskAction",
+            "importDefault": "CreateTaskAction",
             "from": "actions/createTask.ts"
           }
         ]
@@ -60,7 +60,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "sendDigestJob",
+            "importDefault": "SendDigestJob",
             "from": "jobs/sendDigest.ts"
           }
         ]

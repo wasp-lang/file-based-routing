@@ -7,7 +7,7 @@
         "kind": "ref-call",
         "args": [
           {
-            "importDefault": "weeklyReportJob",
+            "importDefault": "WeeklyReportJob",
             "from": "jobs/weeklyReport.ts"
           }
         ]
