@@ -1,5 +1,6 @@
 # Wasp file-based routing
 
+<!-- prettier-ignore -->
 > [!WARNING]
 > This is unstable and unpublished. We are just working in the open.
 
