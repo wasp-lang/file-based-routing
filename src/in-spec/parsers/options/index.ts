@@ -12,7 +12,7 @@ const OPTIONS_FILE_GLOB = "options" + ALLOWED_EXTENSIONS_GLOB;
 export async function discoverOptionsForFile(
   absBaseFilePath: string,
   routeType: RouteType,
-  { baseName }: { baseName?: string } = {},
+  { baseName }: { baseName: string },
 ): Promise<
   { value: Partial<FullOptions>; claims: readonly Claim[] } | undefined
 > {

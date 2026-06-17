@@ -1,0 +1,1 @@
+applies separate `page.options` and `api.<method>.options` files for a page and api sharing a directory

@@ -19,6 +19,7 @@ export const pageParser: Parser = {
     const options = await discoverOptionsForFile(
       file.absFilePath,
       RouteType.Page,
+      { baseName: "page" },
     );
 
     const specPage = spec.page(

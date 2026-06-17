@@ -1,0 +1,39 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "refObject",
+        "importDefault": "DashboardPage",
+        "from": "dashboard/page.tsx"
+      },
+      "authRequired": true
+    },
+    {
+      "kind": "route",
+      "name": "DashboardRoute",
+      "path": "/dashboard",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "refObject",
+          "importDefault": "DashboardPage",
+          "from": "dashboard/page.tsx"
+        },
+        "authRequired": true
+      }
+    },
+    {
+      "kind": "api",
+      "method": "POST",
+      "path": "/dashboard",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "DashboardPostApi",
+        "from": "dashboard/post.api.ts"
+      },
+      "auth": false
+    }
+  ]
+}

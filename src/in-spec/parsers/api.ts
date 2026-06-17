@@ -38,6 +38,7 @@ export const apiParser: Parser = {
     const options = await discoverOptionsForFile(
       file.absFilePath,
       RouteType.Api,
+      { baseName: `api.${method.toLowerCase()}` },
     );
 
     const specApi = spec.api(
