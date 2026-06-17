@@ -86,6 +86,13 @@ src/app/
   files/[...rest]/page.tsx     ->  route "/files/*"
 ```
 
+A directory wrapped in parentheses is a **route group**: it organizes files without contributing a segment to the route. This works for any route file (pages, APIs, and namespaces).
+
+```
+src/app/
+  dashboard/(logged-in)/my-profile/page.tsx  ->  route "/dashboard/my-profile"
+```
+
 ### APIs
 
 The HTTP method is the file name prefix: `get.api.ts`, `post.api.ts`, `put.api.ts`, `delete.api.ts`, or `all.api.ts`. The path comes from the directory, like pages:

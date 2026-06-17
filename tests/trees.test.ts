@@ -30,16 +30,19 @@ suite("test trees", async () => {
     const snapshotContent = await fileBasedResult
       .then(
         (result) => ({ type: "success", result }),
-        (error) => ({
-          type: "error",
-          error:
-            error instanceof Error
-              ? { name: error.name, message: error.message }
-              : String(error),
-        }),
+        (error) => ({ type: "error", error: serializeError(error) }),
       )
       .then((result) => JSON.stringify(result, null, 2) + "\n");
 
     await expect(snapshotContent).toMatchFileSnapshot(snapshotPath, "output");
   });
 });
+
+function serializeError(error: unknown): unknown {
+  if (!(error instanceof Error)) return String(error);
+  return {
+    name: error.name,
+    message: error.message,
+    ...(error.cause !== undefined && { cause: serializeError(error.cause) }),
+  };
+}
