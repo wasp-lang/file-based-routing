@@ -13,12 +13,15 @@ export const actionParser: Parser = {
       return undefined;
     }
 
-    const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
+    const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
+      file.pathComponents,
+      ctx,
+    );
 
     const options = await discoverOptionsForFile(
       file.absFilePath,
       RouteType.Action,
-      { baseName: baseSpecName },
+      { baseName: fileBaseName },
     );
 
     const specAction = spec.action(

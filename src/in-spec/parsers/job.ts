@@ -13,12 +13,15 @@ export const jobParser: Parser = {
       return { elements: [] };
     }
 
-    const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
+    const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
+      file.pathComponents,
+      ctx,
+    );
 
     const options = await discoverOptionsForFile(
       file.absFilePath,
       RouteType.Job,
-      { baseName: baseSpecName },
+      { baseName: fileBaseName },
     );
 
     const specJob = spec.job(

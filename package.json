@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
-    "test:update": "UPDATE_GOLDEN=1 vitest run"
+    "test:update": "vitest run -u"
   },
   "peerDependencies": {
     "@wasp.sh/spec": "^0.24.0"
