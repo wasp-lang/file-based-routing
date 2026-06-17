@@ -8,7 +8,7 @@ export const actionParser: Parser = {
   globs: ["actions/*" + ALLOWED_EXTENSIONS_GLOB],
   claims: [{ type: "file", glob: "actions/**" }],
 
-  async parseFile(file, ctx) {
+  async matchFile(file, ctx) {
     if (isOptionsFile(file.absFilePath)) {
       return undefined;
     }

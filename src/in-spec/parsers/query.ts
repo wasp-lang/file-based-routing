@@ -8,7 +8,7 @@ export const queryParser: Parser = {
   globs: ["queries/*" + ALLOWED_EXTENSIONS_GLOB],
   claims: [{ type: "file", path: "queries/**" }],
 
-  async parseFile(file, ctx) {
+  async matchFile(file, ctx) {
     if (isOptionsFile(file.absFilePath)) {
       return { elements: [] };
     }

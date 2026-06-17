@@ -27,7 +27,7 @@ export async function fileBased({
 
         const pathComponents = relPath.split(path.sep);
 
-        const parseResult = await parser.parseFile(
+        const parseResult = await parser.matchFile(
           { pathComponents, absFilePath: absPath },
           { ref, makeUniqueSpecName },
         );

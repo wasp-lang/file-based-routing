@@ -8,7 +8,7 @@ export const jobParser: Parser = {
   globs: ["jobs/*" + ALLOWED_EXTENSIONS_GLOB],
   claims: [{ type: "file", path: "jobs/**" }],
 
-  async parseFile(file, ctx) {
+  async matchFile(file, ctx) {
     if (isOptionsFile(file.absFilePath)) {
       return { elements: [] };
     }
