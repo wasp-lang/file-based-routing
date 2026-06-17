@@ -22,7 +22,7 @@ export async function fileBased({
   const claimChecker = new ClaimChecker();
 
   const specElements = await asArray(async function* () {
-    for (const [parserId, parser] of Object.entries(style) as [
+    for (const [parserId, parser] of Object.entries(style.parsers) as [
       RouteType,
       Parser,
     ][]) {
