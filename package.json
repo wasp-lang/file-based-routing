@@ -19,6 +19,8 @@
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
     "test": "vitest run",
     "test:update": "vitest run -u"
   },
@@ -31,6 +33,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.16",
     "@cprecioso/tsconfig": "^3.0.2",
     "@total-typescript/shoehorn": "^0.1.2",
     "@types/node": "^24.13.0",

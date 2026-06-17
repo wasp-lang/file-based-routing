@@ -42,6 +42,7 @@ export function makeSpecNameFromPath(
   ctx: ParserContext,
   { extraNameParts }: { extraNameParts?: readonly string[] } = {},
 ) {
+  // biome-ignore lint/style/noNonNullAssertion: a path always has at least one component
   const fileName = pathComponents.at(-1)!;
 
   const fileBaseName = fileName.slice(0, fileName.lastIndexOf("."));

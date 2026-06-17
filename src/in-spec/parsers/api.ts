@@ -24,6 +24,7 @@ export const apiParser: Parser = {
   globs: [`**/${HTTP_METHODS_GLOB}.api` + ALLOWED_EXTENSIONS_GLOB],
 
   async matchFile(file, ctx) {
+    // biome-ignore lint/style/noNonNullAssertion: glob match guarantees a path component
     const method = apiMethodFromFileName(file.pathComponents.at(-1)!);
 
     // The method is folded into the spec name so that several methods on the
