@@ -1,0 +1,14 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "action",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "CreateTaskAction",
+        "from": "actions/create-task.ts"
+      },
+      "auth": false
+    }
+  ]
+}
