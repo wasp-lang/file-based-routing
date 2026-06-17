@@ -1,10 +1,11 @@
-import * as spec from "@wasp.sh/spec";
+import type * as spec from "@wasp.sh/spec";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { ClaimChecker } from "./in-spec/claims/checker";
 import { formatConflict } from "./in-spec/claims/conflicts";
 import type { Parser, Style } from "./in-spec/parsers/common";
 import type { RouteType } from "./in-spec/types";
+import type { ParseResult } from "./in-spec/parsers/common";
 import { specNameMaker } from "./in-spec/spec-name";
 import { defaultStyle } from "./styles/default";
 
@@ -40,7 +41,7 @@ export async function fileBased({
 
         const pathComponents = relPath.split(path.sep);
 
-        let parseResult;
+        let parseResult: ParseResult | undefined;
         try {
           parseResult = await parser.matchFile(
             { pathComponents, absFilePath: absPath },
@@ -67,7 +68,7 @@ export async function fileBased({
   if (conflicts.length > 0) {
     throw new Error(
       `Conflicting files detected:\n${conflicts
-        .map((conflict) => "  - " + formatConflict(conflict, baseDir))
+        .map((conflict) => `  - ${formatConflict(conflict, baseDir)}`)
         .join("\n")}`,
     );
   }

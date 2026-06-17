@@ -1,4 +1,4 @@
-import * as spec from "@wasp.sh/spec";
+import type * as spec from "@wasp.sh/spec";
 import type { Claim } from "../claims";
 import type { RouteType } from "../types";
 

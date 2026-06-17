@@ -1,4 +1,4 @@
-import * as spec from "@wasp.sh/spec";
+import type * as spec from "@wasp.sh/spec";
 
 /**
  * Parsers or matchers can "claim" files or routes.
