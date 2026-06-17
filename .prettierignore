@@ -1,1 +1,2 @@
-tests/trees/*/output.json
+tests/trees/**/output.json
+.context

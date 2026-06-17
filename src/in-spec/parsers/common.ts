@@ -1,7 +1,6 @@
 import type * as spec from "@wasp.sh/spec";
 import type { Claim } from "../claims";
-
-export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
+import type { RouteType } from "../types";
 
 export interface Parser {
   globs: readonly string[];
@@ -10,6 +9,15 @@ export interface Parser {
     file: ParserFile,
     ctx: ParserContext,
   ) => Promise<ParseResult | undefined>;
+}
+
+/**
+ * A style is a named set of parsers that, together, define a convention for
+ * deriving spec elements from a file layout. Swap one style for another to use
+ * a different set of file-based routing conventions.
+ */
+export interface Style {
+  parsers: Partial<Record<RouteType, Parser>>;
 }
 
 export interface ParserFile {

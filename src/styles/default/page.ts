@@ -1,8 +1,8 @@
 import * as spec from "@wasp.sh/spec";
-import { RouteType } from "../types";
-import { ALLOWED_EXTENSIONS_GLOB, type Parser } from "./common";
+import type { Parser } from "../../in-spec/parsers/common";
+import { RouteType } from "../../in-spec/types";
+import { ALLOWED_EXTENSIONS_GLOB, makeSpecNameFromRoute } from "./common";
 import { discoverOptionsForFile } from "./options";
-import { makeSpecNameFromRoute } from "./util";
 
 export const pageParser: Parser = {
   globs: ["**/page" + ALLOWED_EXTENSIONS_GLOB],

@@ -1,12 +1,12 @@
 import * as spec from "@wasp.sh/spec";
-import { RouteType } from "../types";
-import { ALLOWED_EXTENSIONS_GLOB, type Parser } from "./common";
+import type { Parser } from "../../in-spec/parsers/common";
+import { RouteType } from "../../in-spec/types";
+import { ALLOWED_EXTENSIONS_GLOB, makeSpecNameFromPath } from "./common";
 import { discoverOptionsForFile, isOptionsFile } from "./options";
-import { makeSpecNameFromPath } from "./util";
 
-export const jobParser: Parser = {
-  globs: ["jobs/*" + ALLOWED_EXTENSIONS_GLOB],
-  claims: [{ type: "file", glob: "jobs/**" }],
+export const queryParser: Parser = {
+  globs: ["queries/*" + ALLOWED_EXTENSIONS_GLOB],
+  claims: [{ type: "file", glob: "queries/**" }],
 
   async matchFile(file, ctx) {
     if (isOptionsFile(file.absFilePath)) {
@@ -20,20 +20,20 @@ export const jobParser: Parser = {
 
     const options = await discoverOptionsForFile(
       file.absFilePath,
-      RouteType.Job,
+      RouteType.Query,
       { baseName: fileBaseName },
     );
 
-    const specJob = spec.job(
+    const specQuery = spec.query(
       ctx.ref({
-        importDefault: baseSpecName + "Job",
+        importDefault: baseSpecName + "Query",
         from: file.absFilePath,
       }),
-      { executor: "PgBoss", ...options?.value.job },
+      options?.value.query,
     );
 
     return {
-      elements: [specJob],
+      elements: [specQuery],
       claims: [
         { type: "file", path: file.absFilePath },
         ...(options?.claims ?? []),

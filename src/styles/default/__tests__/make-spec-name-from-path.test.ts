@@ -1,8 +1,8 @@
 import { fromPartial } from "@total-typescript/shoehorn";
 import { describe, expect, it } from "vitest";
-import type { ParserContext } from "../in-spec/parsers/common";
-import { makeSpecNameFromPath } from "../in-spec/parsers/util";
-import { specNameMaker } from "../in-spec/spec-name";
+import type { ParserContext } from "../../../in-spec/parsers/common";
+import { specNameMaker } from "../../../in-spec/spec-name";
+import { makeSpecNameFromPath } from "../common";
 
 function makeCtx(): ParserContext {
   return fromPartial({ makeUniqueSpecName: specNameMaker() });

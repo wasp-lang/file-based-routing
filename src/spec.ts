@@ -3,23 +3,29 @@ import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { ClaimChecker } from "./in-spec/claims/checker";
 import { formatConflict } from "./in-spec/claims/conflicts";
-import { PARSER_BY_ROUTE_TYPE_ENTRIES } from "./in-spec/parsers";
-import type { ParseResult } from "./in-spec/parsers/common";
+import type { Parser, ParseResult, Style } from "./in-spec/parsers/common";
 import { specNameMaker } from "./in-spec/spec-name";
+import type { RouteType } from "./in-spec/types";
+import { defaultStyle } from "./styles/default";
 
 export async function fileBased({
   ref,
   baseDir = path.resolve(process.cwd(), "src/app"),
+  style = defaultStyle,
 }: {
   ref: typeof spec.ref;
   baseDir?: string;
+  style?: Style;
 }): Promise<spec.SpecElement[]> {
   const makeUniqueSpecName = specNameMaker();
 
   const claimChecker = new ClaimChecker();
 
   const specElements = await asArray(async function* () {
-    for (const [parserId, parser] of PARSER_BY_ROUTE_TYPE_ENTRIES) {
+    for (const [parserId, parser] of Object.entries(style.parsers) as [
+      RouteType,
+      Parser,
+    ][]) {
       await claimChecker.addClaims(parser.claims ?? [], { baseDir, parserId });
 
       // Sort glob results so the output, and the spec names assigned to files

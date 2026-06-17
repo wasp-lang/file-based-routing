@@ -11,6 +11,10 @@
     "./spec": {
       "types": "./dist/spec.d.mts",
       "default": "./dist/spec.mjs"
+    },
+    "./styles/default": {
+      "types": "./dist/styles/default.d.mts",
+      "default": "./dist/styles/default.mjs"
     }
   },
   "files": [
