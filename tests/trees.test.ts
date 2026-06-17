@@ -12,7 +12,7 @@ suite("test trees", async () => {
   const testCases = await Promise.all(
     dirs.map(async (dir) => {
       const descriptionPath = path.join(TREES_FOLDER, dir, "description.txt");
-      const description = await fs.readFile(descriptionPath, "utf-8");
+      const description = (await fs.readFile(descriptionPath, "utf-8")).trim();
 
       return [dir, description] as const;
     }),
@@ -38,7 +38,7 @@ suite("test trees", async () => {
               : String(error),
         }),
       )
-      .then((result) => JSON.stringify(result, null, 2));
+      .then((result) => JSON.stringify(result, null, 2) + "\n");
 
     await expect(snapshotContent).toMatchFileSnapshot(snapshotPath, "output");
   });
