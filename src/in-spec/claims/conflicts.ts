@@ -23,7 +23,7 @@ export function formatConflict(conflict: Conflict, baseDir: string): string {
 
   switch (conflict.type) {
     case "file":
-      return `File "${conflict.value}" can be interpreted as either a ${formatContext(conflict.existing)} or a ${formatContext(conflict.conflicting)}.`;
+      return `File "${path.relative(baseDir, conflict.value)}" can be interpreted as either a ${formatContext(conflict.existing)} or a ${formatContext(conflict.conflicting)}.`;
     case "route":
       return `Route "${conflict.value}" can be generated from either a ${formatContext(conflict.existing)} or a ${formatContext(conflict.conflicting)}.`;
   }

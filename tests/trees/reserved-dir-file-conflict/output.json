@@ -2,6 +2,6 @@
   "type": "error",
   "error": {
     "name": "Error",
-    "message": "Conflicting files detected:\n  - File \"/Users/carlos/Developer/Wasp/file-based-routing/tests/trees/reserved-dir-file-conflict/input/queries/get.api.ts\" can be interpreted as either a \"query\" spec or a \"api\" spec."
+    "message": "Conflicting files detected:\n  - File \"queries/get.api.ts\" can be interpreted as either a \"query\" spec or a \"api\" spec."
   }
 }

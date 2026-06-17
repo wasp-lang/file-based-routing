@@ -2,6 +2,6 @@
   "type": "error",
   "error": {
     "name": "Error",
-    "message": "Conflicting files detected:\n  - File \"/Users/carlos/Developer/Wasp/file-based-routing/tests/trees/reserved-dir-nested-conflict/input/queries/nested/page.tsx\" can be interpreted as either a \"page\" spec or a \"query\" spec."
+    "message": "Conflicting files detected:\n  - File \"queries/nested/page.tsx\" can be interpreted as either a \"page\" spec or a \"query\" spec."
   }
 }
