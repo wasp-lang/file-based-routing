@@ -6,7 +6,7 @@ import { makeSpecNameFromPath } from "./util";
 
 export const queryParser: Parser = {
   globs: ["queries/*" + ALLOWED_EXTENSIONS_GLOB],
-  claims: [{ type: "file", path: "queries/**" }],
+  claims: [{ type: "file", glob: "queries/**" }],
 
   async matchFile(file, ctx) {
     if (isOptionsFile(file.absFilePath)) {

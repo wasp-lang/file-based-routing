@@ -40,11 +40,11 @@ export const pageParser: Parser = {
       elements: [specPage, specRoute],
       claims: [
         { type: "file", path: file.absFilePath },
+        // A page is served over GET, so it conflicts with a GET (or ALL) api
+        // on the same path.
+        { type: "route", route, method: "GET" },
         ...(options?.claims ?? []),
       ],
-      // A page is served over GET, so it conflicts with a GET api on the
-      // same path.
-      routeClaims: [{ method: "GET", path: route }],
     };
   },
 };
