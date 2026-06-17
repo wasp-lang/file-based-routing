@@ -19,6 +19,7 @@
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "typecheck": "tsc",
     "test": "vitest run",
     "test:update": "vitest run -u"
   },
