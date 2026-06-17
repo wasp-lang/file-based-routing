@@ -17,12 +17,14 @@
     "dist"
   ],
   "scripts": {
+    "build": "tsdown",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "biome lint .",
     "lint:fix": "biome lint --write .",
     "test": "vitest run",
-    "test:update": "vitest run -u"
+    "test:update": "vitest run -u",
+    "typecheck": "tsc"
   },
   "peerDependencies": {
     "@wasp.sh/spec": "^0.24.0"
@@ -33,6 +35,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.3",
     "@biomejs/biome": "2.4.16",
     "@cprecioso/tsconfig": "^3.0.2",
     "@total-typescript/shoehorn": "^0.1.2",
@@ -43,6 +46,7 @@
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-pkg": "^0.22.1",
     "prettier-plugin-sh": "^0.18.1",
+    "publint": "^0.3.21",
     "tsdown": "^0.22.2",
     "typescript": "^5.9.3",
     "vitest": "^4.1.8"

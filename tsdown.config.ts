@@ -10,4 +10,7 @@ export default defineConfig({
 
   sourcemap: true,
   dts: { sourcemap: true },
+
+  attw: { profile: "esm-only" },
+  publint: true,
 });
