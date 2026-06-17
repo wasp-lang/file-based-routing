@@ -1,0 +1,1 @@
+rejects a `get` api colliding with a page on the same path

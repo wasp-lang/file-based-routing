@@ -1,0 +1,1 @@
+rejects an `all` api colliding with a `post` api on the same path

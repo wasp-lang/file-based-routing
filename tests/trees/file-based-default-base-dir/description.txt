@@ -1,0 +1,1 @@
+defaults to scanning `src/app` under the current working directory

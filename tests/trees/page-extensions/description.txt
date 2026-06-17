@@ -1,0 +1,1 @@
+accepts every allowed extension and ignores other files

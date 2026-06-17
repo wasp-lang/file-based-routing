@@ -1,0 +1,1 @@
+maps an api-namespace file at the base directory to the root path

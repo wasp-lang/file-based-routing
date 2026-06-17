@@ -1,0 +1,1 @@
+rejects an `all` api colliding with a page on the same path

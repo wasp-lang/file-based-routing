@@ -1,0 +1,1 @@
+doesn't interpret `[...rest]` as a splat when it is not the last path component

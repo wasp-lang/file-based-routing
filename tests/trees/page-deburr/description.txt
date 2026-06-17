@@ -1,0 +1,1 @@
+deburrs non-ASCII route names but keeps the route path intact

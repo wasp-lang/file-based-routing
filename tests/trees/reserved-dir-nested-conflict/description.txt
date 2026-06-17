@@ -1,0 +1,1 @@
+rejects a file nested inside a reserved directory like `queries`

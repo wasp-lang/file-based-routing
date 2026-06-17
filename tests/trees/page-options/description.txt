@@ -1,0 +1,1 @@
+applies `page` and `route` options from a sibling `options` file

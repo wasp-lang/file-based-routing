@@ -1,0 +1,1 @@
+rejects a file that collides with a reserved directory like `queries`

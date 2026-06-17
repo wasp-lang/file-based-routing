@@ -1,0 +1,1 @@
+rejects options files with keys not allowed for the route type

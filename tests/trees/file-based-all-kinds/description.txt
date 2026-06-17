@@ -1,0 +1,1 @@
+collects every route type, in parser order

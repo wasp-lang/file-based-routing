@@ -1,0 +1,1 @@
+applies options from a sibling `<name>.options` file, without treating it as a job
