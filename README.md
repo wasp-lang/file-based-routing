@@ -1,7 +1,6 @@
 # Wasp file-based routing
 
-> [!WARNING]
-> This is unstable and unpublished. We are just working in the open.
+> [!WARNING] This is unstable and unpublished. We are just working in the open.
 
 Generate Wasp spec elements from your project's file layout. Instead of listing every page, query, action, job, and API in your Wasp config by hand, you drop files in conventional locations and this package derives the corresponding `page`, `route`, `query`, `action`, `job`, `api`, and `apiNamespace` declarations for you.
 
@@ -191,9 +190,9 @@ export default options({
 
 ## Package entry points
 
-| Import                             | Exports                                                         |
-| ---------------------------------- | --------------------------------------------------------------- |
-| `@wasp.sh/file-based-routing/spec` | `fileBased`                                                     |
-| `@wasp.sh/file-based-routing`      | `options`, the `Options` type, and the options type definitions |
+| Import | Exports |
+| --- | --- |
+| `@wasp.sh/file-based-routing/spec` | `fileBased` |
+| `@wasp.sh/file-based-routing` | `options`, the `Options` type, and the options type definitions |
 
 > The `/spec` entry imports Node's filesystem APIs and is meant to run where your Wasp config is evaluated.
