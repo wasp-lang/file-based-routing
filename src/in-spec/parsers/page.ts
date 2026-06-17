@@ -53,12 +53,26 @@ export const pageParser: Parser = {
 function transformSpecialRouteComponents(
   pathComponents: readonly string[],
 ): string[] {
+  // The last component is the `page.tsx` filename, so the last component that
+  // is part of the route is the second-to-last one.
+  const lastRouteComponentIndex = pathComponents.length - 2;
+
   return pathComponents.map((part, i) => {
     {
-      // Rest component at the end of the path
-      // (In the path components it's the second-to-last component, because the
-      // last one is the `page.tsx` filename)
-      if (i === pathComponents.length - 2 && part === "[...rest]") {
+      // Rest (wildcard) component. It must be named `[...rest]` and can only
+      // appear as the last component of the route.
+      const match = part.match(/^\[\.\.\.(.*)\]$/);
+      if (match) {
+        if (match[1] !== "rest") {
+          throw new Error(
+            `Wildcard path component "${part}" must be named "[...rest]".`,
+          );
+        }
+        if (i !== lastRouteComponentIndex) {
+          throw new Error(
+            `Wildcard path component "${part}" must be the last component of the route.`,
+          );
+        }
         return "*";
       }
     }
