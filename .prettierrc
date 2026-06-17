@@ -1,4 +1,5 @@
 {
+  "proseWrap": "never",
   "plugins": [
     "prettier-plugin-organize-imports",
     "prettier-plugin-pkg",
