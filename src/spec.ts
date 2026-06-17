@@ -28,10 +28,14 @@ export async function fileBased({
 
           const pathComponents = relPath.split(path.sep);
 
-          yield* await parser.parseFile(
+          const parseResult = await parser.parseFile(
             { pathComponents, absFilePath: absPath },
             { ref, makeUniqueSpecName },
           );
+
+          if (!parseResult) continue;
+
+          yield* parseResult.elements;
         }
       }
     })(),

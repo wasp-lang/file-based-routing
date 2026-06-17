@@ -18,6 +18,13 @@ export const apiNamespaceParser: Parser = {
       }),
     });
 
-    return [specApiNamespace];
+    return {
+      elements: [specApiNamespace],
+      claims: [
+        { type: "file", path: file.absFilePath },
+        // An api namespace is middleware on a path prefix, not a route, so it
+        // claims no route (e.g. a page and a namespace can share a path).
+      ],
+    };
   },
 };

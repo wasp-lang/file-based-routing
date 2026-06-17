@@ -26,17 +26,26 @@ export const pageParser: Parser = {
         importDefault: baseSpecName + "Page",
         from: file.absFilePath,
       }),
-      options?.page,
+      options?.value.page,
     );
 
     const specRoute = spec.route(
       baseSpecName + "Route",
       route,
       specPage,
-      options?.route,
+      options?.value.route,
     );
 
-    return [specPage, specRoute];
+    return {
+      elements: [specPage, specRoute],
+      claims: [
+        { type: "file", path: file.absFilePath },
+        ...(options?.claims ?? []),
+      ],
+      // A page is served over GET, so it conflicts with a GET api on the
+      // same path.
+      routeClaims: [{ method: "GET", path: route }],
+    };
   },
 };
 

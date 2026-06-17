@@ -6,13 +6,14 @@ import { makeSpecNameFromPath } from "./util";
 
 export const jobParser: Parser = {
   globs: ["jobs/*" + ALLOWED_EXTENSIONS_GLOB],
+  claims: [{ type: "file", path: "jobs/**" }],
 
   async parseFile(file, ctx) {
-    const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
-
     if (isOptionsFile(file.absFilePath)) {
-      return [];
+      return { elements: [] };
     }
+
+    const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
 
     const options = await discoverOptionsForFile(
       file.absFilePath,
@@ -25,9 +26,15 @@ export const jobParser: Parser = {
         importDefault: baseSpecName + "Job",
         from: file.absFilePath,
       }),
-      { executor: "PgBoss", ...options?.job },
+      { executor: "PgBoss", ...options?.value.job },
     );
 
-    return [specJob];
+    return {
+      elements: [specJob],
+      claims: [
+        { type: "file", path: file.absFilePath },
+        ...(options?.claims ?? []),
+      ],
+    };
   },
 };

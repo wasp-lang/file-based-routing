@@ -6,13 +6,14 @@ import { makeSpecNameFromPath } from "./util";
 
 export const queryParser: Parser = {
   globs: ["queries/*" + ALLOWED_EXTENSIONS_GLOB],
+  claims: [{ type: "file", path: "queries/**" }],
 
   async parseFile(file, ctx) {
-    const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
-
     if (isOptionsFile(file.absFilePath)) {
-      return [];
+      return { elements: [] };
     }
+
+    const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
 
     const options = await discoverOptionsForFile(
       file.absFilePath,
@@ -25,9 +26,15 @@ export const queryParser: Parser = {
         importDefault: baseSpecName + "Query",
         from: file.absFilePath,
       }),
-      options?.query,
+      options?.value.query,
     );
 
-    return [specQuery];
+    return {
+      elements: [specQuery],
+      claims: [
+        { type: "file", path: file.absFilePath },
+        ...(options?.claims ?? []),
+      ],
+    };
   },
 };

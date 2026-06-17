@@ -6,13 +6,14 @@ import { makeSpecNameFromPath } from "./util";
 
 export const actionParser: Parser = {
   globs: ["actions/*" + ALLOWED_EXTENSIONS_GLOB],
+  claims: [{ type: "file", glob: "actions/**" }],
 
   async parseFile(file, ctx) {
-    const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
-
     if (isOptionsFile(file.absFilePath)) {
-      return [];
+      return undefined;
     }
+
+    const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
 
     const options = await discoverOptionsForFile(
       file.absFilePath,
@@ -25,9 +26,15 @@ export const actionParser: Parser = {
         importDefault: baseSpecName + "Action",
         from: file.absFilePath,
       }),
-      options?.action,
+      options?.value.action,
     );
 
-    return [specAction];
+    return {
+      elements: [specAction],
+      claims: [
+        { type: "file", path: file.absFilePath },
+        ...(options?.claims ?? []),
+      ],
+    };
   },
 };
