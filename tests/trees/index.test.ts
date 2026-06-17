@@ -10,7 +10,10 @@ describe.for([
     "action-options",
     "applies options from a sibling `<name>.options` file, without treating it as an action",
   ],
-
+  [
+    "api-all-and-post-collision",
+    "rejects an `all` api colliding with a `post` api on the same path",
+  ],
   [
     "api-basic",
     "creates an api from a `<method>.api` file, using its directory as the path",
@@ -40,14 +43,28 @@ describe.for([
     "defaults to scanning `src/app` under the current working directory",
   ],
   ["file-based-empty", "returns nothing for an empty app"],
-
+  [
+    "file-based-name-collision",
+    "uniquifies the spec name of an api namespace sharing a page's path",
+  ],
   ["job-basic", "creates a job with the PgBoss executor by default"],
   ["job-ignores-nested", "only looks in the top-level `jobs` directory"],
   [
     "job-options",
     "applies options from a sibling `<name>.options` file, without treating it as a job",
   ],
-
+  [
+    "page-and-all-api-collision",
+    "rejects an `all` api colliding with a page on the same path",
+  ],
+  [
+    "page-and-get-api-collision",
+    "rejects a `get` api colliding with a page on the same path",
+  ],
+  [
+    "page-and-post-api-ok",
+    "allows a `post` api to share a path with a page, since the page only serves GET",
+  ],
   ["page-collision", "uniquifies spec names that collide after pascal-casing"],
   [
     "page-deburr",
@@ -86,6 +103,14 @@ describe.for([
     "query-options",
     "applies options from a sibling `<name>.options` file, without treating it as a query",
   ],
+  [
+    "reserved-dir-file-conflict",
+    "rejects a file that collides with a reserved directory like `queries`",
+  ],
+  [
+    "reserved-dir-nested-conflict",
+    "rejects a file nested inside a reserved directory like `queries`",
+  ],
 ])("%s: %s", ([testDirName]) => {
   const testDir = path.join(import.meta.dirname, testDirName);
   const snapshotPath = path.join(testDir, "output.json");
@@ -99,7 +124,13 @@ describe.for([
     const snapshotContent = await fileBasedResult
       .then(
         (result) => ({ type: "success", result }),
-        (error) => ({ type: "error", error }),
+        (error) => ({
+          type: "error",
+          error:
+            error instanceof Error
+              ? { name: error.name, message: error.message }
+              : String(error),
+        }),
       )
       .then((result) => JSON.stringify(result, null, 2));
 

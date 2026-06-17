@@ -1,0 +1,7 @@
+{
+  "type": "error",
+  "error": {
+    "name": "Error",
+    "message": "Conflicting files detected:\n  - Route \"GET /dashboard\" can be generated from either a \"page\" spec (from \"dashboard/page.tsx\") or a \"api\" spec (from \"dashboard/all.api.ts\")."
+  }
+}

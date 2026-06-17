@@ -1,0 +1,7 @@
+{
+  "type": "error",
+  "error": {
+    "name": "Error",
+    "message": "Conflicting files detected:\n  - Route \"POST /dashboard\" can be generated from either a \"api\" spec (from \"dashboard/all.api.ts\") or a \"api\" spec (from \"dashboard/post.api.ts\")."
+  }
+}
