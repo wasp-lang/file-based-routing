@@ -7,8 +7,6 @@ import { jobParser } from "./job";
 import { pageParser } from "./page";
 import { queryParser } from "./query";
 
-export type { Style };
-
 /** The default set of file-based routing conventions. */
 export const defaultStyle: Style = {
   parsers: {
