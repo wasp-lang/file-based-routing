@@ -1,4 +1,4 @@
-import * as spec from "@wasp.sh/spec";
+import type * as spec from "@wasp.sh/spec";
 import type { SetOptional } from "type-fest";
 
 export type RouteOptions = NonNullable<Parameters<typeof spec.route>[3]>;
