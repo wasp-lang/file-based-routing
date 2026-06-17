@@ -1,0 +1,11 @@
+{
+  "type": "error",
+  "error": {
+    "name": "Error",
+    "message": "Error while parsing file \"files/[...slug]/page.tsx\"",
+    "cause": {
+      "name": "Error",
+      "message": "Wildcard path component \"[...slug]\" must be named \"[...rest]\"."
+    }
+  }
+}

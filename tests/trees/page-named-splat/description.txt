@@ -1,0 +1,1 @@
+fails when a wildcard component is not named `[...rest]`

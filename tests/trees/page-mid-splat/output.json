@@ -1,26 +1,11 @@
 {
-  "type": "success",
-  "result": [
-    {
-      "kind": "page",
-      "component": {
-        "kind": "refObject",
-        "importDefault": "FilesRestSubPage",
-        "from": "files/[...rest]/sub/page.tsx"
-      }
-    },
-    {
-      "kind": "route",
-      "name": "FilesRestSubRoute",
-      "path": "/files/:...rest/sub",
-      "page": {
-        "kind": "page",
-        "component": {
-          "kind": "refObject",
-          "importDefault": "FilesRestSubPage",
-          "from": "files/[...rest]/sub/page.tsx"
-        }
-      }
+  "type": "error",
+  "error": {
+    "name": "Error",
+    "message": "Error while parsing file \"files/[...rest]/sub/page.tsx\"",
+    "cause": {
+      "name": "Error",
+      "message": "Wildcard path component \"[...rest]\" must be the last component of the route."
     }
-  ]
+  }
 }
