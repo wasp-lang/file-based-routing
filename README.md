@@ -46,9 +46,7 @@ fileBased({
 });
 ```
 
-A **style** is a named set of parsers that defines the file conventions. The
-default style (`@wasp.sh/file-based-routing/styles/default`) is used unless you
-pass a different `style`; passing another swaps the conventions out.
+A **style** is a named set of parsers that defines the file conventions. The default style (`@wasp.sh/file-based-routing/styles/default`) is used unless you pass a different `style`; passing another swaps the conventions out.
 
 `fileBased` will scan `baseDir`, apply the style's conventions, and report any conflicts.
 

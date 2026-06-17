@@ -3,10 +3,9 @@ import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { ClaimChecker } from "./in-spec/claims/checker";
 import { formatConflict } from "./in-spec/claims/conflicts";
-import type { Parser, Style } from "./in-spec/parsers/common";
-import type { RouteType } from "./in-spec/types";
-import type { ParseResult } from "./in-spec/parsers/common";
+import type { Parser, ParseResult, Style } from "./in-spec/parsers/common";
 import { specNameMaker } from "./in-spec/spec-name";
+import type { RouteType } from "./in-spec/types";
 import { defaultStyle } from "./styles/default";
 
 export async function fileBased({

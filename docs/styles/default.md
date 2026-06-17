@@ -1,14 +1,10 @@
 # Default style conventions
 
-The default style (`@wasp.sh/file-based-routing/styles/default`) is the set of
-conventions applied by `fileBased` unless you pass a different `style`. It scans
-`baseDir`, applies the conventions below, and reports any conflicts.
+The default style (`@wasp.sh/file-based-routing/styles/default`) is the set of conventions applied by `fileBased` unless you pass a different `style`. It scans `baseDir`, applies the conventions below, and reports any conflicts.
 
 ## File conventions
 
-All paths below are relative to `baseDir` (default `src/app`). Files may use any
-of these extensions: `.ts`, `.tsx`, `.js`, `.jsx`, `.mjs`, `.cjs`, `.mts`,
-`.cts`. Files with other extensions are ignored.
+All paths below are relative to `baseDir` (default `src/app`). Files may use any of these extensions: `.ts`, `.tsx`, `.js`, `.jsx`, `.mjs`, `.cjs`, `.mts`, `.cts`. Files with other extensions are ignored.
 
 | File pattern             | Produces         | Looked up                 |
 | ------------------------ | ---------------- | ------------------------- |
@@ -21,9 +17,7 @@ of these extensions: `.ts`, `.tsx`, `.js`, `.jsx`, `.mjs`, `.cjs`, `.mts`,
 
 ### Pages and routes
 
-A `page.tsx` produces a `page` (whose component is the file's default export)
-and a `route` that renders it. The route path comes from the directory path
-leading to the file:
+A `page.tsx` produces a `page` (whose component is the file's default export) and a `route` that renders it. The route path comes from the directory path leading to the file:
 
 | File                        | Route path          |
 | --------------------------- | ------------------- |
@@ -38,8 +32,7 @@ Dynamic segments use bracket syntax in directory names:
 | `[[lang]]`        | `:lang?`      | optional dynamic parameter    |
 | `[...rest]`       | `*`           | splat (trailing segment only) |
 
-`[...rest]` is only treated as a splat when it is the last segment before
-`page.tsx`. Elsewhere it is kept verbatim.
+`[...rest]` is only treated as a splat when it is the last segment before `page.tsx`. Elsewhere it is kept verbatim.
 
 ```
 src/app/
@@ -49,9 +42,7 @@ src/app/
   files/[...rest]/page.tsx     ->  route "/files/*"
 ```
 
-A directory wrapped in parentheses is a **route group**: it organizes files
-without contributing a segment to the route. This works for any route file
-(pages, APIs, and namespaces).
+A directory wrapped in parentheses is a **route group**: it organizes files without contributing a segment to the route. This works for any route file (pages, APIs, and namespaces).
 
 ```
 src/app/
@@ -60,9 +51,7 @@ src/app/
 
 ### APIs
 
-The HTTP method is the file name prefix: `get.api.ts`, `post.api.ts`,
-`put.api.ts`, `delete.api.ts`, or `all.api.ts`. The path comes from the
-directory, like pages:
+The HTTP method is the file name prefix: `get.api.ts`, `post.api.ts`, `put.api.ts`, `delete.api.ts`, or `all.api.ts`. The path comes from the directory, like pages:
 
 ```
 src/app/
@@ -71,15 +60,11 @@ src/app/
   get.api.ts                   ->  api  GET   /
 ```
 
-Several methods may share a path (`tasks/get.api.ts` and `tasks/post.api.ts`),
-except for `all.api.ts` files, which already respond to every method, so it
-cannot coexist with another API on the same path.
+Several methods may share a path (`tasks/get.api.ts` and `tasks/post.api.ts`), except for `all.api.ts` files, which already respond to every method, so it cannot coexist with another API on the same path.
 
 ### API namespaces
 
-An `api-namespace.ts` registers middleware (its default export) on a path prefix
-derived from its directory. A namespace does not own a route, so it can share a
-path with a page or APIs.
+An `api-namespace.ts` registers middleware (its default export) on a path prefix derived from its directory. A namespace does not own a route, so it can share a path with a page or APIs.
 
 ```
 src/app/
@@ -88,8 +73,7 @@ src/app/
 
 ### Queries, actions, and jobs
 
-These are looked up only in the **top-level** `queries/`, `actions/`, and
-`jobs/` directories. The function is the file's default export.
+These are looked up only in the **top-level** `queries/`, `actions/`, and `jobs/` directories. The function is the file's default export.
 
 ```
 src/app/
@@ -102,9 +86,7 @@ Jobs default to the `PgBoss` executor; override it via an options file.
 
 ## Spec names
 
-Each declaration gets a generated name derived from its route path or file name,
-`PascalCased` and converted to English characters (`café` -> `Cafe`), and
-suffixed by kind:
+Each declaration gets a generated name derived from its route path or file name, `PascalCased` and converted to English characters (`café` -> `Cafe`), and suffixed by kind:
 
 | Kind          | Suffix         | Example                |
 | ------------- | -------------- | ---------------------- |
@@ -116,16 +98,11 @@ suffixed by kind:
 | API           | `Api`          | `WebhooksPostApi`      |
 | API namespace | `ApiNamespace` | `ExternalApiNamespace` |
 
-The root path maps to the name `Root` (`RootPage`, `RootRoute`). For APIs the
-method is folded into the name so methods sharing a path get distinct names
-(`TasksGetApi`, `TasksPostApi`). If two names still collide after PascalCasing,
-a numeric suffix is appended (`MyPagePage`, `MyPagePage1`).
+The root path maps to the name `Root` (`RootPage`, `RootRoute`). For APIs the method is folded into the name so methods sharing a path get distinct names (`TasksGetApi`, `TasksPostApi`). If two names still collide after PascalCasing, a numeric suffix is appended (`MyPagePage`, `MyPagePage1`).
 
 ## Options files
 
-To pass configuration to a generated declaration, add a sibling **options file**
-in the same directory as the route file. It must have a default export whose
-keys match the route kind:
+To pass configuration to a generated declaration, add a sibling **options file** in the same directory as the route file. It must have a default export whose keys match the route kind:
 
 | Route file              | Options file                    | Allowed keys    |
 | ----------------------- | ------------------------------- | --------------- |
@@ -152,14 +129,11 @@ export default {
 };
 ```
 
-Options files are excluded from route discovery (a `*.options.ts` in `actions/`
-is not treated as an action), and their keys are validated strictly: an unknown
-or out-of-kind key (e.g. `job` under a page) is a hard error.
+Options files are excluded from route discovery (a `*.options.ts` in `actions/` is not treated as an action), and their keys are validated strictly: an unknown or out-of-kind key (e.g. `job` under a page) is a hard error.
 
 ### Typed options with `options()`
 
-The package's main entry exports an `options()` identity helper and the
-`Options` type so you get autocompletion and type-checking on options objects:
+The package's main entry exports an `options()` identity helper and the `Options` type so you get autocompletion and type-checking on options objects:
 
 ```ts
 import { options } from "@wasp.sh/file-based-routing";
