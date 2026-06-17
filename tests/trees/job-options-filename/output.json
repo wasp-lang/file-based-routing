@@ -1,0 +1,17 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "job",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "WeeklyReportJob",
+        "from": "jobs/weekly-report.ts"
+      },
+      "executor": "PgBoss",
+      "schedule": {
+        "cron": "0 * * * *"
+      }
+    }
+  ]
+}
