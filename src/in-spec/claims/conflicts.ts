@@ -19,21 +19,20 @@ export function conflictIsCompatible({
 }
 
 export function formatConflict(conflict: Conflict, baseDir: string): string {
-  if (conflict.type === "file") {
-    return `File "${conflict.value}" can be interpreted as either a "${conflict.existing.parserId}" or a "${conflict.conflicting.parserId}".`;
-  } else {
-    if (conflict.existing.parserId !== conflict.conflicting.parserId) {
-      return `Route "${conflict.value}" can be interpreted as either a "${conflict.existing.parserId}" or a "${conflict.conflicting.parserId}".`;
-    } else {
-      const existingFile = conflict.existing.matchedFile
-        ? path.relative(baseDir, conflict.existing.matchedFile)
-        : `a ${conflict.existing.parserId}`;
+  const formatContext = makeContextFormatter(baseDir, conflict.type !== "file");
 
-      const conflictingFile = conflict.conflicting.matchedFile
-        ? path.relative(baseDir, conflict.conflicting.matchedFile)
-        : `a ${conflict.conflicting.parserId}`;
-
-      return `Route "${conflict.value}" can be generated from either "${existingFile}" or "${conflictingFile}".`;
-    }
+  switch (conflict.type) {
+    case "file":
+      return `File "${conflict.value}" can be interpreted as either a ${formatContext(conflict.existing)} or a ${formatContext(conflict.conflicting)}.`;
+    case "route":
+      return `Route "${conflict.value}" can be generated from either a ${formatContext(conflict.existing)} or a ${formatContext(conflict.conflicting)}.`;
   }
+}
+
+function makeContextFormatter(baseDir: string, showFilePaths: boolean) {
+  return (context: Context) =>
+    `"${context.parserId}" spec` +
+    (showFilePaths && context.matchedFile
+      ? ` (from "${path.relative(baseDir, context.matchedFile)}")`
+      : "");
 }
