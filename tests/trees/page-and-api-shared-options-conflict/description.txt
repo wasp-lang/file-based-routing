@@ -1,0 +1,1 @@
+rejects a page and an api in the same directory sharing a bare `options` file

@@ -1,0 +1,1 @@
+allows an api namespace to share a path with an api, since a namespace claims no route

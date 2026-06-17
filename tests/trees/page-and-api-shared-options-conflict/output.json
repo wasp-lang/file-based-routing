@@ -1,0 +1,7 @@
+{
+  "type": "error",
+  "error": {
+    "name": "Error",
+    "message": "Conflicting files detected:\n  - File \"dashboard/options.ts\" can be interpreted as either a \"page\" spec or a \"api\" spec."
+  }
+}

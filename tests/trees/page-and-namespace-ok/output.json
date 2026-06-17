@@ -1,0 +1,35 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "refObject",
+        "importDefault": "DashboardPage",
+        "from": "dashboard/page.tsx"
+      }
+    },
+    {
+      "kind": "route",
+      "name": "DashboardRoute",
+      "path": "/dashboard",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "refObject",
+          "importDefault": "DashboardPage",
+          "from": "dashboard/page.tsx"
+        }
+      }
+    },
+    {
+      "kind": "apiNamespace",
+      "path": "/dashboard",
+      "middlewareConfigFn": {
+        "kind": "refObject",
+        "importDefault": "Dashboard1ApiNamespace",
+        "from": "dashboard/api-namespace.ts"
+      }
+    }
+  ]
+}

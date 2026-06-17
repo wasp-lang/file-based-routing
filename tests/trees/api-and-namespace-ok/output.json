@@ -1,0 +1,24 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "api",
+      "method": "GET",
+      "path": "/dashboard",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "DashboardGetApi",
+        "from": "dashboard/get.api.ts"
+      }
+    },
+    {
+      "kind": "apiNamespace",
+      "path": "/dashboard",
+      "middlewareConfigFn": {
+        "kind": "refObject",
+        "importDefault": "DashboardApiNamespace",
+        "from": "dashboard/api-namespace.ts"
+      }
+    }
+  ]
+}
