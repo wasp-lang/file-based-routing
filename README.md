@@ -191,9 +191,9 @@ export default options({
 
 ## Package entry points
 
-| Import | Exports |
-| --- | --- |
-| `@wasp.sh/file-based-routing/spec` | `fileBased` |
-| `@wasp.sh/file-based-routing` | `options`, the `Options` type, and the options type definitions |
+| Import                             | Exports                                                         |
+| ---------------------------------- | --------------------------------------------------------------- |
+| `@wasp.sh/file-based-routing/spec` | `fileBased`                                                     |
+| `@wasp.sh/file-based-routing`      | `options`, the `Options` type, and the options type definitions |
 
 > The `/spec` entry imports Node's filesystem APIs and is meant to run where your Wasp config is evaluated.
