@@ -1,6 +1,9 @@
 import * as routePath from "node:path/posix";
 import type { ParserContext } from "./common";
 
+/** Matches a route group: a path component wrapped in parentheses. */
+const ROUTE_GROUP_REGEX = /^\(.*\)$/;
+
 export function makeSpecNameFromRoute(
   pathComponents: readonly string[],
   ctx: ParserContext,
@@ -21,14 +24,15 @@ export function makeSpecNameFromRoute(
  * Calculates the output route for a route file from its input path components
  * (the directory path leading to the file, plus the file name itself).
  *
- * The file name is dropped, and any route group components (see
- * {@link isRouteGroupComponent}) are removed, so e.g.
+ * The file name is dropped, and any route group components (path components
+ * wrapped in parentheses, e.g. `(logged-in)`, used to organize files without
+ * affecting the route) are removed, so e.g.
  * `["dashboard", "(logged-in)", "my-profile", "page.tsx"]` -> `/dashboard/my-profile`.
  */
 export function makeRouteFromPath(pathComponents: readonly string[]): string {
   const routeComponents = pathComponents
     .slice(0, -1) // Drop the file name; only directories form the route.
-    .filter((component) => !isRouteGroupComponent(component));
+    .filter((component) => !ROUTE_GROUP_REGEX.test(component)); // Drop route groups.
 
   return routePath.normalize(routePath.join("/", ...routeComponents));
 }
@@ -46,15 +50,6 @@ export function makeSpecNameFromPath(
   );
 
   return { baseSpecName: uniqueName, fileBaseName };
-}
-
-/**
- * A route group is a path component wrapped in parentheses (e.g.
- * `(logged-in)`). It's used to organize files without affecting the generated
- * route (e.g. `dashboard/(logged-in)/my-profile/page.tsx` -> `/dashboard/my-profile`).
- */
-function isRouteGroupComponent(component: string): boolean {
-  return /^\(.*\)$/.test(component);
 }
 
 function addExtraParts(name: string, extraNameParts: readonly string[] = []) {
