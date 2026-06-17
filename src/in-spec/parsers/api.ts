@@ -1,6 +1,7 @@
 import * as spec from "@wasp.sh/spec";
 import type { UnionToTuple } from "type-fest";
 import * as z from "zod";
+import type { RouteClaim } from "../claims";
 import { RouteType } from "../types";
 import { ALLOWED_EXTENSIONS_GLOB, type Parser } from "./common";
 import { discoverOptionsForFile } from "./options";
@@ -49,11 +50,16 @@ export const apiParser: Parser = {
       options?.value.api,
     );
 
+    const claimedMethods = method === "ALL" ? HTTP_METHODS : [method];
+    const claimedRoutes = claimedMethods.map(
+      (method): RouteClaim => ({ type: "route", route, method }),
+    );
+
     return {
       elements: [specApi],
       claims: [
         { type: "file", path: file.absFilePath },
-        { type: "route", route, method },
+        ...claimedRoutes,
         ...(options?.claims ?? []),
       ],
     };
