@@ -15,3 +15,7 @@ export const PARSERS_BY_ROUTE_TYPE: Record<RouteType, Parser> = {
   [RouteType.Api]: apiParser,
   [RouteType.ApiNamespace]: apiNamespaceParser,
 };
+
+export const PARSER_BY_ROUTE_TYPE_ENTRIES = Object.entries(
+  PARSERS_BY_ROUTE_TYPE,
+) as [RouteType, Parser][];

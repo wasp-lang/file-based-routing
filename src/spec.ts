@@ -1,7 +1,8 @@
 import * as spec from "@wasp.sh/spec";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
-import { PARSERS_BY_ROUTE_TYPE } from "./in-spec/parsers";
+import { ClaimChecker } from "./in-spec/claims";
+import { PARSER_BY_ROUTE_TYPE_ENTRIES } from "./in-spec/parsers";
 import { specNameMaker } from "./in-spec/spec-name";
 
 export async function fileBased({
@@ -13,8 +14,12 @@ export async function fileBased({
 }): Promise<spec.SpecElement[]> {
   const makeUniqueSpecName = specNameMaker();
 
-  return await asArray(async function* () {
-    for (const parser of Object.values(PARSERS_BY_ROUTE_TYPE)) {
+  const claimChecker = new ClaimChecker();
+
+  const specElements = await asArray(async function* () {
+    for (const [parserId, parser] of PARSER_BY_ROUTE_TYPE_ENTRIES) {
+      await claimChecker.addClaims(parser.claims ?? [], { baseDir, parserId });
+
       // Sort glob results so the output, and the spec names assigned to files
       // whose names collide, don't depend on the filesystem's traversal order.
       const globResults = (
@@ -34,10 +39,23 @@ export async function fileBased({
 
         if (!parseResult) continue;
 
+        await claimChecker.addClaims(parseResult.claims ?? [], {
+          baseDir,
+          parserId,
+          matchedFile: absPath,
+        });
+
         yield* parseResult.elements;
       }
     }
   });
+
+  const claimErrors = claimChecker.getErrors();
+  if (claimErrors.length > 0) {
+    throw new AggregateError(claimErrors, "Conflicting claims detected");
+  }
+
+  return specElements;
 }
 
 function asArray<T>(asyncIterator: () => AsyncIterable<T>): Promise<T[]> {
