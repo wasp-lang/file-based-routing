@@ -2,6 +2,10 @@
   "type": "error",
   "error": {
     "name": "Error",
-    "message": "Wildcard path component \"[...rest]\" must be the last component of the route."
+    "message": "Error while parsing file \"files/[...rest]/sub/page.tsx\"",
+    "cause": {
+      "name": "Error",
+      "message": "Wildcard path component \"[...rest]\" must be the last component of the route."
+    }
   }
 }

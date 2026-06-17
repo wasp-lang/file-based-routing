@@ -33,10 +33,15 @@ export async function fileBased({
 
         const pathComponents = relPath.split(path.sep);
 
-        const parseResult = await parser.matchFile(
-          { pathComponents, absFilePath: absPath },
-          { ref, makeUniqueSpecName },
-        );
+        let parseResult;
+        try {
+          parseResult = await parser.matchFile(
+            { pathComponents, absFilePath: absPath },
+            { ref, makeUniqueSpecName },
+          );
+        } catch (cause) {
+          throw new Error(`Error while parsing file "${relPath}"`, { cause });
+        }
 
         if (!parseResult) continue;
 

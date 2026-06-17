@@ -1,7 +1,11 @@
 {
   "type": "error",
   "error": {
-    "name": "ZodError",
-    "message": "[\n  {\n    \"code\": \"unrecognized_keys\",\n    \"keys\": [\n      \"job\"\n    ],\n    \"path\": [\n      \"default\"\n    ],\n    \"message\": \"Unrecognized key: \\\"job\\\"\"\n  }\n]"
+    "name": "Error",
+    "message": "Error while parsing file \"bad-page/page.tsx\"",
+    "cause": {
+      "name": "ZodError",
+      "message": "[\n  {\n    \"code\": \"unrecognized_keys\",\n    \"keys\": [\n      \"job\"\n    ],\n    \"path\": [\n      \"default\"\n    ],\n    \"message\": \"Unrecognized key: \\\"job\\\"\"\n  }\n]"
+    }
   }
 }
