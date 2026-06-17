@@ -2,16 +2,6 @@
   "name": "@wasp.sh/file-based-routing",
   "version": "0.1.0",
   "type": "module",
-  "scripts": {
-    "test": "vitest run",
-    "test:update": "vitest run -u"
-  },
-  "peerDependencies": {
-    "@wasp.sh/spec": "^0.24.0"
-  },
-  "files": [
-    "dist"
-  ],
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -23,19 +13,35 @@
       "default": "./dist/spec.mjs"
     }
   },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:update": "vitest run -u"
+  },
+  "peerDependencies": {
+    "@wasp.sh/spec": "^0.24.0"
+  },
+  "dependencies": {
+    "es-toolkit": "^1.47.0",
+    "type-fest": "^5.7.0",
+    "zod": "^4.4.3"
+  },
   "devDependencies": {
     "@cprecioso/tsconfig": "^3.0.2",
     "@total-typescript/shoehorn": "^0.1.2",
     "@types/node": "^24.13.0",
     "@wasp.sh/spec": "file:vendor/wasp.sh-spec-0.24.0.tgz",
     "@wasp.sh/wasp-cli": "^0.24.0",
+    "prettier": "^3.8.4",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "prettier-plugin-pkg": "^0.22.1",
+    "prettier-plugin-sh": "^0.18.1",
     "tsdown": "^0.22.2",
     "typescript": "^5.9.3",
     "vitest": "^4.1.8"
-  },
-  "dependencies": {
-    "es-toolkit": "^1.47.0",
-    "type-fest": "^5.7.0",
-    "zod": "^4.4.3"
   }
 }
