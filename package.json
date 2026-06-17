@@ -21,6 +21,10 @@
     "./spec": {
       "types": "./dist/spec.d.ts",
       "default": "./dist/spec.mjs"
+    },
+    "./styles/default": {
+      "types": "./dist/styles/default.d.mts",
+      "default": "./dist/styles/default.mjs"
     }
   },
   "devDependencies": {

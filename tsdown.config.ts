@@ -1,7 +1,11 @@
 import { defineConfig } from "tsdown";
 
 export default defineConfig({
-  entry: ["src/index.ts", "src/spec.ts"],
+  entry: {
+    index: "src/index.ts",
+    spec: "src/spec.ts",
+    "styles/default": "src/styles/default/index.ts",
+  },
   outDir: "dist",
   clean: true,
 

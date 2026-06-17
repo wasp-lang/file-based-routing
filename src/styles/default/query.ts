@@ -1,8 +1,8 @@
 import * as spec from "@wasp.sh/spec";
-import { RouteType } from "../types";
-import { ALLOWED_EXTENSIONS_GLOB, type Parser } from "./common";
+import { type Parser } from "../../in-spec/parsers/common";
+import { RouteType } from "../../in-spec/types";
+import { ALLOWED_EXTENSIONS_GLOB, makeSpecNameFromPath } from "./common";
 import { discoverOptionsForFile, isOptionsFile } from "./options";
-import { makeSpecNameFromPath } from "./util";
 
 export const queryParser: Parser = {
   globs: ["queries/*" + ALLOWED_EXTENSIONS_GLOB],

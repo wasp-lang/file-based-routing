@@ -1,5 +1,7 @@
 import * as routePath from "node:path/posix";
-import type { ParserContext } from "./common";
+import type { ParserContext } from "../../in-spec/parsers/common";
+
+export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
 
 /** Matches a route group: a path component wrapped in parentheses. */
 const ROUTE_GROUP_REGEX = /^\(.*\)$/;

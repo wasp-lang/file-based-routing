@@ -2,8 +2,8 @@ import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import * as z from "zod";
 import type { FullOptions } from "../../../in-files/types";
-import type { Claim } from "../../claims";
-import { RouteType } from "../../types";
+import type { Claim } from "../../../in-spec/claims";
+import { RouteType } from "../../../in-spec/types";
 import { ALLOWED_EXTENSIONS_GLOB } from "../common";
 import { ALLOWED_KEYS_FOR_ROUTE_TYPE, FullOptionsSchema } from "./schema";
 

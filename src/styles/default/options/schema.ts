@@ -1,6 +1,6 @@
 import * as z from "zod";
 import type { FullOptions } from "../../../in-files/types";
-import { RouteType } from "../../types";
+import { RouteType } from "../../../in-spec/types";
 
 export const ALLOWED_KEYS_FOR_ROUTE_TYPE: Record<
   RouteType,
