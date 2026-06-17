@@ -1,5 +1,8 @@
 # Wasp file-based routing
 
+> [!WARNING]
+> This is unstable and unpublished. We are just working in the open.
+
 Generate Wasp spec elements from your project's file layout. Instead of listing every page, query, action, job, and API in your Wasp config by hand, you drop files in conventional locations and this package derives the corresponding `page`, `route`, `query`, `action`, `job`, `api`, and `apiNamespace` declarations for you.
 
 It plugs into Wasp Spec and returns Spec elements, so you can mix file-based declarations with hand-written ones freely.

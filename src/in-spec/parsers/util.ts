@@ -28,12 +28,12 @@ export function makeSpecNameFromPath(
 ) {
   const fileName = pathComponents.at(-1)!;
 
-  const name = fileName.slice(0, fileName.lastIndexOf("."));
+  const fileBaseName = fileName.slice(0, fileName.lastIndexOf("."));
   const uniqueName = ctx.makeUniqueSpecName(
-    addExtraParts(name, extraNameParts),
+    addExtraParts(fileBaseName, extraNameParts),
   );
 
-  return { baseSpecName: uniqueName };
+  return { baseSpecName: uniqueName, fileBaseName };
 }
 
 /**
