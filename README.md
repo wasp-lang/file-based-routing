@@ -1,0 +1,189 @@
+# Wasp file-based routing
+
+Generate Wasp spec elements from your project's file layout. Instead of listing every page, query, action, job, and API in your Wasp config by hand, you drop files in conventional locations and this package derives the corresponding `page`, `route`, `query`, `action`, `job`, `api`, and `apiNamespace` declarations for you.
+
+It plugs into Wasp Spec and returns Spec elements, so you can mix file-based declarations with hand-written ones freely.
+
+## Install
+
+```bash
+npm install @wasp.sh/file-based-routing
+```
+
+You need to be using Wasp 0.24.
+
+## Usage
+
+In your Wasp TS spec config, call `fileBased` and spread the result into the `spec` array. Pass it `ref` from `@wasp.sh/spec` so it can build reference imports to your component and function files.
+
+```ts
+import { app, ref, route, page } from "@wasp.sh/spec";
+import { fileBased } from "@wasp.sh/file-based-routing/spec";
+
+export default app({
+  wasp: { version: "^0.24.0" },
+  spec: [
+    // Hand-written declarations still work:
+    route("AboutRoute", "/about", page(ref(/* ... */))),
+
+    // Everything discovered from the filesystem:
+    await fileBased({ ref }),
+  ],
+});
+```
+
+### Options
+
+```ts
+fileBased({
+  ref, // required: spec.ref, used to build import references
+  baseDir, // optional: directory to scan (default: <cwd>/src/app)
+});
+```
+
+`fileBased` will scan `baseDir`, apply the conventions below, and report any conflicts.
+
+## File conventions
+
+All paths below are relative to `baseDir` (default `src/app`). Files may use any of these extensions: `.ts`, `.tsx`, `.js`, `.jsx`, `.mjs`, `.cjs`, `.mts`, `.cts`. Files with other extensions are ignored.
+
+| File pattern             | Produces         | Looked up                 |
+| ------------------------ | ---------------- | ------------------------- |
+| `**/page.{ext}`          | `page` + `route` | anywhere                  |
+| `**/<method>.api.{ext}`  | `api`            | anywhere                  |
+| `**/api-namespace.{ext}` | `apiNamespace`   | anywhere                  |
+| `queries/*.{ext}`        | `query`          | top-level `queries/` only |
+| `actions/*.{ext}`        | `action`         | top-level `actions/` only |
+| `jobs/*.{ext}`           | `job`            | top-level `jobs/` only    |
+
+### Pages and routes
+
+A `page.tsx` produces a `page` (whose component is the file's default export) and a `route` that renders it. The route path comes from the directory path leading to the file:
+
+| File                        | Route path          |
+| --------------------------- | ------------------- |
+| `page.tsx`                  | `/`                 |
+| `settings/profile/page.tsx` | `/settings/profile` |
+
+Dynamic segments use bracket syntax in directory names:
+
+| Directory segment | Route segment | Meaning                       |
+| ----------------- | ------------- | ----------------------------- |
+| `[id]`            | `:id`         | dynamic parameter             |
+| `[[lang]]`        | `:lang?`      | optional dynamic parameter    |
+| `[...rest]`       | `*`           | splat (trailing segment only) |
+
+`[...rest]` is only treated as a splat when it is the last segment before `page.tsx`. Elsewhere it is kept verbatim.
+
+```
+src/app/
+  page.tsx                     ->  route "/"
+  users/[id]/page.tsx          ->  route "/users/:id"
+  docs/[[lang]]/page.tsx       ->  route "/docs/:lang?"
+  files/[...rest]/page.tsx     ->  route "/files/*"
+```
+
+### APIs
+
+The HTTP method is the file name prefix: `get.api.ts`, `post.api.ts`, `put.api.ts`, `delete.api.ts`, or `all.api.ts`. The path comes from the directory, like pages:
+
+```
+src/app/
+  webhooks/post.api.ts         ->  api  POST  /webhooks
+  tasks/get.api.ts             ->  api  GET   /tasks
+  get.api.ts                   ->  api  GET   /
+```
+
+Several methods may share a path (`tasks/get.api.ts` and `tasks/post.api.ts`), except for `all.api.ts` files, which already respond to every method, so it cannot coexist with another API on the same path.
+
+### API namespaces
+
+An `api-namespace.ts` registers middleware (its default export) on a path prefix derived from its directory. A namespace does not own a route, so it can share a path with a page or APIs.
+
+```
+src/app/
+  external/api-namespace.ts    ->  apiNamespace  /external
+```
+
+### Queries, actions, and jobs
+
+These are looked up only in the **top-level** `queries/`, `actions/`, and `jobs/` directories. The function is the file's default export.
+
+```
+src/app/
+  queries/getTasks.ts          ->  query   (GetTasksQuery)
+  actions/createTask.ts        ->  action  (CreateTaskAction)
+  jobs/sendDigest.ts           ->  job     (SendDigestJob, executor "PgBoss")
+```
+
+Jobs default to the `PgBoss` executor; override it via an options file.
+
+## Spec names
+
+Each declaration gets a generated name derived from its route path or file name, `PascalCased` and converted to English characters (`café` -> `Cafe`), and suffixed by kind:
+
+| Kind          | Suffix         | Example                |
+| ------------- | -------------- | ---------------------- |
+| Page          | `Page`         | `SettingsProfilePage`  |
+| Route         | `Route`        | `SettingsProfileRoute` |
+| Query         | `Query`        | `GetTasksQuery`        |
+| Action        | `Action`       | `CreateTaskAction`     |
+| Job           | `Job`          | `SendDigestJob`        |
+| API           | `Api`          | `WebhooksPostApi`      |
+| API namespace | `ApiNamespace` | `ExternalApiNamespace` |
+
+The root path maps to the name `Root` (`RootPage`, `RootRoute`). For APIs the method is folded into the name so methods sharing a path get distinct names (`TasksGetApi`, `TasksPostApi`). If two names still collide after PascalCasing, a numeric suffix is appended (`MyPagePage`, `MyPagePage1`).
+
+## Options files
+
+To pass configuration to a generated declaration, add a sibling **options file** in the same directory as the route file. It must have a default export whose keys match the route kind:
+
+| Route file              | Options file                    | Allowed keys    |
+| ----------------------- | ------------------------------- | --------------- |
+| `page.tsx`              | `page.options.ts`               | `page`, `route` |
+| `<method>.api.ts`       | `api.<method>.options.ts`       | `api`           |
+| `queries/getTasks.ts`   | `queries/getTasks.options.ts`   | `query`         |
+| `actions/createTask.ts` | `actions/createTask.options.ts` | `action`        |
+| `jobs/sendDigest.ts`    | `jobs/sendDigest.options.ts`    | `job`           |
+
+API namespaces do not support options; an options file next to one is ignored.
+
+```ts
+// src/app/dashboard/page.options.ts
+export default {
+  page: { authRequired: true },
+  route: { lazy: true },
+};
+```
+
+```ts
+// src/app/jobs/sendDigest.options.ts
+export default {
+  job: { schedule: { cron: "0 * * * *" } },
+};
+```
+
+Options files are excluded from route discovery (a `*.options.ts` in `actions/` is not treated as an action), and their keys are validated strictly: an unknown or out-of-kind key (e.g. `job` under a page) is a hard error.
+
+### Typed options with `options()`
+
+The package's main entry exports an `options()` identity helper and the `Options` type so you get autocompletion and type-checking on options objects:
+
+```ts
+import { options } from "@wasp.sh/file-based-routing";
+
+// src/app/dashboard/page.options.ts
+export default options({
+  page: { authRequired: true },
+  route: { lazy: true },
+});
+```
+
+## Package entry points
+
+| Import | Exports |
+| --- | --- |
+| `@wasp.sh/file-based-routing/spec` | `fileBased` |
+| `@wasp.sh/file-based-routing` | `options`, the `Options` type, and the options type definitions |
+
+> The `/spec` entry imports Node's filesystem APIs and is meant to run where your Wasp config is evaluated.
