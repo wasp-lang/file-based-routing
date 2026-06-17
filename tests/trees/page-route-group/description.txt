@@ -1,0 +1,1 @@
+ignores parenthesized route group directories when deriving the route
