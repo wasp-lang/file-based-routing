@@ -1,7 +1,8 @@
 import * as spec from "@wasp.sh/spec";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
-import { ClaimChecker } from "./in-spec/claims";
+import { ClaimChecker } from "./in-spec/claims/checker";
+import { formatConflict } from "./in-spec/claims/conflicts";
 import { PARSER_BY_ROUTE_TYPE_ENTRIES } from "./in-spec/parsers";
 import { specNameMaker } from "./in-spec/spec-name";
 
@@ -50,9 +51,13 @@ export async function fileBased({
     }
   });
 
-  const claimErrors = claimChecker.getErrors();
-  if (claimErrors.length > 0) {
-    throw new AggregateError(claimErrors, "Conflicting claims detected");
+  const conflicts = claimChecker.getConflicts();
+  if (conflicts.length > 0) {
+    throw new Error(
+      `Conflicting files detected:\n${conflicts
+        .map((conflict) => "  - " + formatConflict(conflict, baseDir))
+        .join("\n")}`,
+    );
   }
 
   return specElements;
