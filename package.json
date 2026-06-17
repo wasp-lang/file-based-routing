@@ -19,9 +19,9 @@
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc",
     "test": "vitest run",
-    "test:update": "vitest run -u"
+    "test:update": "vitest run -u",
+    "typecheck": "tsc"
   },
   "peerDependencies": {
     "@wasp.sh/spec": "^0.24.0"
