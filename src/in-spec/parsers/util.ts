@@ -1,16 +1,28 @@
 import * as routePath from "node:path/posix";
 import type { ParserContext } from "./common";
 
+/**
+ * Calculates the output route for a route file from its input path components
+ * (the directory path leading to the file, plus the file name itself).
+ *
+ * The file name is dropped, and any route group components (see
+ * {@link isRouteGroupComponent}) are removed, so e.g.
+ * `["dashboard", "(logged-in)", "my-profile", "page.tsx"]` -> `/dashboard/my-profile`.
+ */
+export function makeRouteFromPath(pathComponents: readonly string[]): string {
+  const routeComponents = pathComponents
+    .slice(0, -1) // Drop the file name; only directories form the route.
+    .filter((component) => !isRouteGroupComponent(component));
+
+  return routePath.normalize(routePath.join("/", ...routeComponents));
+}
+
 export function makeSpecNameFromRoute(
   pathComponents: readonly string[],
   ctx: ParserContext,
   { extraNameParts }: { extraNameParts?: readonly string[] } = {},
 ) {
-  const routeComponents = pathComponents
-    .slice(0, -1)
-    .filter((component) => !isRouteGroupComponent(component));
-
-  const route = routePath.normalize(routePath.join("/", ...routeComponents));
+  const route = makeRouteFromPath(pathComponents);
 
   const name = route === "/" ? "Root" : route;
 
