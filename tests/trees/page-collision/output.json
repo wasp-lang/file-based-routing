@@ -1,16 +1,12 @@
 {
-  "description": "uniquifies spec names that collide after pascal-casing",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "MyPagePage",
-            "from": "my-page/page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "MyPagePage",
+        "from": "my-page/page.tsx"
       }
     },
     {
@@ -20,26 +16,18 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "MyPagePage",
-              "from": "my-page/page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "MyPagePage",
+          "from": "my-page/page.tsx"
         }
       }
     },
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "MyPage1Page",
-            "from": "my/page/page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "MyPage1Page",
+        "from": "my/page/page.tsx"
       }
     },
     {
@@ -49,13 +37,9 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "MyPage1Page",
-              "from": "my/page/page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "MyPage1Page",
+          "from": "my/page/page.tsx"
         }
       }
     }

@@ -1,17 +1,13 @@
 {
-  "description": "creates an apiNamespace from an `api-namespace` file",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "apiNamespace",
       "path": "/api",
       "middlewareConfigFn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "ApiApiNamespace",
-            "from": "api/api-namespace.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "ApiApiNamespace",
+        "from": "api/api-namespace.ts"
       }
     }
   ]

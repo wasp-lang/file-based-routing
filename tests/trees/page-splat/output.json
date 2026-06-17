@@ -1,16 +1,12 @@
 {
-  "description": "transforms a trailing `[...rest]` into a splat",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "FilesPage",
-            "from": "files/[...rest]/page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "FilesPage",
+        "from": "files/[...rest]/page.tsx"
       }
     },
     {
@@ -20,13 +16,9 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "FilesPage",
-              "from": "files/[...rest]/page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "FilesPage",
+          "from": "files/[...rest]/page.tsx"
         }
       }
     }

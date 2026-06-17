@@ -1,17 +1,13 @@
 {
-  "description": "maps an api-namespace file at the base directory to the root path",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "apiNamespace",
       "path": "/",
       "middlewareConfigFn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "RootApiNamespace",
-            "from": "api-namespace.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "RootApiNamespace",
+        "from": "api-namespace.ts"
       }
     }
   ]

@@ -1,16 +1,12 @@
 {
-  "description": "accepts every allowed extension and ignores other files",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "APage",
-            "from": "a/page.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "APage",
+        "from": "a/page.ts"
       }
     },
     {
@@ -20,26 +16,18 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "APage",
-              "from": "a/page.ts"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "APage",
+          "from": "a/page.ts"
         }
       }
     },
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "BPage",
-            "from": "b/page.jsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "BPage",
+        "from": "b/page.jsx"
       }
     },
     {
@@ -49,26 +37,18 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "BPage",
-              "from": "b/page.jsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "BPage",
+          "from": "b/page.jsx"
         }
       }
     },
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "CPage",
-            "from": "c/page.mjs"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "CPage",
+        "from": "c/page.mjs"
       }
     },
     {
@@ -78,26 +58,18 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "CPage",
-              "from": "c/page.mjs"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "CPage",
+          "from": "c/page.mjs"
         }
       }
     },
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "DPage",
-            "from": "d/page.cts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "DPage",
+        "from": "d/page.cts"
       }
     },
     {
@@ -107,13 +79,9 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "DPage",
-              "from": "d/page.cts"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "DPage",
+          "from": "d/page.cts"
         }
       }
     }

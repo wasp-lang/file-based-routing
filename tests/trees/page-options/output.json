@@ -1,16 +1,12 @@
 {
-  "description": "applies `page` and `route` options from a sibling `options` file",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "MyPagePage",
-            "from": "my-page/page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "MyPagePage",
+        "from": "my-page/page.tsx"
       },
       "authRequired": true
     },
@@ -21,13 +17,9 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "MyPagePage",
-              "from": "my-page/page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "MyPagePage",
+          "from": "my-page/page.tsx"
         },
         "authRequired": true
       },

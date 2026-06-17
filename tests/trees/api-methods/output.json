@@ -1,18 +1,14 @@
 {
-  "description": "supports all HTTP methods, upper-casing the file name",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "api",
       "method": "GET",
       "path": "/a",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "AGetApi",
-            "from": "a/get.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "AGetApi",
+        "from": "a/get.api.ts"
       }
     },
     {
@@ -20,13 +16,9 @@
       "method": "POST",
       "path": "/b",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "BPostApi",
-            "from": "b/post.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "BPostApi",
+        "from": "b/post.api.ts"
       }
     },
     {
@@ -34,13 +26,9 @@
       "method": "PUT",
       "path": "/c",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "CPutApi",
-            "from": "c/put.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "CPutApi",
+        "from": "c/put.api.ts"
       }
     },
     {
@@ -48,13 +36,9 @@
       "method": "DELETE",
       "path": "/d",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "DDeleteApi",
-            "from": "d/delete.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "DDeleteApi",
+        "from": "d/delete.api.ts"
       }
     },
     {
@@ -62,13 +46,9 @@
       "method": "ALL",
       "path": "/e",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "EAllApi",
-            "from": "e/all.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "EAllApi",
+        "from": "e/all.api.ts"
       }
     }
   ]

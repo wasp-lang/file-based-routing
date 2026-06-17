@@ -1,4 +1,4 @@
 {
-  "description": "only looks in the top-level `jobs` directory",
-  "elements": []
+  "type": "success",
+  "result": []
 }

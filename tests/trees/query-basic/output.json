@@ -1,16 +1,12 @@
 {
-  "description": "creates a query from a file in the `queries` directory",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "query",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "GetTasksQuery",
-            "from": "queries/getTasks.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "GetTasksQuery",
+        "from": "queries/getTasks.ts"
       }
     }
   ]

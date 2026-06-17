@@ -1,16 +1,12 @@
 {
-  "description": "doesn't interpret `[...rest]` as a splat when it is not the last path component",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "FilesRestSubPage",
-            "from": "files/[...rest]/sub/page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "FilesRestSubPage",
+        "from": "files/[...rest]/sub/page.tsx"
       }
     },
     {
@@ -20,13 +16,9 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "FilesRestSubPage",
-              "from": "files/[...rest]/sub/page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "FilesRestSubPage",
+          "from": "files/[...rest]/sub/page.tsx"
         }
       }
     }

@@ -1,18 +1,14 @@
 {
-  "description": "maps an api file at the base directory to the root path",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "api",
       "method": "GET",
       "path": "/",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "RootGetApi",
-            "from": "get.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "RootGetApi",
+        "from": "get.api.ts"
       }
     }
   ]

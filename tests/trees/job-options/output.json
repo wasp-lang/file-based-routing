@@ -1,16 +1,12 @@
 {
-  "description": "applies options from a sibling `<name>.options` file, without treating it as a job",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "job",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "WeeklyReportJob",
-            "from": "jobs/weeklyReport.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "WeeklyReportJob",
+        "from": "jobs/weeklyReport.ts"
       },
       "executor": "PgBoss",
       "schedule": {

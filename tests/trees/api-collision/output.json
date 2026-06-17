@@ -1,18 +1,14 @@
 {
-  "description": "uniquifies spec names for several methods on the same path",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "api",
       "method": "GET",
       "path": "/tasks",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "TasksGetApi",
-            "from": "tasks/get.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "TasksGetApi",
+        "from": "tasks/get.api.ts"
       }
     },
     {
@@ -20,13 +16,9 @@
       "method": "POST",
       "path": "/tasks",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "TasksPostApi",
-            "from": "tasks/post.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "TasksPostApi",
+        "from": "tasks/post.api.ts"
       }
     }
   ]

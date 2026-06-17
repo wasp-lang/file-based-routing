@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@cprecioso/tsconfig": "^3.0.2",
+    "@total-typescript/shoehorn": "^0.1.2",
     "@types/node": "^24.13.0",
     "@wasp.sh/spec": "file:vendor/wasp.sh-spec-0.24.0.tgz",
     "@wasp.sh/wasp-cli": "^0.24.0",

@@ -1,16 +1,12 @@
 {
-  "description": "collects every route type, in parser order",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "RootPage",
-            "from": "page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "RootPage",
+        "from": "page.tsx"
       }
     },
     {
@@ -20,50 +16,34 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "RootPage",
-              "from": "page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "RootPage",
+          "from": "page.tsx"
         }
       }
     },
     {
       "kind": "query",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "GetTasksQuery",
-            "from": "queries/getTasks.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "GetTasksQuery",
+        "from": "queries/getTasks.ts"
       }
     },
     {
       "kind": "action",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "CreateTaskAction",
-            "from": "actions/createTask.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "CreateTaskAction",
+        "from": "actions/createTask.ts"
       }
     },
     {
       "kind": "job",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "SendDigestJob",
-            "from": "jobs/sendDigest.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "SendDigestJob",
+        "from": "jobs/sendDigest.ts"
       },
       "executor": "PgBoss"
     },
@@ -72,26 +52,18 @@
       "method": "POST",
       "path": "/webhooks",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "WebhooksPostApi",
-            "from": "webhooks/post.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "WebhooksPostApi",
+        "from": "webhooks/post.api.ts"
       }
     },
     {
       "kind": "apiNamespace",
       "path": "/external",
       "middlewareConfigFn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "ExternalApiNamespace",
-            "from": "external/api-namespace.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "ExternalApiNamespace",
+        "from": "external/api-namespace.ts"
       }
     }
   ]

@@ -1,16 +1,12 @@
 {
-  "description": "transforms `[param]` into a dynamic path component",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "UsersIdPage",
-            "from": "users/[id]/page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "UsersIdPage",
+        "from": "users/[id]/page.tsx"
       }
     },
     {
@@ -20,13 +16,9 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "UsersIdPage",
-              "from": "users/[id]/page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "UsersIdPage",
+          "from": "users/[id]/page.tsx"
         }
       }
     }

@@ -1,16 +1,12 @@
 {
-  "description": "creates a page and a route for a page file at the root",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "RootPage",
-            "from": "page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "RootPage",
+        "from": "page.tsx"
       }
     },
     {
@@ -20,13 +16,9 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "RootPage",
-              "from": "page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "RootPage",
+          "from": "page.tsx"
         }
       }
     }

@@ -1,17 +1,13 @@
 {
-  "description": "doesn't support options, ignoring a sibling `options` file",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "apiNamespace",
       "path": "/external",
       "middlewareConfigFn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "ExternalApiNamespace",
-            "from": "external/api-namespace.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "ExternalApiNamespace",
+        "from": "external/api-namespace.ts"
       }
     }
   ]

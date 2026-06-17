@@ -1,33 +1,24 @@
 {
-  "description": "defaults to scanning `src/app` under the current working directory",
-  "cwd": ".",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "RootPage",
-            "from": "src/app/page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "SrcAppPage",
+        "from": "src/app/page.tsx"
       }
     },
     {
       "kind": "route",
-      "name": "RootRoute",
-      "path": "/",
+      "name": "SrcAppRoute",
+      "path": "/src/app",
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "RootPage",
-              "from": "src/app/page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "SrcAppPage",
+          "from": "src/app/page.tsx"
         }
       }
     }

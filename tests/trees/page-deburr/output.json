@@ -1,16 +1,12 @@
 {
-  "description": "deburrs non-ASCII route names but keeps the route path intact",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "CafePage",
-            "from": "café/page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "CafePage",
+        "from": "café/page.tsx"
       }
     },
     {
@@ -20,13 +16,9 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "CafePage",
-              "from": "café/page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "CafePage",
+          "from": "café/page.tsx"
         }
       }
     }

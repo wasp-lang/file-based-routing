@@ -1,16 +1,12 @@
 {
-  "description": "creates an action from a file in the `actions` directory",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "action",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "CreateTaskAction",
-            "from": "actions/createTask.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "CreateTaskAction",
+        "from": "actions/createTask.ts"
       }
     }
   ]

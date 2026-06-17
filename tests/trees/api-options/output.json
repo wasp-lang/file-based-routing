@@ -1,18 +1,14 @@
 {
-  "description": "applies `api` options from a sibling `options` file",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "api",
       "method": "GET",
       "path": "/things",
       "fn": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "ThingsGetApi",
-            "from": "things/get.api.ts"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "ThingsGetApi",
+        "from": "things/get.api.ts"
       },
       "auth": false
     }

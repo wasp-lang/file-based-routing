@@ -1,16 +1,12 @@
 {
-  "description": "derives the route path and spec name from nested directories",
-  "elements": [
+  "type": "success",
+  "result": [
     {
       "kind": "page",
       "component": {
-        "kind": "ref-call",
-        "args": [
-          {
-            "importDefault": "SettingsProfilePage",
-            "from": "settings/profile/page.tsx"
-          }
-        ]
+        "kind": "refObject",
+        "importDefault": "SettingsProfilePage",
+        "from": "settings/profile/page.tsx"
       }
     },
     {
@@ -20,13 +16,9 @@
       "page": {
         "kind": "page",
         "component": {
-          "kind": "ref-call",
-          "args": [
-            {
-              "importDefault": "SettingsProfilePage",
-              "from": "settings/profile/page.tsx"
-            }
-          ]
+          "kind": "refObject",
+          "importDefault": "SettingsProfilePage",
+          "from": "settings/profile/page.tsx"
         }
       }
     }
