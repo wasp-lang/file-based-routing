@@ -1,5 +1,5 @@
 import * as spec from "@wasp.sh/spec";
-import { type Parser } from "../../in-spec/parsers/common";
+import type { Parser } from "../../in-spec/parsers/common";
 import { ALLOWED_EXTENSIONS_GLOB, makeSpecNameFromRoute } from "./common";
 
 export const apiNamespaceParser: Parser = {

@@ -1,5 +1,5 @@
 import * as spec from "@wasp.sh/spec";
-import { type Parser } from "../../in-spec/parsers/common";
+import type { Parser } from "../../in-spec/parsers/common";
 import { RouteType } from "../../in-spec/types";
 import { ALLOWED_EXTENSIONS_GLOB, makeSpecNameFromRoute } from "./common";
 import { discoverOptionsForFile } from "./options";
