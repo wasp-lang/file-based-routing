@@ -6,9 +6,11 @@ export function makeSpecNameFromRoute(
   ctx: ParserContext,
   { extraNameParts }: { extraNameParts?: readonly string[] } = {},
 ) {
-  const route = routePath.normalize(
-    routePath.join("/", ...pathComponents.slice(0, -1)),
-  );
+  const routeComponents = pathComponents
+    .slice(0, -1)
+    .filter((component) => !isRouteGroupComponent(component));
+
+  const route = routePath.normalize(routePath.join("/", ...routeComponents));
 
   const name = route === "/" ? "Root" : route;
 
@@ -32,6 +34,15 @@ export function makeSpecNameFromPath(
   );
 
   return { baseSpecName: uniqueName };
+}
+
+/**
+ * A route group is a path component wrapped in parentheses (e.g.
+ * `(logged-in)`). It's used to organize files without affecting the generated
+ * route (e.g. `dashboard/(logged-in)/my-profile/page.tsx` -> `/dashboard/my-profile`).
+ */
+function isRouteGroupComponent(component: string): boolean {
+  return /^\(.*\)$/.test(component);
 }
 
 function addExtraParts(name: string, extraNameParts: readonly string[] = []) {

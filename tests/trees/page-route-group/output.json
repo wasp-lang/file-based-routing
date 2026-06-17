@@ -1,0 +1,26 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "refObject",
+        "importDefault": "DashboardMyProfilePage",
+        "from": "dashboard/(logged-in)/my-profile/page.tsx"
+      }
+    },
+    {
+      "kind": "route",
+      "name": "DashboardMyProfileRoute",
+      "path": "/dashboard/my-profile",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "refObject",
+          "importDefault": "DashboardMyProfilePage",
+          "from": "dashboard/(logged-in)/my-profile/page.tsx"
+        }
+      }
+    }
+  ]
+}
