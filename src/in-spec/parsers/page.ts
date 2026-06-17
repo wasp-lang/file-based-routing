@@ -7,7 +7,7 @@ import { makeSpecNameFromRoute } from "./util";
 export const pageParser: Parser = {
   globs: ["**/page" + ALLOWED_EXTENSIONS_GLOB],
 
-  async parseFile(file, ctx) {
+  async matchFile(file, ctx) {
     const transformedPathComponents = transformSpecialRouteComponents(
       file.pathComponents,
     );

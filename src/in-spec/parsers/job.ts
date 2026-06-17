@@ -7,7 +7,7 @@ import { makeSpecNameFromPath } from "./util";
 export const jobParser: Parser = {
   globs: ["jobs/*" + ALLOWED_EXTENSIONS_GLOB],
 
-  async parseFile(file, ctx) {
+  async matchFile(file, ctx) {
     const { baseSpecName } = makeSpecNameFromPath(file.pathComponents, ctx);
 
     if (isOptionsFile(file.absFilePath)) {

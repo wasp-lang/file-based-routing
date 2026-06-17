@@ -4,7 +4,7 @@ export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
 
 export interface Parser {
   globs: readonly string[];
-  parseFile: (
+  matchFile: (
     file: ParserFile,
     ctx: ParserContext,
   ) => Promise<spec.SpecElement[]>;

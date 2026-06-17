@@ -5,7 +5,7 @@ import { makeSpecNameFromRoute } from "./util";
 export const apiNamespaceParser: Parser = {
   globs: ["**/api-namespace" + ALLOWED_EXTENSIONS_GLOB],
 
-  async parseFile(file, ctx) {
+  async matchFile(file, ctx) {
     const { route, baseSpecName } = makeSpecNameFromRoute(
       file.pathComponents,
       ctx,

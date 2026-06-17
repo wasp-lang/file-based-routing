@@ -7,7 +7,7 @@ import { apiMethodFromFileName, makeSpecNameFromRoute } from "./util";
 export const apiParser: Parser = {
   globs: ["**/*.api" + ALLOWED_EXTENSIONS_GLOB],
 
-  async parseFile(file, ctx) {
+  async matchFile(file, ctx) {
     const method = apiMethodFromFileName(file.pathComponents.at(-1)!);
 
     // The method is folded into the spec name so that several methods on the
