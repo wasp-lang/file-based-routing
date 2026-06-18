@@ -7,7 +7,7 @@ import type { RouteType } from "../../../in-spec/types";
 import { ALLOWED_EXTENSIONS_GLOB } from "../common";
 import { ALLOWED_KEYS_FOR_ROUTE_TYPE, FullOptionsSchema } from "./schema";
 
-const OPTIONS_FILE_GLOB = "options" + ALLOWED_EXTENSIONS_GLOB;
+const OPTIONS_FILE_GLOB = "options{,.wasp}" + ALLOWED_EXTENSIONS_GLOB;
 
 export async function discoverOptionsForFile(
   absBaseFilePath: string,
