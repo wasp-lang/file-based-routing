@@ -8,6 +8,8 @@ import { specNameMaker } from "./in-spec/spec-name";
 import type { RouteType } from "./in-spec/types";
 import { defaultStyle } from "./styles/default";
 
+export type { Style } from "./in-spec/parsers/common";
+
 export async function fileBased({
   ref,
   baseDir = path.resolve(process.cwd(), "src/app"),
