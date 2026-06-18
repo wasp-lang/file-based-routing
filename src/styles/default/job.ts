@@ -3,16 +3,22 @@ import type { Parser } from "../../in-spec/parsers/common";
 import { RouteType } from "../../in-spec/types";
 import {
   ALLOWED_EXTENSIONS_GLOB,
+  isNestedOnlyInRouteGroups,
   makeSpecNameFromPath,
 } from "../common/route-path";
 import { discoverOptionsForFile, isOptionsFile } from "./options";
 
 export const jobParser: Parser = {
-  globs: ["jobs/*" + ALLOWED_EXTENSIONS_GLOB],
+  // Recursive so jobs can be organized under route groups (e.g.
+  // `jobs/(internal)/sendDigest.ts`); the spec name still comes from the file name.
+  globs: ["jobs/**/*" + ALLOWED_EXTENSIONS_GLOB],
   claims: [{ type: "file", glob: "jobs/**" }],
 
   async matchFile(file, ctx) {
-    if (isOptionsFile(file.absFilePath)) {
+    if (
+      isOptionsFile(file.absFilePath) ||
+      !isNestedOnlyInRouteGroups(file.pathComponents)
+    ) {
       return { elements: [] };
     }
 

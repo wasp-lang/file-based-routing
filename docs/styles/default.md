@@ -6,14 +6,14 @@ The default style (`@wasp.sh/file-based-routing/styles/default`) is the set of c
 
 All paths below are relative to `baseDir` (default `src/app`). Files may use any of these extensions: `.ts`, `.tsx`, `.js`, `.jsx`, `.mjs`, `.cjs`, `.mts`, `.cts`. Files with other extensions are ignored.
 
-| File pattern             | Produces         | Looked up                 |
-| ------------------------ | ---------------- | ------------------------- |
-| `**/page.{ext}`          | `page` + `route` | anywhere                  |
-| `**/<method>.api.{ext}`  | `api`            | anywhere                  |
-| `**/api-namespace.{ext}` | `apiNamespace`   | anywhere                  |
-| `queries/*.{ext}`        | `query`          | top-level `queries/` only |
-| `actions/*.{ext}`        | `action`         | top-level `actions/` only |
-| `jobs/*.{ext}`           | `job`            | top-level `jobs/` only    |
+| File pattern             | Produces         | Looked up                  |
+| ------------------------ | ---------------- | -------------------------- |
+| `**/page.{ext}`          | `page` + `route` | anywhere                   |
+| `**/<method>.api.{ext}`  | `api`            | anywhere                   |
+| `**/api-namespace.{ext}` | `apiNamespace`   | anywhere                   |
+| `queries/**/*.{ext}`     | `query`          | under top-level `queries/` |
+| `actions/**/*.{ext}`     | `action`         | under top-level `actions/` |
+| `jobs/**/*.{ext}`        | `job`            | under top-level `jobs/`    |
 
 ### Pages and routes
 
@@ -42,7 +42,7 @@ src/app/
   files/[...rest]/page.tsx     ->  route "/files/*"
 ```
 
-A directory wrapped in parentheses is a **route group**: it organizes files without contributing a segment to the route. This works for any route file (pages, APIs, and namespaces).
+A directory wrapped in parentheses is a **route group**: it organizes files without contributing a segment to the route. This works for any file (pages, APIs, namespaces, queries, actions, and jobs).
 
 ```
 src/app/
@@ -73,13 +73,14 @@ src/app/
 
 ### Queries, actions, and jobs
 
-These are looked up only in the **top-level** `queries/`, `actions/`, and `jobs/` directories. The function is the file's default export.
+These are looked up under the **top-level** `queries/`, `actions/`, and `jobs/` directories. The function is the file's default export. Files may be nested under route groups to organize them (the spec name still comes from the file name, not the directories).
 
 ```
 src/app/
-  queries/getTasks.ts          ->  query   (GetTasksQuery)
-  actions/createTask.ts        ->  action  (CreateTaskAction)
-  jobs/sendDigest.ts           ->  job     (SendDigestJob, executor "PgBoss")
+  queries/getTasks.ts             ->  query   (GetTasksQuery)
+  queries/(internal)/getStats.ts  ->  query   (GetStatsQuery)
+  actions/createTask.ts           ->  action  (CreateTaskAction)
+  jobs/sendDigest.ts              ->  job     (SendDigestJob, executor "PgBoss")
 ```
 
 Jobs default to the `PgBoss` executor; override it via an options file.

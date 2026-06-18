@@ -1,0 +1,1 @@
+organizes an action under a route group, keeping the file-name-derived spec name

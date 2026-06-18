@@ -9,11 +9,10 @@ import { conciseStyle } from "@wasp.sh/file-based-routing/styles/concise";
 fileBased({ ref, style: conciseStyle });
 ```
 
-It shares the default style's file conventions, with three differences:
+It shares the default style's file conventions, with two differences:
 
 - There are no options files. Configuration is set with route group components instead (see below).
-- There is no `job` convention. Files under `jobs/` are ignored.
-- Queries and actions may be nested under route groups (e.g. `queries/(auth)/getTasks.ts`).
+- There is no `job` convention; jobs must be declared manually in your Wasp spec.
 
 ## File conventions
 

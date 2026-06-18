@@ -3,16 +3,22 @@ import type { Parser } from "../../in-spec/parsers/common";
 import { RouteType } from "../../in-spec/types";
 import {
   ALLOWED_EXTENSIONS_GLOB,
+  isNestedOnlyInRouteGroups,
   makeSpecNameFromPath,
 } from "../common/route-path";
 import { discoverOptionsForFile, isOptionsFile } from "./options";
 
 export const queryParser: Parser = {
-  globs: ["queries/*" + ALLOWED_EXTENSIONS_GLOB],
+  // Recursive so queries can be organized under route groups (e.g.
+  // `queries/(internal)/getTasks.ts`); the spec name still comes from the file name.
+  globs: ["queries/**/*" + ALLOWED_EXTENSIONS_GLOB],
   claims: [{ type: "file", glob: "queries/**" }],
 
   async matchFile(file, ctx) {
-    if (isOptionsFile(file.absFilePath)) {
+    if (
+      isOptionsFile(file.absFilePath) ||
+      !isNestedOnlyInRouteGroups(file.pathComponents)
+    ) {
       return { elements: [] };
     }
 

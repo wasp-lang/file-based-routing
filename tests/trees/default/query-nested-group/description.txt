@@ -1,0 +1,1 @@
+organizes a query under a route group, keeping the file-name-derived spec name
