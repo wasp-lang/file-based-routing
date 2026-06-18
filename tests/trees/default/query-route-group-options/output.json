@@ -5,7 +5,7 @@
       "kind": "query",
       "fn": {
         "kind": "refObject",
-        "importDefault": "getUsersQuery",
+        "importDefault": "getUsers",
         "from": "queries/(admin)/getUsers.ts"
       },
       "entities": [
