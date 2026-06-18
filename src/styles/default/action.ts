@@ -17,7 +17,6 @@ export const actionParser: Parser = {
       return undefined;
     }
 
-    // Files may be nested in route groups, but not in any other subdirectory.
     assertOnlyHasRouteGroups(file.pathComponents);
 
     const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
