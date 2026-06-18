@@ -1,24 +1,17 @@
 import * as spec from "@wasp.sh/spec";
-import type { UnionToTuple } from "type-fest";
-import * as z from "zod";
 import type { RouteClaim } from "../../in-spec/claims";
 import type { Parser } from "../../in-spec/parsers/common";
 import { RouteType } from "../../in-spec/types";
-import { ALLOWED_EXTENSIONS_GLOB, makeSpecNameFromRoute } from "./common";
+import {
+  apiMethodFromFileName,
+  HTTP_METHODS,
+  HTTP_METHODS_GLOB,
+} from "../common/http-methods";
+import {
+  ALLOWED_EXTENSIONS_GLOB,
+  makeSpecNameFromRoute,
+} from "../common/route-path";
 import { discoverOptionsForFile } from "./options";
-
-const HTTP_METHODS = [
-  "ALL",
-  "GET",
-  "POST",
-  "PUT",
-  "DELETE",
-] as const satisfies UnionToTuple<spec.HttpMethod>;
-
-const HttpMethodsSchema = z.enum(HTTP_METHODS);
-
-const HTTP_METHODS_GLOB =
-  "{" + HTTP_METHODS.map((method) => method.toLowerCase()).join(",") + "}";
 
 export const apiParser: Parser = {
   globs: [`**/${HTTP_METHODS_GLOB}.api` + ALLOWED_EXTENSIONS_GLOB],
@@ -67,8 +60,3 @@ export const apiParser: Parser = {
     };
   },
 };
-
-/** Derives the HTTP method from an `<method>.api.<ext>` file name. */
-export function apiMethodFromFileName(fileName: string): spec.HttpMethod {
-  return HttpMethodsSchema.parse(fileName.split(".").at(0)?.toUpperCase());
-}

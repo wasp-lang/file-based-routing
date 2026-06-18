@@ -1,0 +1,26 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "refObject",
+        "importDefault": "SettingsProfilePage",
+        "from": "settings/profile/page.tsx"
+      }
+    },
+    {
+      "kind": "route",
+      "name": "SettingsProfileRoute",
+      "path": "/settings/profile",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "refObject",
+          "importDefault": "SettingsProfilePage",
+          "from": "settings/profile/page.tsx"
+        }
+      }
+    }
+  ]
+}

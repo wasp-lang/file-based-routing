@@ -1,0 +1,28 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "refObject",
+        "importDefault": "DashboardPage",
+        "from": "dashboard/(auth)/page.tsx"
+      },
+      "authRequired": true
+    },
+    {
+      "kind": "route",
+      "name": "DashboardRoute",
+      "path": "/dashboard",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "refObject",
+          "importDefault": "DashboardPage",
+          "from": "dashboard/(auth)/page.tsx"
+        },
+        "authRequired": true
+      }
+    }
+  ]
+}

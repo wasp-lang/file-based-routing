@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { makeRouteFromPath } from "../common";
+import { makeRouteFromPath } from "../route-path";
 
 describe("makeRouteFromPath", () => {
   it("derives the route from the directories leading to the file", () => {

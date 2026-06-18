@@ -5,6 +5,7 @@ export default defineConfig({
     index: "src/index.ts",
     spec: "src/spec.ts",
     "styles/default": "src/styles/default/index.ts",
+    "styles/concise": "src/styles/concise/index.ts",
   },
   outDir: "dist",
   clean: true,

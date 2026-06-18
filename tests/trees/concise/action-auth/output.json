@@ -1,0 +1,14 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "action",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "DeleteTaskAction",
+        "from": "actions/(auth)/deleteTask.ts"
+      },
+      "auth": true
+    }
+  ]
+}

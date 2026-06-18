@@ -1,0 +1,1 @@
+expands bracketed directory segments into dynamic route segments

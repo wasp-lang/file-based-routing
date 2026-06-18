@@ -1,8 +1,8 @@
 import type { Style } from "../../in-spec/parsers/common";
 import { RouteType } from "../../in-spec/types";
+import { apiNamespaceParser } from "../common/api-namespace";
 import { actionParser } from "./action";
 import { apiParser } from "./api";
-import { apiNamespaceParser } from "./api-namespace";
 import { jobParser } from "./job";
 import { pageParser } from "./page";
 import { queryParser } from "./query";

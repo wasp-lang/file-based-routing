@@ -1,0 +1,29 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "refObject",
+        "importDefault": "AdminPage",
+        "from": "admin/(auth)/(prerender)/page.tsx"
+      },
+      "authRequired": true
+    },
+    {
+      "kind": "route",
+      "name": "AdminRoute",
+      "path": "/admin",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "refObject",
+          "importDefault": "AdminPage",
+          "from": "admin/(auth)/(prerender)/page.tsx"
+        },
+        "authRequired": true
+      },
+      "prerender": true
+    }
+  ]
+}

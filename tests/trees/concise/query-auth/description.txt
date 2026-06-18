@@ -1,0 +1,1 @@
+an (auth) route group marks the query as auth-required

@@ -1,0 +1,13 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "query",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "GetTasksQuery",
+        "from": "queries/getTasks.ts"
+      }
+    }
+  ]
+}

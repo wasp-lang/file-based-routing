@@ -1,7 +1,10 @@
 import * as spec from "@wasp.sh/spec";
 import type { Parser } from "../../in-spec/parsers/common";
 import { RouteType } from "../../in-spec/types";
-import { ALLOWED_EXTENSIONS_GLOB, makeSpecNameFromPath } from "./common";
+import {
+  ALLOWED_EXTENSIONS_GLOB,
+  makeSpecNameFromPath,
+} from "../common/route-path";
 import { discoverOptionsForFile, isOptionsFile } from "./options";
 
 export const jobParser: Parser = {

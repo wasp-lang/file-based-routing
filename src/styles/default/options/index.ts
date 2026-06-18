@@ -4,7 +4,7 @@ import * as z from "zod";
 import type { FullOptions } from "../../../in-files/types";
 import type { Claim } from "../../../in-spec/claims";
 import type { RouteType } from "../../../in-spec/types";
-import { ALLOWED_EXTENSIONS_GLOB } from "../common";
+import { ALLOWED_EXTENSIONS_GLOB } from "../../common/route-path";
 import { ALLOWED_KEYS_FOR_ROUTE_TYPE, FullOptionsSchema } from "./schema";
 
 const OPTIONS_FILE_GLOB = "options" + ALLOWED_EXTENSIONS_GLOB;

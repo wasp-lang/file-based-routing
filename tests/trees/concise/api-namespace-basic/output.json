@@ -1,0 +1,14 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "apiNamespace",
+      "path": "/external",
+      "middlewareConfigFn": {
+        "kind": "refObject",
+        "importDefault": "ExternalApiNamespace",
+        "from": "external/api-namespace.ts"
+      }
+    }
+  ]
+}

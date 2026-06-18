@@ -1,0 +1,1 @@
+ignores files in jobs/ since the concise style defines no job convention

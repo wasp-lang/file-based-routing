@@ -1,0 +1,14 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "query",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "GetSecretsQuery",
+        "from": "queries/(auth)/getSecrets.ts"
+      },
+      "auth": true
+    }
+  ]
+}

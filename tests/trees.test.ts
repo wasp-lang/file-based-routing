@@ -3,6 +3,7 @@ import * as path from "node:path";
 import { it, suite } from "vitest";
 import type { Style } from "../src/in-spec/parsers/common";
 import { fileBased } from "../src/spec";
+import { conciseStyle } from "../src/styles/concise";
 import { defaultStyle } from "../src/styles/default";
 import { makeRef } from "./helpers";
 
@@ -11,6 +12,7 @@ const TREES_FOLDER = path.join(import.meta.dirname, "trees");
 /** Each style has its own set of test trees, scoped under `trees/<style>/`. */
 const STYLES: Record<string, Style> = {
   default: defaultStyle,
+  concise: conciseStyle,
 };
 
 suite.for(Object.entries(STYLES))("style %s", async ([styleName, style]) => {

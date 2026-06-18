@@ -1,0 +1,26 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "refObject",
+        "importDefault": "UsersIdPage",
+        "from": "users/[id]/page.tsx"
+      }
+    },
+    {
+      "kind": "route",
+      "name": "UsersIdRoute",
+      "path": "/users/:id",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "refObject",
+          "importDefault": "UsersIdPage",
+          "from": "users/[id]/page.tsx"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+creates a page and a route for a page file at the root

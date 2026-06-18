@@ -1,0 +1,1 @@
+ignores a sibling page.options file instead of applying it

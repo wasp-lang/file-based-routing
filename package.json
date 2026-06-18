@@ -15,6 +15,10 @@
     "./styles/default": {
       "types": "./dist/styles/default.d.mts",
       "default": "./dist/styles/default.mjs"
+    },
+    "./styles/concise": {
+      "types": "./dist/styles/concise.d.mts",
+      "default": "./dist/styles/concise.mjs"
     }
   },
   "files": [

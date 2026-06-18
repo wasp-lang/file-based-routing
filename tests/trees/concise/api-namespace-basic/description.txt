@@ -1,0 +1,1 @@
+creates an apiNamespace from an api-namespace file

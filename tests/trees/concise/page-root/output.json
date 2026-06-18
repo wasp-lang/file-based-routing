@@ -1,0 +1,26 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "refObject",
+        "importDefault": "RootPage",
+        "from": "page.tsx"
+      }
+    },
+    {
+      "kind": "route",
+      "name": "RootRoute",
+      "path": "/",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "refObject",
+          "importDefault": "RootPage",
+          "from": "page.tsx"
+        }
+      }
+    }
+  ]
+}

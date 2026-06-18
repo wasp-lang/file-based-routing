@@ -1,0 +1,15 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "api",
+      "method": "GET",
+      "path": "/tasks",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "TasksGetApi",
+        "from": "tasks/get.api.ts"
+      }
+    }
+  ]
+}

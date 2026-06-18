@@ -52,7 +52,7 @@ A **style** is a named set of parsers that defines the file conventions. The def
 
 ## Conventions
 
-See [the default style conventions](docs/styles/default.md) for the file layout, spec names, and options files used by the default style.
+See [the default style conventions](docs/styles/default.md) for the file layout, spec names, and options files used by the default style, or [the concise style conventions](docs/styles/concise.md) for a terser variant with no options files or jobs.
 
 ## Package entry points
 
@@ -61,5 +61,6 @@ See [the default style conventions](docs/styles/default.md) for the file layout,
 | `@wasp.sh/file-based-routing/spec` | `fileBased` |
 | `@wasp.sh/file-based-routing` | `options`, the `Options` type, and the options type definitions |
 | `@wasp.sh/file-based-routing/styles/default` | `defaultStyle` and the `Style` type |
+| `@wasp.sh/file-based-routing/styles/concise` | `conciseStyle` |
 
 > The `/spec` entry imports Node's filesystem APIs and is meant to run where your Wasp config is evaluated.

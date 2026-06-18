@@ -1,0 +1,27 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "page",
+      "component": {
+        "kind": "refObject",
+        "importDefault": "BlogPage",
+        "from": "blog/(prerender)/page.tsx"
+      }
+    },
+    {
+      "kind": "route",
+      "name": "BlogRoute",
+      "path": "/blog",
+      "page": {
+        "kind": "page",
+        "component": {
+          "kind": "refObject",
+          "importDefault": "BlogPage",
+          "from": "blog/(prerender)/page.tsx"
+        }
+      },
+      "prerender": true
+    }
+  ]
+}

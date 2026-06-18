@@ -1,0 +1,16 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "api",
+      "method": "POST",
+      "path": "/webhooks",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "WebhooksPostApi",
+        "from": "webhooks/(auth)/post.api.ts"
+      },
+      "auth": true
+    }
+  ]
+}

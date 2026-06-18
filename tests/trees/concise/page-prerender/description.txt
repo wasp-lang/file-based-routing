@@ -1,0 +1,1 @@
+a (prerender) route group prerenders the route without affecting its path
