@@ -1,1 +1,1 @@
-only looks in the top-level `queries` directory
+only looks in the top-level `queries` directory, ignoring non-route-group subdirectories

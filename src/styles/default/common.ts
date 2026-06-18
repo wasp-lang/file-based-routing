@@ -4,9 +4,6 @@ import type { SpecNameCasing } from "../../in-spec/spec-name";
 
 export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
 
-/** Matches a route group: a path component wrapped in parentheses. */
-const ROUTE_GROUP_REGEX = /^\(.*\)$/;
-
 export function makeSpecNameFromRoute(
   pathComponents: readonly string[],
   ctx: ParserContext,
@@ -39,7 +36,7 @@ export function makeSpecNameFromRoute(
 export function makeRouteFromPath(pathComponents: readonly string[]): string {
   const routeComponents = pathComponents
     .slice(0, -1) // Drop the file name; only directories form the route.
-    .filter((component) => !ROUTE_GROUP_REGEX.test(component)); // Drop route groups.
+    .filter((component) => !isRouteGroup(component)); // Drop route groups.
 
   return routePath.normalize(routePath.join("/", ...routeComponents));
 }
@@ -68,4 +65,39 @@ function addExtraParts(name: string, extraNameParts: readonly string[] = []) {
   // Extra parts are joined with spaces so `makeUniqueSpecName`'s case folding
   // merges them into the name (e.g. route `/tasks` + `GET` -> `tasksGet`).
   return [name, ...extraNameParts].join(" ");
+}
+
+/** Matches a route group: a path component wrapped in parentheses. */
+const ROUTE_GROUP_REGEX = /^\(.*\)$/;
+
+/**
+ * A route group is a path component wrapped in parentheses (e.g. `(logged-in)`).
+ * It organizes files without contributing a segment to the route, and works for
+ * every kind of spec, including the route-less ones (queries, actions, jobs).
+ */
+export function isRouteGroup(component: string): boolean {
+  return ROUTE_GROUP_REGEX.test(component);
+}
+
+/**
+ * For file-based specs that live under a reserved top-level directory
+ * (`queries/`, `actions/`, `jobs/`): these specs have no route, so a route group
+ * is their only way to organize files into subdirectories.
+ */
+export function assertOnlyHasRouteGroups(
+  pathComponents: readonly string[],
+): void {
+  // Drop the reserved top-level directory (first) and the file name (last);
+  // every directory in between must be a route group.
+  const hasNonGroupComponents = pathComponents
+    .slice(1, -1)
+    .some((component) => !isRouteGroup(component));
+
+  if (hasNonGroupComponents) {
+    throw new Error(
+      `This kind of spec has no route, so it can only be organized into ` +
+        `subdirectories using route groups (directory names wrapped in ` +
+        `parentheses).`,
+    );
+  }
 }

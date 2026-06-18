@@ -1,0 +1,11 @@
+{
+  "type": "error",
+  "error": {
+    "name": "Error",
+    "message": "Error while parsing file \"actions/admin/banUser.ts\"",
+    "cause": {
+      "name": "Error",
+      "message": "This kind of spec has no route, so it can only be organized into subdirectories using route groups (directory names wrapped in parentheses)."
+    }
+  }
+}

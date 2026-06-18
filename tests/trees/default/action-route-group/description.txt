@@ -1,0 +1,1 @@
+organizes an action inside nested route groups without affecting its name
