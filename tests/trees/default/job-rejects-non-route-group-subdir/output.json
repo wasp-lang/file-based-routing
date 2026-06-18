@@ -5,7 +5,7 @@
     "message": "Error while parsing file \"jobs/scheduled/sendDigest.ts\"",
     "cause": {
       "name": "Error",
-      "message": "This kind of spec has no route, so it can only be organized into subdirectories using route groups (directory names wrapped in parentheses). These directories are not route groups: \"scheduled\"."
+      "message": "This kind of spec has no route, so it can only be organized into subdirectories using route groups (directory names wrapped in parentheses)."
     }
   }
 }

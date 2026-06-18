@@ -23,12 +23,12 @@ describe("assertOnlyHasRouteGroups", () => {
   it("throws for a file nested inside a non-group directory", () => {
     expect(() =>
       assertOnlyHasRouteGroups(["queries", "nested", "deep.ts"]),
-    ).toThrow(/"nested"/);
+    ).toThrow(/route group/);
   });
 
-  it("throws and reports the non-group directory in a partially-grouped path", () => {
+  it("throws when only some intermediate directories are route groups", () => {
     expect(() =>
       assertOnlyHasRouteGroups(["queries", "(admin)", "sub", "deep.ts"]),
-    ).toThrow(/"sub"/);
+    ).toThrow(/route group/);
   });
 });

@@ -82,25 +82,22 @@ export function isRouteGroup(component: string): boolean {
 /**
  * For file-based specs that live under a reserved top-level directory
  * (`queries/`, `actions/`, `jobs/`): these specs have no route, so a route group
- * is their only way to organize files into subdirectories. Throws an explanatory
- * error if any directory between the reserved directory and the file is not a
- * route group, instead of silently skipping the file.
+ * is their only way to organize files into subdirectories.
  */
 export function assertOnlyHasRouteGroups(
   pathComponents: readonly string[],
 ): void {
   // Drop the reserved top-level directory (first) and the file name (last);
   // every directory in between must be a route group.
-  const nonGroupDirs = pathComponents
+  const hasNonGroupComponents = pathComponents
     .slice(1, -1)
-    .filter((component) => !isRouteGroup(component));
+    .some((component) => !isRouteGroup(component));
 
-  if (nonGroupDirs.length > 0) {
-    const offending = nonGroupDirs.map((dir) => `"${dir}"`).join(", ");
+  if (hasNonGroupComponents) {
     throw new Error(
       `This kind of spec has no route, so it can only be organized into ` +
         `subdirectories using route groups (directory names wrapped in ` +
-        `parentheses). These directories are not route groups: ${offending}.`,
+        `parentheses).`,
     );
   }
 }
