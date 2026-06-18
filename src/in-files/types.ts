@@ -9,7 +9,13 @@ export type JobOptions = SetOptional<
   NonNullable<Parameters<typeof spec.job>[1]>,
   "executor"
 >;
-export type ApiOptions = NonNullable<Parameters<typeof spec.api>[3]>;
+// `middlewareConfigFn` is omitted because it's a `ref` that can't be
+// effectively referenced from an options file.
+// https://github.com/wasp-lang/file-based-routing/issues/18
+export type ApiOptions = Omit<
+  NonNullable<Parameters<typeof spec.api>[3]>,
+  "middlewareConfigFn"
+>;
 
 export interface FullOptions {
   route?: RouteOptions;

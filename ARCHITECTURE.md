@@ -132,8 +132,6 @@ It's an adaptation of the Next.js App Router conventions, with a few additions f
 
 The only caveat is that options on a spec element are not defined as `export const options = { ... }` in the route file itself (as it would be in Next.js), but rather in a sibling `*.options.ts` file; so we avoid importing client-side code when parsing the files.
 
-Options files can also have a `.wasp.ts` extension (the glob is `options{,.wasp}` in `src/styles/default/options/index.ts`), and they'll be handled accordingly by Wasp, e.g. so `with { type: "ref" }` imports get transformed (see [#18](https://github.com/wasp-lang/file-based-routing/issues/18)).
-
 ## Testing
 
 Two layers, run with Vitest:

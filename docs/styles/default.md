@@ -145,5 +145,3 @@ export default options({
   route: { lazy: true },
 });
 ```
-
-Options files can also have a `.wasp.ts` extension (`page.options.wasp.ts`, `api.post.options.wasp.ts`, ...) and they'll be handled accordingly by Wasp, e.g. so `with { type: "ref" }` imports get transformed.
