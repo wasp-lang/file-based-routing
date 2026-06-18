@@ -33,7 +33,7 @@ export const queryParser: Parser = {
 
     const specQuery = spec.query(
       ctx.ref({
-        importDefault: baseSpecName + "Query",
+        importDefault: baseSpecName,
         from: file.absFilePath,
       }),
       options?.value.query,

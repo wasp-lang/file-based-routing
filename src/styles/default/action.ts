@@ -33,7 +33,7 @@ export const actionParser: Parser = {
 
     const specAction = spec.action(
       ctx.ref({
-        importDefault: baseSpecName + "Action",
+        importDefault: baseSpecName,
         from: file.absFilePath,
       }),
       options?.value.action,
