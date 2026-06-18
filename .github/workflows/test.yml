@@ -74,3 +74,17 @@ jobs:
 
       - run: npm ci
       - run: npm test
+
+  publish-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      - uses: actions/setup-node@v6
+        with:
+          cache: npm
+          package-manager-cache: true
+
+      - run: npm ci
+      - run: npm run build
+      - run: npx pkg-pr-new publish
