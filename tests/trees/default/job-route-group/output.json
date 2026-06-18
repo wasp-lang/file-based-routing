@@ -1,0 +1,14 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "job",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "sendDigestJob",
+        "from": "jobs/(scheduled)/sendDigest.ts"
+      },
+      "executor": "PgBoss"
+    }
+  ]
+}

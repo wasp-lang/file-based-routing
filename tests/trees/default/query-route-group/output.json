@@ -1,0 +1,13 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "query",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "getUsersQuery",
+        "from": "queries/(admin)/getUsers.ts"
+      }
+    }
+  ]
+}

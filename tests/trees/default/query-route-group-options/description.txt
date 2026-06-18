@@ -1,0 +1,1 @@
+finds an options file sibling to a query nested in a route group

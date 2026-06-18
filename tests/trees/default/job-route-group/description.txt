@@ -1,0 +1,1 @@
+organizes a job inside a route group without affecting its name
