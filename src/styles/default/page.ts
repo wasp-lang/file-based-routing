@@ -14,6 +14,7 @@ export const pageParser: Parser = {
     const { route, baseSpecName } = makeSpecNameFromRoute(
       transformedPathComponents,
       ctx,
+      { casing: "PascalCase" },
     );
 
     const options = await discoverOptionsForFile(

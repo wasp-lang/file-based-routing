@@ -28,7 +28,7 @@ export interface ParserFile {
 
 export interface ParserContext {
   ref: typeof spec.ref;
-  makeUniqueSpecName: (base: string, casing?: SpecNameCasing) => string;
+  makeUniqueSpecName: (base: string, casing: SpecNameCasing) => string;
 }
 
 export interface ParseResult {

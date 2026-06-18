@@ -13,7 +13,7 @@ export function makeSpecNameFromRoute(
   {
     extraNameParts,
     casing,
-  }: { extraNameParts?: readonly string[]; casing?: SpecNameCasing } = {},
+  }: { extraNameParts?: readonly string[]; casing: SpecNameCasing },
 ) {
   const route = makeRouteFromPath(pathComponents);
 
@@ -50,7 +50,7 @@ export function makeSpecNameFromPath(
   {
     extraNameParts,
     casing,
-  }: { extraNameParts?: readonly string[]; casing?: SpecNameCasing } = {},
+  }: { extraNameParts?: readonly string[]; casing: SpecNameCasing },
 ) {
   // biome-ignore lint/style/noNonNullAssertion: a path always has at least one component
   const fileName = pathComponents.at(-1)!;
