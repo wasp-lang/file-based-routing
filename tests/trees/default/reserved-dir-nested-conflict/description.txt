@@ -1,1 +1,1 @@
-rejects a file nested inside a reserved directory like `queries`
+rejects a page placed in a route group inside the reserved `queries` directory

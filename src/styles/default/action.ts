@@ -3,7 +3,7 @@ import type { Parser } from "../../in-spec/parsers/common";
 import { RouteType } from "../../in-spec/types";
 import {
   ALLOWED_EXTENSIONS_GLOB,
-  isReachableThroughRouteGroups,
+  assertOnlyHasRouteGroups,
   makeSpecNameFromPath,
 } from "./common";
 import { discoverOptionsForFile, isOptionsFile } from "./options";
@@ -18,9 +18,7 @@ export const actionParser: Parser = {
     }
 
     // Files may be nested in route groups, but not in any other subdirectory.
-    if (!isReachableThroughRouteGroups(file.pathComponents)) {
-      return undefined;
-    }
+    assertOnlyHasRouteGroups(file.pathComponents);
 
     const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
       file.pathComponents,

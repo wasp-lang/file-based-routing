@@ -4,33 +4,6 @@ import type { SpecNameCasing } from "../../in-spec/spec-name";
 
 export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
 
-/** Matches a route group: a path component wrapped in parentheses. */
-const ROUTE_GROUP_REGEX = /^\(.*\)$/;
-
-/**
- * A route group is a path component wrapped in parentheses (e.g. `(logged-in)`).
- * It organizes files without contributing a segment to the route, and works for
- * every kind of spec, including the route-less ones (queries, actions, jobs).
- */
-export function isRouteGroup(component: string): boolean {
-  return ROUTE_GROUP_REGEX.test(component);
-}
-
-/**
- * For file-based specs that live under a reserved top-level directory
- * (`queries/`, `actions/`, `jobs/`): a file is only matched when every directory
- * between the reserved directory and the file is a route group. These specs have
- * no route, so a route group is their only way to organize files into
- * subdirectories; a non-group subdirectory means the file is not matched.
- */
-export function isReachableThroughRouteGroups(
-  pathComponents: readonly string[],
-): boolean {
-  // Drop the reserved top-level directory (first) and the file name (last);
-  // every remaining directory must be a route group.
-  return pathComponents.slice(1, -1).every(isRouteGroup);
-}
-
 export function makeSpecNameFromRoute(
   pathComponents: readonly string[],
   ctx: ParserContext,
@@ -92,4 +65,42 @@ function addExtraParts(name: string, extraNameParts: readonly string[] = []) {
   // Extra parts are joined with spaces so `makeUniqueSpecName`'s case folding
   // merges them into the name (e.g. route `/tasks` + `GET` -> `tasksGet`).
   return [name, ...extraNameParts].join(" ");
+}
+
+/** Matches a route group: a path component wrapped in parentheses. */
+const ROUTE_GROUP_REGEX = /^\(.*\)$/;
+
+/**
+ * A route group is a path component wrapped in parentheses (e.g. `(logged-in)`).
+ * It organizes files without contributing a segment to the route, and works for
+ * every kind of spec, including the route-less ones (queries, actions, jobs).
+ */
+export function isRouteGroup(component: string): boolean {
+  return ROUTE_GROUP_REGEX.test(component);
+}
+
+/**
+ * For file-based specs that live under a reserved top-level directory
+ * (`queries/`, `actions/`, `jobs/`): these specs have no route, so a route group
+ * is their only way to organize files into subdirectories. Throws an explanatory
+ * error if any directory between the reserved directory and the file is not a
+ * route group, instead of silently skipping the file.
+ */
+export function assertOnlyHasRouteGroups(
+  pathComponents: readonly string[],
+): void {
+  // Drop the reserved top-level directory (first) and the file name (last);
+  // every directory in between must be a route group.
+  const nonGroupDirs = pathComponents
+    .slice(1, -1)
+    .filter((component) => !isRouteGroup(component));
+
+  if (nonGroupDirs.length > 0) {
+    const offending = nonGroupDirs.map((dir) => `"${dir}"`).join(", ");
+    throw new Error(
+      `This kind of spec has no route, so it can only be organized into ` +
+        `subdirectories using route groups (directory names wrapped in ` +
+        `parentheses). These directories are not route groups: ${offending}.`,
+    );
+  }
 }

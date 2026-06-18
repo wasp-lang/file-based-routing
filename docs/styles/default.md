@@ -6,14 +6,14 @@ The default style (`@wasp.sh/file-based-routing/styles/default`) is the set of c
 
 All paths below are relative to `baseDir` (default `src/app`). Files may use any of these extensions: `.ts`, `.tsx`, `.js`, `.jsx`, `.mjs`, `.cjs`, `.mts`, `.cts`. Files with other extensions are ignored.
 
-| File pattern             | Produces         | Looked up                |
-| ------------------------ | ---------------- | ------------------------ |
-| `**/page.{ext}`          | `page` + `route` | anywhere                 |
-| `**/<method>.api.{ext}`  | `api`            | anywhere                 |
-| `**/api-namespace.{ext}` | `apiNamespace`   | anywhere                 |
-| `queries/**/*.{ext}`     | `query`          | `queries/`, route groups |
-| `actions/**/*.{ext}`     | `action`         | `actions/`, route groups |
-| `jobs/**/*.{ext}`        | `job`            | `jobs/`, route groups    |
+| File pattern | Produces | Looked up |
+| --- | --- | --- |
+| `**/page.{ext}` | `page` + `route` | anywhere |
+| `**/<method>.api.{ext}` | `api` | anywhere |
+| `**/api-namespace.{ext}` | `apiNamespace` | anywhere |
+| `queries/**/*.{ext}` | `query` | top-level `queries/`, or nested in route groups |
+| `actions/**/*.{ext}` | `action` | top-level `actions/`, or nested in route groups |
+| `jobs/**/*.{ext}` | `job` | top-level `jobs/`, or nested in route groups |
 
 ### Pages and routes
 
@@ -42,7 +42,7 @@ src/app/
   files/[...rest]/page.tsx     ->  route "/files/*"
 ```
 
-A directory wrapped in parentheses is a **route group**: it organizes files without contributing a segment to the route. This works for every kind of spec: pages, APIs, and namespaces (where it drops out of the route), as well as queries, actions, and jobs (which have no route, so it only organizes the files).
+A directory wrapped in parentheses is a **route group**: it organizes files without contributing a segment to the route. This works for every kind of spec.
 
 ```
 src/app/
@@ -73,7 +73,7 @@ src/app/
 
 ### Queries, actions, and jobs
 
-These are looked up in the `queries/`, `actions/`, and `jobs/` directories. The function is the file's default export. Since they have no route, only the file name names the spec; subdirectories are not allowed, except for route groups, which organize files without affecting the name.
+These are looked up in the top-level `queries/`, `actions/`, and `jobs/` directories. The function is the file's default export. Since they have no route, only the file name names the spec. You may still organize files into route groups (directories wrapped in parentheses), which don't affect the name; any other subdirectory is an error, so a misplaced file fails loudly instead of being silently skipped.
 
 ```
 src/app/

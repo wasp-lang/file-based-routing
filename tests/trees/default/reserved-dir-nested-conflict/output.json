@@ -2,6 +2,6 @@
   "type": "error",
   "error": {
     "name": "Error",
-    "message": "Conflicting files detected:\n  - File \"queries/nested/page.tsx\" can be interpreted as either a \"page\" spec or a \"query\" spec."
+    "message": "Conflicting files detected:\n  - File \"queries/(internal)/page.tsx\" can be interpreted as either a \"page\" spec or a \"query\" spec."
   }
 }
