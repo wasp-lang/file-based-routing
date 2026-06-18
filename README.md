@@ -58,8 +58,8 @@ See [the default style conventions](docs/styles/default.md) for the file layout,
 
 | Import | Exports |
 | --- | --- |
-| `@wasp.sh/file-based-routing/spec` | `fileBased` |
+| `@wasp.sh/file-based-routing/spec` | `fileBased` and the `Style` type |
 | `@wasp.sh/file-based-routing` | `options`, the `Options` type, and the options type definitions |
-| `@wasp.sh/file-based-routing/styles/default` | `defaultStyle` and the `Style` type |
+| `@wasp.sh/file-based-routing/styles/default` | `defaultStyle` |
 
 > The `/spec` entry imports Node's filesystem APIs and is meant to run where your Wasp config is evaluated.
