@@ -27,7 +27,7 @@ export const jobParser: Parser = {
 
     const specJob = spec.job(
       ctx.ref({
-        importDefault: baseSpecName + "Job",
+        importDefault: baseSpecName,
         from: file.absFilePath,
       }),
       { executor: "PgBoss", ...options?.value.job },

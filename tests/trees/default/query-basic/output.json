@@ -5,7 +5,7 @@
       "kind": "query",
       "fn": {
         "kind": "refObject",
-        "importDefault": "getTasksQuery",
+        "importDefault": "getTasks",
         "from": "queries/getTasks.ts"
       }
     }
