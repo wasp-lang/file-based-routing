@@ -6,7 +6,7 @@
       "path": "/api",
       "middlewareConfigFn": {
         "kind": "refObject",
-        "importDefault": "ApiApiNamespace",
+        "importDefault": "apiApiNamespace",
         "from": "api/api-namespace.ts"
       }
     }

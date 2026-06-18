@@ -7,7 +7,7 @@
       "path": "/dashboard",
       "fn": {
         "kind": "refObject",
-        "importDefault": "DashboardGetApi",
+        "importDefault": "dashboardGetApi",
         "from": "dashboard/get.api.ts"
       }
     },
@@ -16,7 +16,7 @@
       "path": "/dashboard",
       "middlewareConfigFn": {
         "kind": "refObject",
-        "importDefault": "DashboardApiNamespace",
+        "importDefault": "dashboardApiNamespace",
         "from": "dashboard/api-namespace.ts"
       }
     }

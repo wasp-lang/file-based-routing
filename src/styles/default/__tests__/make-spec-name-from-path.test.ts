@@ -13,6 +13,7 @@ describe("makeSpecNameFromPath", () => {
     const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
       ["queries", "getTasks.ts"],
       makeCtx(),
+      { casing: "PascalCase" },
     );
 
     // `fileBaseName` keeps the on-disk name so sibling files (e.g. options)
@@ -22,10 +23,22 @@ describe("makeSpecNameFromPath", () => {
     expect(baseSpecName).toBe("GetTasks");
   });
 
+  it("camel-cases the spec name when requested", () => {
+    const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
+      ["queries", "getTasks.ts"],
+      makeCtx(),
+      { casing: "camelCase" },
+    );
+
+    expect(fileBaseName).toBe("getTasks");
+    expect(baseSpecName).toBe("getTasks");
+  });
+
   it("keeps the original file base name when it diverges from the spec name beyond casing", () => {
     const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
       ["queries", "get-tasks.ts"],
       makeCtx(),
+      { casing: "PascalCase" },
     );
 
     expect(fileBaseName).toBe("get-tasks");
@@ -36,6 +49,7 @@ describe("makeSpecNameFromPath", () => {
     const { fileBaseName } = makeSpecNameFromPath(
       ["queries", "getTasks.options.ts"],
       makeCtx(),
+      { casing: "PascalCase" },
     );
 
     expect(fileBaseName).toBe("getTasks.options");
@@ -45,7 +59,7 @@ describe("makeSpecNameFromPath", () => {
     const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
       ["apis", "webhook.ts"],
       makeCtx(),
-      { extraNameParts: ["POST"] },
+      { extraNameParts: ["POST"], casing: "PascalCase" },
     );
 
     expect(fileBaseName).toBe("webhook");
@@ -55,10 +69,13 @@ describe("makeSpecNameFromPath", () => {
   it("counter-suffixes the spec name on collision but leaves the file base name intact", () => {
     const ctx = makeCtx();
 
-    const first = makeSpecNameFromPath(["queries", "getTasks.ts"], ctx);
+    const first = makeSpecNameFromPath(["queries", "getTasks.ts"], ctx, {
+      casing: "PascalCase",
+    });
     const second = makeSpecNameFromPath(
       ["queries", "archived", "getTasks.ts"],
       ctx,
+      { casing: "PascalCase" },
     );
 
     expect(first.baseSpecName).toBe("GetTasks");

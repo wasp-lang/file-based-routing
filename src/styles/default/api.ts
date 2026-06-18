@@ -33,7 +33,7 @@ export const apiParser: Parser = {
     const { route, baseSpecName } = makeSpecNameFromRoute(
       file.pathComponents,
       ctx,
-      { extraNameParts: [method] },
+      { extraNameParts: [method], casing: "camelCase" },
     );
 
     const options = await discoverOptionsForFile(

@@ -119,12 +119,12 @@ Conflicts are formatted into messages like _Route "GET /tasks" can be generated 
 
 ## Spec-name generation
 
-We use a `specNameMaker` (`src/in-spec/spec-name.ts`), which takes a base name and returns a normalized, unique name. It lowers non-ASCII characters to ASCII (`deburr`: `café` → `cafe`, `españa` -> `espana`) and turns the names into `PascalCase`. It will add numbered suffixes if a similar name was already generated.
+We use a `specNameMaker` (`src/in-spec/spec-name.ts`), which takes a base name and a casing (`PascalCase` or `camelCase`) and returns a normalized, unique name. It lowers non-ASCII characters to ASCII (`deburr`: `café` → `cafe`, `españa` -> `espana`) and cases the name accordingly. It will add numbered suffixes if a similar name was already generated.
 
-In the default style, each parser adds a kind suffix based on their type:
+In the default style, each parser picks a casing and adds a kind suffix based on its type. Pages and routes are `PascalCase`; queries, actions, jobs, apis, and api namespaces are `camelCase` (matching Wasp's conventions):
 
 - `src/app/dashboard/page.tsx` -> `DashboardPage` (page) and `DashboardRoute` (route)
-- `src/app/tasks/get.api.ts` -> `TasksGetApi` (api)
+- `src/app/tasks/get.api.ts` -> `tasksGetApi` (api)
 
 ## The default style
 

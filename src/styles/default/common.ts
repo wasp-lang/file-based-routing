@@ -1,5 +1,6 @@
 import * as routePath from "node:path/posix";
 import type { ParserContext } from "../../in-spec/parsers/common";
+import type { SpecNameCasing } from "../../in-spec/spec-name";
 
 export const ALLOWED_EXTENSIONS_GLOB = ".{m,c,}{t,j}s{,x}";
 
@@ -9,7 +10,10 @@ const ROUTE_GROUP_REGEX = /^\(.*\)$/;
 export function makeSpecNameFromRoute(
   pathComponents: readonly string[],
   ctx: ParserContext,
-  { extraNameParts }: { extraNameParts?: readonly string[] } = {},
+  {
+    extraNameParts,
+    casing,
+  }: { extraNameParts?: readonly string[]; casing: SpecNameCasing },
 ) {
   const route = makeRouteFromPath(pathComponents);
 
@@ -17,6 +21,7 @@ export function makeSpecNameFromRoute(
 
   const uniqueName = ctx.makeUniqueSpecName(
     addExtraParts(name, extraNameParts),
+    casing,
   );
 
   return { route, baseSpecName: uniqueName };
@@ -42,7 +47,10 @@ export function makeRouteFromPath(pathComponents: readonly string[]): string {
 export function makeSpecNameFromPath(
   pathComponents: readonly string[],
   ctx: ParserContext,
-  { extraNameParts }: { extraNameParts?: readonly string[] } = {},
+  {
+    extraNameParts,
+    casing,
+  }: { extraNameParts?: readonly string[]; casing: SpecNameCasing },
 ) {
   // biome-ignore lint/style/noNonNullAssertion: a path always has at least one component
   const fileName = pathComponents.at(-1)!;
@@ -50,13 +58,14 @@ export function makeSpecNameFromPath(
   const fileBaseName = fileName.slice(0, fileName.lastIndexOf("."));
   const uniqueName = ctx.makeUniqueSpecName(
     addExtraParts(fileBaseName, extraNameParts),
+    casing,
   );
 
   return { baseSpecName: uniqueName, fileBaseName };
 }
 
 function addExtraParts(name: string, extraNameParts: readonly string[] = []) {
-  // Extra parts are joined with spaces so `makeUniqueSpecName`'s pascal-casing
-  // folds them into the name (e.g. route `/tasks` + `GET` -> `TasksGet`).
+  // Extra parts are joined with spaces so `makeUniqueSpecName`'s case folding
+  // merges them into the name (e.g. route `/tasks` + `GET` -> `tasksGet`).
   return [name, ...extraNameParts].join(" ");
 }

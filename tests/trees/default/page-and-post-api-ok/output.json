@@ -28,7 +28,7 @@
       "path": "/dashboard",
       "fn": {
         "kind": "refObject",
-        "importDefault": "DashboardPostApi",
+        "importDefault": "dashboardPostApi",
         "from": "dashboard/post.api.ts"
       }
     }

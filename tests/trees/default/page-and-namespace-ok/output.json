@@ -27,7 +27,7 @@
       "path": "/dashboard",
       "middlewareConfigFn": {
         "kind": "refObject",
-        "importDefault": "Dashboard1ApiNamespace",
+        "importDefault": "dashboardApiNamespace",
         "from": "dashboard/api-namespace.ts"
       }
     }

@@ -1,5 +1,6 @@
 import type * as spec from "@wasp.sh/spec";
 import type { Claim } from "../claims";
+import type { SpecNameCasing } from "../spec-name";
 import type { RouteType } from "../types";
 
 export interface Parser {
@@ -27,7 +28,7 @@ export interface ParserFile {
 
 export interface ParserContext {
   ref: typeof spec.ref;
-  makeUniqueSpecName: (base: string) => string;
+  makeUniqueSpecName: (base: string, casing: SpecNameCasing) => string;
 }
 
 export interface ParseResult {

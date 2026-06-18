@@ -7,7 +7,7 @@
       "path": "/tasks",
       "fn": {
         "kind": "refObject",
-        "importDefault": "TasksGetApi",
+        "importDefault": "tasksGetApi",
         "from": "tasks/get.api.ts"
       }
     },
@@ -17,7 +17,7 @@
       "path": "/tasks",
       "fn": {
         "kind": "refObject",
-        "importDefault": "TasksPostApi",
+        "importDefault": "tasksPostApi",
         "from": "tasks/post.api.ts"
       }
     }

@@ -26,7 +26,7 @@
       "kind": "query",
       "fn": {
         "kind": "refObject",
-        "importDefault": "GetTasksQuery",
+        "importDefault": "getTasksQuery",
         "from": "queries/getTasks.ts"
       }
     },
@@ -34,7 +34,7 @@
       "kind": "action",
       "fn": {
         "kind": "refObject",
-        "importDefault": "CreateTaskAction",
+        "importDefault": "createTaskAction",
         "from": "actions/createTask.ts"
       }
     },
@@ -42,7 +42,7 @@
       "kind": "job",
       "fn": {
         "kind": "refObject",
-        "importDefault": "SendDigestJob",
+        "importDefault": "sendDigestJob",
         "from": "jobs/sendDigest.ts"
       },
       "executor": "PgBoss"
@@ -53,7 +53,7 @@
       "path": "/webhooks",
       "fn": {
         "kind": "refObject",
-        "importDefault": "WebhooksPostApi",
+        "importDefault": "webhooksPostApi",
         "from": "webhooks/post.api.ts"
       }
     },
@@ -62,7 +62,7 @@
       "path": "/external",
       "middlewareConfigFn": {
         "kind": "refObject",
-        "importDefault": "ExternalApiNamespace",
+        "importDefault": "externalApiNamespace",
         "from": "external/api-namespace.ts"
       }
     }

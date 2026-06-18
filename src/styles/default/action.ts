@@ -16,6 +16,7 @@ export const actionParser: Parser = {
     const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
       file.pathComponents,
       ctx,
+      { casing: "camelCase" },
     );
 
     const options = await discoverOptionsForFile(
