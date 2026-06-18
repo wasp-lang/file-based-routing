@@ -73,7 +73,7 @@ src/app/
 
 ### Queries, actions, and jobs
 
-These are looked up in the top-level `queries/`, `actions/`, and `jobs/` directories. The function is the file's default export. Since they have no route, only the file name names the spec. You may still organize files into route groups (directories wrapped in parentheses), which don't affect the name; any other subdirectory is an error, so a misplaced file fails loudly instead of being silently skipped.
+These are looked up in the top-level `queries/`, `actions/`, and `jobs/` directories. The function is the file's default export. Since they have no route, only the file name names the spec. You may still organize files into route groups (directories wrapped in parentheses), which don't affect the name.
 
 ```
 src/app/
