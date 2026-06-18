@@ -2,6 +2,7 @@
 
 Thanks for your interest in contributing to `@wasp.sh/file-based-routing`.
 
+<!-- prettier-ignore -->
 > [!WARNING]
 > This package is unstable and unpublished. Expect things to change.
 
@@ -35,18 +36,18 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for how the package is structured and how
 Run these before opening a pull request. CI runs the same checks (see `.github/workflows/test.yml`).
 
 ```bash
-npm test            # run the test suite (Vitest)
-npm run typecheck   # tsc
-npm run lint        # Biome
+npm test             # run the test suite (Vitest)
+npm run typecheck    # tsc
+npm run lint         # Biome
 npm run format:check # Prettier
-npm run build       # tsdown
+npm run build        # tsdown
 ```
 
 To auto-fix issues:
 
 ```bash
-npm run format      # apply Prettier
-npm run lint:fix    # apply Biome fixes
+npm run format   # apply Prettier
+npm run lint:fix # apply Biome fixes
 ```
 
 ## Tests

@@ -34,13 +34,13 @@ The core idea: a `Style` is a bag of `Parser`s. Each parser owns a glob, turns m
 
 ## Source layout
 
-The `src/` tree is split by *where the code conceptually lives* rather than by feature:
+The `src/` tree is split by _where the code conceptually lives_ rather than by feature:
 
 | Directory | Role |
 | --- | --- |
 | `src/spec.ts` | The `fileBased` orchestrator. The `/spec` entry point. Touches the filesystem. |
 | `src/index.ts` | The main entry point. Exports the `options()` helper and the `Options` types. |
-| `src/in-files/` | Types for things that live in the *user's* files (the shape of options files). |
+| `src/in-files/` | Types for things that live in the _user's_ files (the shape of options files). |
 | `src/in-spec/` | The engine: parser/style interfaces, the claims system, and spec-name generation. Style-agnostic. |
 | `src/styles/default/` | The built-in convention set: one parser per route kind, plus options discovery. |
 
@@ -115,13 +115,14 @@ This design lets parsers express intent declaratively rather than coordinating w
 - An api namespace claims only its file, not a route, so it may share a path with a page or apis.
 - The query/action/job parsers statically claim their whole directory tree (`queries/**`, etc.), so a stray file in those directories is attributed to the right parser.
 
-Conflicts are formatted into messages like *Route "GET /tasks" can be generated from either a "page" spec or a "api" spec (from "...")*.
+Conflicts are formatted into messages like _Route "GET /tasks" can be generated from either a "page" spec or a "api" spec (from "...")_.
 
 ## Spec-name generation
 
 We use a `specNameMaker` (`src/in-spec/spec-name.ts`), which takes a base name and returns a normalized, unique name. It lowers non-ASCII characters to ASCII (`deburr`: `café` → `cafe`, `españa` -> `espana`) and turns the names into `PascalCase`. It will add numbered suffixes if a similar name was already generated.
 
 In the default style, each parser adds a kind suffix based on their type:
+
 - `src/app/dashboard/page.tsx` -> `DashboardPage` (page) and `DashboardRoute` (route)
 - `src/app/tasks/get.api.ts` -> `TasksGetApi` (api)
 
