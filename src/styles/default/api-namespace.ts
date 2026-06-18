@@ -9,6 +9,7 @@ export const apiNamespaceParser: Parser = {
     const { route, baseSpecName } = makeSpecNameFromRoute(
       file.pathComponents,
       ctx,
+      { casing: "camelCase" },
     );
 
     const specApiNamespace = spec.apiNamespace(route, {

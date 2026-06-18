@@ -77,28 +77,28 @@ These are looked up only in the **top-level** `queries/`, `actions/`, and `jobs/
 
 ```
 src/app/
-  queries/getTasks.ts          ->  query   (GetTasksQuery)
-  actions/createTask.ts        ->  action  (CreateTaskAction)
-  jobs/sendDigest.ts           ->  job     (SendDigestJob, executor "PgBoss")
+  queries/getTasks.ts          ->  query   (getTasksQuery)
+  actions/createTask.ts        ->  action  (createTaskAction)
+  jobs/sendDigest.ts           ->  job     (sendDigestJob, executor "PgBoss")
 ```
 
 Jobs default to the `PgBoss` executor; override it via an options file.
 
 ## Spec names
 
-Each declaration gets a generated name derived from its route path or file name, `PascalCased` and converted to English characters (`café` -> `Cafe`), and suffixed by kind:
+Each declaration gets a generated name derived from its route path or file name, converted to English characters (`café` -> `Cafe`), cased by kind, and suffixed by kind. Pages and routes are `PascalCased`; queries, actions, jobs, APIs, and API namespaces are `camelCased` to match Wasp's conventions:
 
 | Kind          | Suffix         | Example                |
 | ------------- | -------------- | ---------------------- |
 | Page          | `Page`         | `SettingsProfilePage`  |
 | Route         | `Route`        | `SettingsProfileRoute` |
-| Query         | `Query`        | `GetTasksQuery`        |
-| Action        | `Action`       | `CreateTaskAction`     |
-| Job           | `Job`          | `SendDigestJob`        |
-| API           | `Api`          | `WebhooksPostApi`      |
-| API namespace | `ApiNamespace` | `ExternalApiNamespace` |
+| Query         | `Query`        | `getTasksQuery`        |
+| Action        | `Action`       | `createTaskAction`     |
+| Job           | `Job`          | `sendDigestJob`        |
+| API           | `Api`          | `webhooksPostApi`      |
+| API namespace | `ApiNamespace` | `externalApiNamespace` |
 
-The root path maps to the name `Root` (`RootPage`, `RootRoute`). For APIs the method is folded into the name so methods sharing a path get distinct names (`TasksGetApi`, `TasksPostApi`). If two names still collide after PascalCasing, a numeric suffix is appended (`MyPagePage`, `MyPagePage1`).
+The root path maps to the name `Root` (`RootPage`, `RootRoute`, `rootGetApi`). For APIs the method is folded into the name so methods sharing a path get distinct names (`tasksGetApi`, `tasksPostApi`). If two names still collide after casing, a numeric suffix is appended (`MyPagePage`, `MyPagePage1`).
 
 ## Options files
 

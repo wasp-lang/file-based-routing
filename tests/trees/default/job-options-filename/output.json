@@ -5,7 +5,7 @@
       "kind": "job",
       "fn": {
         "kind": "refObject",
-        "importDefault": "WeeklyReportJob",
+        "importDefault": "weeklyReportJob",
         "from": "jobs/weekly-report.ts"
       },
       "executor": "PgBoss",

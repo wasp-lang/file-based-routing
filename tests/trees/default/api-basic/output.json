@@ -7,7 +7,7 @@
       "path": "/foo/bar",
       "fn": {
         "kind": "refObject",
-        "importDefault": "FooBarGetApi",
+        "importDefault": "fooBarGetApi",
         "from": "foo/bar/get.api.ts"
       }
     }

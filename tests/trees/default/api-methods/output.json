@@ -7,7 +7,7 @@
       "path": "/a",
       "fn": {
         "kind": "refObject",
-        "importDefault": "AGetApi",
+        "importDefault": "aGetApi",
         "from": "a/get.api.ts"
       }
     },
@@ -17,7 +17,7 @@
       "path": "/b",
       "fn": {
         "kind": "refObject",
-        "importDefault": "BPostApi",
+        "importDefault": "bPostApi",
         "from": "b/post.api.ts"
       }
     },
@@ -27,7 +27,7 @@
       "path": "/c",
       "fn": {
         "kind": "refObject",
-        "importDefault": "CPutApi",
+        "importDefault": "cPutApi",
         "from": "c/put.api.ts"
       }
     },
@@ -37,7 +37,7 @@
       "path": "/d",
       "fn": {
         "kind": "refObject",
-        "importDefault": "DDeleteApi",
+        "importDefault": "dDeleteApi",
         "from": "d/delete.api.ts"
       }
     },
@@ -47,7 +47,7 @@
       "path": "/e",
       "fn": {
         "kind": "refObject",
-        "importDefault": "EAllApi",
+        "importDefault": "eAllApi",
         "from": "e/all.api.ts"
       }
     }

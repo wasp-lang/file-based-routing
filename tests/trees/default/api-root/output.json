@@ -7,7 +7,7 @@
       "path": "/",
       "fn": {
         "kind": "refObject",
-        "importDefault": "RootGetApi",
+        "importDefault": "rootGetApi",
         "from": "get.api.ts"
       }
     }

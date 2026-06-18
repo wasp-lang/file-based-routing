@@ -2,11 +2,18 @@ import { describe, expect, it } from "vitest";
 import { specNameMaker } from "../in-spec/spec-name";
 
 describe("specNameMaker", () => {
-  it("pascal-cases the base name", () => {
+  it("pascal-cases the base name by default", () => {
     const make = specNameMaker();
 
     expect(make("/my-page")).toBe("MyPage");
     expect(make("/settings/profile")).toBe("SettingsProfile");
+  });
+
+  it("camel-cases the base name when requested", () => {
+    const make = specNameMaker();
+
+    expect(make("/my-page", "camelCase")).toBe("myPage");
+    expect(make("/settings/profile", "camelCase")).toBe("settingsProfile");
   });
 
   it("deburrs non-ASCII characters", () => {

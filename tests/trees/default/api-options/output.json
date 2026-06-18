@@ -7,7 +7,7 @@
       "path": "/things",
       "fn": {
         "kind": "refObject",
-        "importDefault": "ThingsGetApi",
+        "importDefault": "thingsGetApi",
         "from": "things/get.api.ts"
       },
       "auth": false

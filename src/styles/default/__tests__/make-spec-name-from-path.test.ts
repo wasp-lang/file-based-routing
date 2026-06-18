@@ -22,6 +22,17 @@ describe("makeSpecNameFromPath", () => {
     expect(baseSpecName).toBe("GetTasks");
   });
 
+  it("camel-cases the spec name when requested", () => {
+    const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
+      ["queries", "getTasks.ts"],
+      makeCtx(),
+      { casing: "camelCase" },
+    );
+
+    expect(fileBaseName).toBe("getTasks");
+    expect(baseSpecName).toBe("getTasks");
+  });
+
   it("keeps the original file base name when it diverges from the spec name beyond casing", () => {
     const { baseSpecName, fileBaseName } = makeSpecNameFromPath(
       ["queries", "get-tasks.ts"],

@@ -6,7 +6,7 @@
       "path": "/external",
       "middlewareConfigFn": {
         "kind": "refObject",
-        "importDefault": "ExternalApiNamespace",
+        "importDefault": "externalApiNamespace",
         "from": "external/api-namespace.ts"
       }
     }
