@@ -40,10 +40,7 @@ export function isOptionsFile(filePath: string) {
   // Matches both bare `options.*` files and `<baseName>.options.*` files.
   // Match against the basename so dot-prefixed ancestor directories (e.g.
   // `.conductor`, `.worktrees`), which `**` does not traverse, don't break it.
-  return path.matchesGlob(
-    path.basename(filePath),
-    "{,*.}" + OPTIONS_FILE_GLOB,
-  );
+  return path.matchesGlob(path.basename(filePath), "{,*.}" + OPTIONS_FILE_GLOB);
 }
 
 function makeOptionsGlob(baseName = "") {
