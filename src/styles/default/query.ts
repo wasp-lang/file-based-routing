@@ -23,6 +23,7 @@ export const queryParser: Parser = {
       file.absFilePath,
       RouteType.Query,
       { baseName: fileBaseName },
+      ctx,
     );
 
     const specQuery = spec.query(

@@ -1,0 +1,1 @@
+applies `api` options whose values come from `with { type: "ref" }` imports

@@ -1,10 +1,12 @@
+import type * as spec from "@wasp.sh/spec";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
-import * as z from "zod";
 import type { FullOptions } from "../../../in-files/types";
 import type { Claim } from "../../../in-spec/claims";
+import type { ParserContext } from "../../../in-spec/parsers/common";
 import type { RouteType } from "../../../in-spec/types";
 import { ALLOWED_EXTENSIONS_GLOB } from "../common";
+import { loadOptionsFileDefaultExport } from "./load-options-file";
 import { ALLOWED_KEYS_FOR_ROUTE_TYPE, FullOptionsSchema } from "./schema";
 
 const OPTIONS_FILE_GLOB = "options" + ALLOWED_EXTENSIONS_GLOB;
@@ -13,6 +15,7 @@ export async function discoverOptionsForFile(
   absBaseFilePath: string,
   routeType: RouteType,
   { baseName }: { baseName: string },
+  ctx: Pick<ParserContext, "ref">,
 ): Promise<
   { value: Partial<FullOptions>; claims: readonly Claim[] } | undefined
 > {
@@ -31,7 +34,7 @@ export async function discoverOptionsForFile(
   const absOptionsFilePath = path.resolve(routeBaseDir, optionsFilePath);
 
   return {
-    value: await importOptions(absOptionsFilePath, routeType),
+    value: await importOptions(absOptionsFilePath, routeType, ctx.ref),
     claims: [{ type: "file", path: absOptionsFilePath }],
   };
 }
@@ -51,16 +54,13 @@ function makeOptionsGlob(baseName = "") {
 export async function importOptions(
   absOptionsFilePath: string,
   routeType: RouteType,
+  ref: typeof spec.ref,
 ) {
   const RouteOptionsSchema = FullOptionsSchema.pick(
     ALLOWED_KEYS_FOR_ROUTE_TYPE[routeType],
   ).strict();
 
-  const FileExportsSchema = z.object({ default: RouteOptionsSchema });
-
-  const { default: options } = FileExportsSchema.parse(
-    await import(absOptionsFilePath),
+  return RouteOptionsSchema.parse(
+    await loadOptionsFileDefaultExport(absOptionsFilePath, ref),
   );
-
-  return options;
 }

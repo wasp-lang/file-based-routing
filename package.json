@@ -35,7 +35,10 @@
   },
   "dependencies": {
     "es-toolkit": "^1.47.0",
+    "magic-string": "^0.30.21",
+    "rolldown": "^1.0.0",
     "type-fest": "^5.7.0",
+    "unrun": "^0.3.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

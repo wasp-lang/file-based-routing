@@ -21,6 +21,7 @@ export const pageParser: Parser = {
       file.absFilePath,
       RouteType.Page,
       { baseName: "page" },
+      ctx,
     );
 
     const specPage = spec.page(

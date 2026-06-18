@@ -40,6 +40,7 @@ export const apiParser: Parser = {
       file.absFilePath,
       RouteType.Api,
       { baseName: `api.${method.toLowerCase()}` },
+      ctx,
     );
 
     const specApi = spec.api(

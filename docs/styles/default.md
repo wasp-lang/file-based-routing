@@ -144,3 +144,19 @@ export default options({
   route: { lazy: true },
 });
 ```
+
+### Reference imports in options files
+
+To pass a function or other value from your app as an option (e.g. an API's `middlewareConfigFn`), import it with `with { type: "ref" }`. Just like in a `*.wasp.ts` file, the import is turned into a Wasp ref instead of being executed:
+
+```ts
+// src/app/payments-webhook/api.post.options.ts
+import { middlewareConfigFn } from "./middleware" with { type: "ref" };
+
+export default {
+  api: {
+    entities: ["User"],
+    middlewareConfigFn,
+  },
+};
+```

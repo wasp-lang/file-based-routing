@@ -23,6 +23,7 @@ export const jobParser: Parser = {
       file.absFilePath,
       RouteType.Job,
       { baseName: fileBaseName },
+      ctx,
     );
 
     const specJob = spec.job(

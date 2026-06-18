@@ -1,0 +1,24 @@
+{
+  "type": "success",
+  "result": [
+    {
+      "kind": "api",
+      "method": "POST",
+      "path": "/payments-webhook",
+      "fn": {
+        "kind": "refObject",
+        "importDefault": "paymentsWebhookPostApi",
+        "from": "payments-webhook/post.api.ts"
+      },
+      "entities": [
+        "User"
+      ],
+      "middlewareConfigFn": {
+        "kind": "refObject",
+        "import": "middlewareConfigFn",
+        "alias": "middlewareConfigFn",
+        "from": "payments-webhook/middleware"
+      }
+    }
+  ]
+}

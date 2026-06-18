@@ -23,6 +23,7 @@ export const actionParser: Parser = {
       file.absFilePath,
       RouteType.Action,
       { baseName: fileBaseName },
+      ctx,
     );
 
     const specAction = spec.action(
