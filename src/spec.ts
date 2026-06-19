@@ -21,11 +21,8 @@ export async function fileBased({
 }): Promise<spec.SpecElement[]> {
   const makeUniqueSpecName = specNameMaker();
 
-  // Wasp emits a ref's `from` verbatim into the generated import. The parsers
-  // build `from` from absolute file paths that retain their extension, but Wasp
-  // expects extensionless imports (it uses rollup and extensionless resolution),
-  // so the leaked `.ts`/`.tsx` breaks the generated server's `tsc` build under
-  // Wasp 0.25 (TS5097). Strip the extension before handing `ref` to the parsers.
+  // Wasp trips up on files with extensions:
+  // https://github.com/wasp-lang/wasp/issues/4368
   const extensionlessRef: typeof ref = (descriptor) =>
     ref({
       ...descriptor,
