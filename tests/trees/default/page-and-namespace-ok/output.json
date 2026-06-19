@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "DashboardPage",
-        "from": "dashboard/page.tsx"
+        "from": "dashboard/page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "DashboardPage",
-          "from": "dashboard/page.tsx"
+          "from": "dashboard/page"
         }
       }
     },
@@ -28,7 +28,7 @@
       "middlewareConfigFn": {
         "kind": "refObject",
         "importDefault": "dashboardApiNamespace",
-        "from": "dashboard/api-namespace.ts"
+        "from": "dashboard/api-namespace"
       }
     }
   ]

@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "DocsLangPage",
-        "from": "docs/[[lang]]/page.tsx"
+        "from": "docs/[[lang]]/page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "DocsLangPage",
-          "from": "docs/[[lang]]/page.tsx"
+          "from": "docs/[[lang]]/page"
         }
       }
     }

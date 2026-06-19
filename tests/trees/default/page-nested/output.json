@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "SettingsProfilePage",
-        "from": "settings/profile/page.tsx"
+        "from": "settings/profile/page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "SettingsProfilePage",
-          "from": "settings/profile/page.tsx"
+          "from": "settings/profile/page"
         }
       }
     }

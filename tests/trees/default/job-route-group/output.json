@@ -6,7 +6,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "sendDigest",
-        "from": "jobs/(scheduled)/sendDigest.ts"
+        "from": "jobs/(scheduled)/sendDigest"
       },
       "executor": "PgBoss"
     }

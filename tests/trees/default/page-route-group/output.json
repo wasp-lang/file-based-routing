@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "DashboardMyProfilePage",
-        "from": "dashboard/(logged-in)/my-profile/page.tsx"
+        "from": "dashboard/(logged-in)/my-profile/page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "DashboardMyProfilePage",
-          "from": "dashboard/(logged-in)/my-profile/page.tsx"
+          "from": "dashboard/(logged-in)/my-profile/page"
         }
       }
     }
