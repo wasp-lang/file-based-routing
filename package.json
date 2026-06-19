@@ -31,7 +31,7 @@
     "typecheck": "tsc"
   },
   "peerDependencies": {
-    "@wasp.sh/spec": "^0.24.0"
+    "@wasp.sh/spec": "^0.24.0 || ^0.25.0"
   },
   "dependencies": {
     "es-toolkit": "^1.47.0",
