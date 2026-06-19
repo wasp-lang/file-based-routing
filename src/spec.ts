@@ -21,6 +21,14 @@ export async function fileBased({
 }): Promise<spec.SpecElement[]> {
   const makeUniqueSpecName = specNameMaker();
 
+  // Wasp trips up on files with extensions:
+  // https://github.com/wasp-lang/wasp/issues/4368
+  const extensionlessRef: typeof ref = (descriptor) =>
+    ref({
+      ...descriptor,
+      from: descriptor.from.replace(/\.[mc]?[jt]sx?$/, ""),
+    });
+
   const claimChecker = new ClaimChecker();
 
   const specElements = await asArray(async function* () {
@@ -46,7 +54,7 @@ export async function fileBased({
         try {
           parseResult = await parser.matchFile(
             { pathComponents, absFilePath: absPath },
-            { ref, makeUniqueSpecName },
+            { ref: extensionlessRef, makeUniqueSpecName },
           );
         } catch (cause) {
           throw new Error(`Error while parsing file "${relPath}"`, { cause });

@@ -6,7 +6,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "weeklyReport",
-        "from": "jobs/weeklyReport.ts"
+        "from": "jobs/weeklyReport"
       },
       "executor": "PgBoss",
       "schedule": {

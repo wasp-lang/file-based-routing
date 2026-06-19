@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "MyPagePage",
-        "from": "my-page/page.tsx"
+        "from": "my-page/page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "MyPagePage",
-          "from": "my-page/page.tsx"
+          "from": "my-page/page"
         }
       }
     },
@@ -27,7 +27,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "MyPage1Page",
-        "from": "my/page/page.tsx"
+        "from": "my/page/page"
       }
     },
     {
@@ -39,7 +39,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "MyPage1Page",
-          "from": "my/page/page.tsx"
+          "from": "my/page/page"
         }
       }
     }

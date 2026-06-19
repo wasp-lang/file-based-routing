@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "RootPage",
-        "from": "page.tsx"
+        "from": "page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "RootPage",
-          "from": "page.tsx"
+          "from": "page"
         }
       }
     },
@@ -27,7 +27,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "getTasks",
-        "from": "queries/getTasks.ts"
+        "from": "queries/getTasks"
       }
     },
     {
@@ -35,7 +35,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "createTask",
-        "from": "actions/createTask.ts"
+        "from": "actions/createTask"
       }
     },
     {
@@ -43,7 +43,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "sendDigest",
-        "from": "jobs/sendDigest.ts"
+        "from": "jobs/sendDigest"
       },
       "executor": "PgBoss"
     },
@@ -54,7 +54,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "webhooksPostApi",
-        "from": "webhooks/post.api.ts"
+        "from": "webhooks/post.api"
       }
     },
     {
@@ -63,7 +63,7 @@
       "middlewareConfigFn": {
         "kind": "refObject",
         "importDefault": "externalApiNamespace",
-        "from": "external/api-namespace.ts"
+        "from": "external/api-namespace"
       }
     }
   ]

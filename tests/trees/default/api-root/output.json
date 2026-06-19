@@ -8,7 +8,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "rootGetApi",
-        "from": "get.api.ts"
+        "from": "get.api"
       }
     }
   ]

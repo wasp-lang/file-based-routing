@@ -8,7 +8,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "dashboardGetApi",
-        "from": "dashboard/get.api.ts"
+        "from": "dashboard/get.api"
       }
     },
     {
@@ -17,7 +17,7 @@
       "middlewareConfigFn": {
         "kind": "refObject",
         "importDefault": "dashboardApiNamespace",
-        "from": "dashboard/api-namespace.ts"
+        "from": "dashboard/api-namespace"
       }
     }
   ]
