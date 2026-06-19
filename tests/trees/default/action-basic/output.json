@@ -6,7 +6,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "createTask",
-        "from": "actions/createTask.ts"
+        "from": "actions/createTask"
       }
     }
   ]

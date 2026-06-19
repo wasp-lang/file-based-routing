@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "RootPage",
-        "from": "page.tsx"
+        "from": "page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "RootPage",
-          "from": "page.tsx"
+          "from": "page"
         }
       }
     }

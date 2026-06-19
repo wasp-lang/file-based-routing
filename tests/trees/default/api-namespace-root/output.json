@@ -7,7 +7,7 @@
       "middlewareConfigFn": {
         "kind": "refObject",
         "importDefault": "rootApiNamespace",
-        "from": "api-namespace.ts"
+        "from": "api-namespace"
       }
     }
   ]

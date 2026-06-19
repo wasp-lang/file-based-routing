@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "DashboardPage",
-        "from": "dashboard/page.tsx"
+        "from": "dashboard/page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "DashboardPage",
-          "from": "dashboard/page.tsx"
+          "from": "dashboard/page"
         }
       }
     },
@@ -29,7 +29,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "dashboardPostApi",
-        "from": "dashboard/post.api.ts"
+        "from": "dashboard/post.api"
       }
     }
   ]

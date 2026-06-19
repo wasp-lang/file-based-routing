@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "MyPagePage",
-        "from": "my-page/page.tsx"
+        "from": "my-page/page"
       },
       "authRequired": true
     },
@@ -19,7 +19,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "MyPagePage",
-          "from": "my-page/page.tsx"
+          "from": "my-page/page"
         },
         "authRequired": true
       },

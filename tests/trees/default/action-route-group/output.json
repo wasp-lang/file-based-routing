@@ -6,7 +6,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "banUser",
-        "from": "actions/(admin)/(super)/banUser.ts"
+        "from": "actions/(admin)/(super)/banUser"
       }
     }
   ]

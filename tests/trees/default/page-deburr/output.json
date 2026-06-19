@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "CafePage",
-        "from": "café/page.tsx"
+        "from": "café/page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "CafePage",
-          "from": "café/page.tsx"
+          "from": "café/page"
         }
       }
     }

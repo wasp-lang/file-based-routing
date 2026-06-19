@@ -6,7 +6,7 @@
       "component": {
         "kind": "refObject",
         "importDefault": "FilesPage",
-        "from": "files/[...rest]/page.tsx"
+        "from": "files/[...rest]/page"
       }
     },
     {
@@ -18,7 +18,7 @@
         "component": {
           "kind": "refObject",
           "importDefault": "FilesPage",
-          "from": "files/[...rest]/page.tsx"
+          "from": "files/[...rest]/page"
         }
       }
     }

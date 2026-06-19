@@ -6,7 +6,7 @@
       "fn": {
         "kind": "refObject",
         "importDefault": "getUsers",
-        "from": "queries/(admin)/getUsers.ts"
+        "from": "queries/(admin)/getUsers"
       }
     }
   ]
